@@ -24,5 +24,4 @@ class Proposal < ApplicationRecord
   def proposal_params
     require.params(:proposal).permit(:pitch)
   end
-
 end
