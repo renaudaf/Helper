@@ -27,7 +27,7 @@ helper.save!
 project1 = Project.new(title: "Kitchen counter renewal",
                           user_id: user.id,
                           description: "I want to remove my old kitchen counter and replace them with new ones.",
-                          measurements: {counter: "13 by 15", kitchen: "20 by 20"})
+                          measurements: [{name: "counter", dimension: "13 by 15"}, {name: "kitchen", dimension: "20 by 20"}, {name: "counter height", dimension: "4ft"}])
 project1.save!
 
 proposal1 = Proposal.new(user_id: helper.id,

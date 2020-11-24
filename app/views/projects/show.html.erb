@@ -3,6 +3,7 @@
 <p> <%= @project.description %>  </p>
 
 <ul> <% @project.measurements.each do |measurement| %>
-  <li> <%= measurement[0] %>: <%= measurement[1] %> </li>
+  <li> <%= measurement["name"] %>: <%= measurement["dimension"] %> </li>
 <% end %>
 </ul>
+

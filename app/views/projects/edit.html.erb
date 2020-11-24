@@ -4,7 +4,7 @@
 <% @project.measurements.each do |measurement| %>
 <!-- Insert multiple image attachement function once cloudinary is set up -->
   <div>
-    <input > name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
+    <input name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
   </div>
 <% end %>
   <label for="project[measurements][][name]">Measurements:</label>
@@ -15,6 +15,3 @@
 
 <%= f.submit %>
 <% end %>
-
-
-<!-- = simple_form_for(@user, html: { class: "form" }) do |f| = f.input :blog = f.input :github = f.input :twitter  -->
