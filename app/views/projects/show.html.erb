@@ -1,0 +1,8 @@
+<h1> <%= @project.title %> </h1>
+
+<p> <%= @project.description %>  </p>
+
+<ul> <% @project.measurements.each do |measurement| %>
+  <li> <%= measurement[0] %>: <%= measurement[1] %> </li>
+<% end %>
+</ul>
