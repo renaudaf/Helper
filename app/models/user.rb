@@ -6,5 +6,4 @@ class User < ApplicationRecord
   has_many :projects
   has_many :messages
   has_many :proposals
-
 end
