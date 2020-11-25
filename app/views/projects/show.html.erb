@@ -11,4 +11,8 @@
 
 <!-- conditional button for link to proposal -->
 
-<% current_user.typehelper %>
+<% if current_user.typehelper %>
+
+render "new"
+
+<% end %>
