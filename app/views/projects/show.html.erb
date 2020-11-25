@@ -12,3 +12,7 @@
 <!-- conditional button for link to proposal -->
 
 <% current_user.typehelper %>
+
+<% @project.tags.each do |tag| %>
+  <li class="li-tags"><%= tag.name.capitalize %></li>
+<% end %>

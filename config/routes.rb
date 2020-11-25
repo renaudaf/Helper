@@ -12,5 +12,9 @@ Rails.application.routes.draw do
 
   resources :helpers, only: :new
 
+  resources :projects, only: [] do
+    resources :project_tags, only: [:new, :create]
+  end
+
 end
 
