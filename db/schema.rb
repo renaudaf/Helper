@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_195313) do
+ActiveRecord::Schema.define(version: 2020_11_25_210605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,17 @@ ActiveRecord::Schema.define(version: 2020_11_25_195313) do
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "reviewer_id", null: false
+    t.bigint "helper_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["helper_id"], name: "index_reviews_on_helper_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -81,4 +92,6 @@ ActiveRecord::Schema.define(version: 2020_11_25_195313) do
 
   add_foreign_key "project_tags", "projects"
   add_foreign_key "project_tags", "tags"
+  add_foreign_key "reviews", "users", column: "helper_id"
+  add_foreign_key "reviews", "users", column: "reviewer_id"
 end
