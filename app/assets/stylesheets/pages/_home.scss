@@ -1,1 +1,57 @@
 // Specific CSS for your home-page
+.banner {
+  background-image: url("https://www.decoraid.com/wp-content/uploads/2018/04/renovation-banner-1.jpg");
+  height: 56vh;
+  width: 100%;
+  background-size: cover;
+  background-position: right;
+  display: flex;
+  align-items: center;
+   h1 {
+    color: rgba(255,255,255, .8);
+    margin-left: 50px;
+   }
+}
+
+.sign-up {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto;
+  img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 14px;
+  }
+}
+.box-home {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-container {
+  width: 92vw;
+  height: 92vh;
+  border: 1px solid black;
+  border-radius: 25px;
+  box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  background-image: url("https://img-new.cgtrader.com/items/40561/3d_models_luxury_contemporary_house_3d_model_obj_max__87800e9b-e531-44e2-99bf-663d822486f6.jpg");
+  background-size: cover;
+  height: 92%;
+  width: 54%;
+  border-radius: 25px;
+  box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
+}
+
+.btn {
+  border-radius: 8px;
+}
