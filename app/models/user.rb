@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :messages
   has_many :proposals
   has_many :projects, dependent: :destroy
+  has_one_attached :photo
 end

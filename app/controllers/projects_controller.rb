@@ -53,6 +53,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, measurements: [:name, :dimension])
+    params.require(:project).permit(:title, :description, photos: [], measurements: [:name, :dimension])
   end
 end
