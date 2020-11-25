@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="my-4">My Projects</h1>
+  <div class="dash">
+    <% @project.each do |project| %>
+    <div class="project-img">
+      <div class="img-content">
+        <h2><%= project.title %></h2>
+        <p><%= project.description %></p>
+      </div>
+    </div>
+    <% end %>
+    <div class="right-content text-center">
+      <div class="messages p-3">
+        <h2>Your messages</h2>
+        <% @user.messages.each do |message| %>
+        <div class="card-product text-left">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-product-infos">
+            <h2><%= message.proposal.user.firstname %></h2>
+            <p><%= message.proposal.pitch.first(25) %>...</p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <div class="create-new btn btn-light text-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Plus_font_awesome.svg" alt="">
+        <h3>Create new project</h3>
+      </div>
+    </div>
+  </div>
+</div>
