@@ -60,4 +60,10 @@ message3 = Message.new(user_id: helper.id,
                       content: "I'm having serious second thoughts about working at your place...")
 message3.save!
 
+tags = ["Contractor", "Electrician", "Plumber", "Locksmith", "Renovation", "Demolition", "New"]
+
+tags.each do |tag|
+  Tag.create!(name: tag)
+end
+
 puts "Done"

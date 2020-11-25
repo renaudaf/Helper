@@ -7,15 +7,12 @@
 <% end %>
 </ul>
 
+<% @project.tags.each do |tag| %>
+  <li class="li-tags"><%= tag.name.capitalize %></li>
+
 <!-- Delete project button only for the user who created the project -->
-<%= link_to "Delete this project", project_path, method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %>
-
-<!-- conditional button for link to proposal -->
-
-<%= link_to "Make a proposal for this project", new_project_proposal_path(@project) unless current_user.typehelper != true %>
-
-
-<!-- If user is the one who created the project he should be able to see the proposals listed below -->
-
-
-
+<%= link_to "Delete this project", project_path, method: :delete, data: {confirm: "Are you sure you want to delete this project?"} unless current_user != @project.user%>
+<!-- If the user is a helper, he will have the form to make a pitch -->
+<% if current_user.typehelper %>
+  <%= render partial: "proposals/new" %>
+<% end %>

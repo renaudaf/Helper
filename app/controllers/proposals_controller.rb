@@ -17,10 +17,11 @@ class ProposalsController < ApplicationController
     @project = Project.find(params["project_id"])
     @proposal = Proposal.new(proposal_params)
     @proposal.user = current_user
-    if @proposal.save
-      redirect_to proposal_path(@proposal)
+    @proposal.project = @project
+    if @proposal.save!
+      redirect_to projects_path
     else
-      render "new"
+      render "projects/show"
     end
   end
 
