@@ -1,5 +1,4 @@
 class ProjectsController < ApplicationController
-
   before_action :load_project, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @proposal = Proposal.new
   end
 
   def new
@@ -37,7 +37,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-
     @project.update(project_params)
     redirect_to project_path(@project)
   end
