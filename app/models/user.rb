@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :proposals, dependent: :destroy
   has_many :projects, dependent: :destroy
-
+  has_one_attached :photo
   validates :firstname, presence: true
 end

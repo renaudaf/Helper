@@ -1,8 +1,8 @@
 <%= simple_form_for(@project) do |f| %>
 <%= f.input :title, placeholder: "Give a title that identifies your goal" %>
 <%= f.input :description, placeholder: "Explain your project as clearly as possible" %>
+<%= f.input :photos, as: :file, input_html: { multiple: true } %>
 <% @project.measurements.each do |measurement| %>
-<!-- Insert multiple image attachement function once cloudinary is set up -->
   <div>
     <input name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
   </div>
