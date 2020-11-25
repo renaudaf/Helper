@@ -1,0 +1,8 @@
+<div class="container">
+  <%= simple_form_for([@project, @project_tag]) do |f| %>
+    <%= f.input :tag, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
