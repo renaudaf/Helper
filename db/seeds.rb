@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 
 puts "Clearing database"
 
@@ -27,11 +28,14 @@ helper = User.new(email: "tony@lewagon.org", password: "123456",
                     certification: "Professional", experience: 10, profession: "contractor")
 helper.save!
 
+
 project1 = Project.new(title: "Kitchen counter renewal",
                           user_id: user.id,
                           description: "I want to remove my old kitchen counter and replace them with new ones.",
                           measurements: [{name: "counter", dimension: "13 by 15"}, {name: "kitchen", dimension: "20 by 20"}, {name: "counter height", dimension: "4ft"}],
                           address: "5330 rue Chambord H2J3N5 Quebec Canada")
+file = URI.open('https://assets.flatpyramid.com/wp-content/uploads/uploads/3d-models/images/interior/luxury_detailed_house_cutaway_3d_model_-3d-model-35873-519904.jpg')
+project1.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 project1.save!
 
 project2 = Project.new(title: "Build a torture chamber",
@@ -39,6 +43,8 @@ project2 = Project.new(title: "Build a torture chamber",
                           description: "My wife recently saw fifty shades of grey and now wants to turn my office into a freaky sex room.",
                           measurements: [{name: "Room", dimension: "25 by 25"}, {name: "Sex swing", dimension: "5 foot long"}, {name: "Sex toy shelf", dimension: "4ft"}],
                           address: "5350 rue Lanaudiere H2J3N5 Quebec Canada")
+# file = URI.open('https://assets.flatpyramid.com/wp-content/uploads/uploads/3d-models/images/interior/luxury_detailed_house_cutaway_3d_model_-3d-model-35873-519904.jpg')
+# project2.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 project2.save!
 
 proposal1 = Proposal.new(user_id: helper.id,
