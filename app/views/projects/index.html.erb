@@ -1,9 +1,17 @@
-<% @projects.each do |project| %>
-<h1> <%= link_to project.title, project_path(project) %> </h1>
- <p> <%= project.description %> </p>
- <img src="" alt="">
+<div class="container">
+  <h1>All projects</h1>
+  <div class="grid-index">
+    <% @projects.each do |project| %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <h1><%= project.title %></h1>
 
- <% project.tags.each do |tag| %>
-    <li class="li-tags"><%= tag.name.capitalize %></li>
-  <% end %>
-<% end %>
+       <% project.tags.each do |tag| %>
+          <li class="li-tags"><%= tag.name.capitalize %></li>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
