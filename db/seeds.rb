@@ -77,5 +77,7 @@ end
 
 project_tag = ProjectTag.new(project: project2, tag: Tag.first)
 project_tag.save!
+project_tag2 = ProjectTag.new(project: project2, tag: Tag.last)
+project_tag2.save!
 
 puts "Done"

@@ -1,30 +1,66 @@
 .card-category {
-  background-size: cover;
-  background-position: center;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  height: 210px;
+  width: 100%;
   border-radius: 25px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
-  .li-tags {
-    position:absolute;
-    bottom: 12px;
-    right: 12px;
-    list-style: none;
-  }
   h1 {
     font-size: 22px;
+    transition: font-size .6s ease;
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 12px;
+    padding: 8px 12px;
+    color: black;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+  .li-tags {
+    display: inline;
+    background-color: rgba(255, 255, 255, .6);
+    border-radius: 4px;
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
 }
 
 .grid-index {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 12px;
+  grid-gap: 36px;
+}
+
+.project-link:hover {
+  text-decoration: none;
+  h1 {
+    // font-size: 28px;
+    transform: scale(1.2);
+  }
+  .helper-img {
+    filter: blur(3px);
+  }
+}
+
+.helper-img {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: blur .6s ease;
+}
+
+.index-content {
+  h1 {
+    position: absolute;
+    top: 40%;
+    right: 22%;
+    transition: transform .6s ease;
+  }
+  ul {
+    position: absolute;
+    top: 84%;
+    right: 4%;
+  }
 }

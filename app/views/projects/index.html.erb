@@ -1,17 +1,26 @@
 <div class="container">
-  <h1>All projects</h1>
+  <h1 class="my-4">All projects</h1>
   <div class="grid-index">
     <% @projects.each do |project| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <h1><%= project.title %></h1>
-
-       <% project.tags.each do |tag| %>
-          <li class="li-tags"><%= tag.name.capitalize %></li>
+      <%= link_to project_path(project), class: "project-link" do %>
+      <div class="card-category">
+        <% if project.photos.first %>
+          <div class="card-category helper-img" style="background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url(http://res.cloudinary.com/renaudaf/image/upload/<%= project.photos.first.key %>)">
+          </div>
+        <% else %>
+          <div class="card-category helper-img" style="background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          </div>
         <% end %>
-      </div>
+          <div class="index-content">
+            <h1><%= project.title %></h1>
+              <ul class="index-tags m-0">
+                <% project.tags.each do |tag| %>
+                  <li class="li-tags px-1"><%= tag.name.capitalize %></li>
+                <% end %>
+              </ul>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
-
-
-
