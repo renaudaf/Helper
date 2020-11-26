@@ -12,8 +12,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :show]
   end
 
+  resources :reviews, only: [:destroy, :edit, :update]
+
   resources :helpers, only: :new
-  
 
   resources :projects, only: [] do
     resources :project_tags, only: [:new, :create]

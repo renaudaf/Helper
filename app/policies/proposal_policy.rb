@@ -14,11 +14,11 @@ class ProposalPolicy < ApplicationPolicy
   end
 
   def new?
-    user.typehelper && !record.user == user
+    user.typehelper && record.user != user
   end
 
   def create?
-    user.typehelper && !record.user == user
+    user.typehelper && record.user != user
   end
 
   def update?
