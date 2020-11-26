@@ -1,14 +1,23 @@
 <div class="container">
   <h1 class="my-4">Current Projects</h1>
   <div class="dash">
-    <% @project.each do |project| %>
-    <div class="project-img">
-      <div class="img-content">
-        <h2><%= project.title %></h2>
-        <p><%= project.description %></p>
+    <% if @project == [] %>
+      <div class="project-img">
+        <div class="img-content">
+          <h3>Found a project</h3>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <% @project.each do |project| %>
+        <div class="project-img">
+          <div class="img-content">
+            <h2><%= project.title %></h2>
+            <p><%= project.description %></p>
+          </div>
+        </div>
+      <% end %>
     <% end %>
+
     <div class="right-content text-center">
       <div class="messages p-3">
         <h2>Your messages</h2>
