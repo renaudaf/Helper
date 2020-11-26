@@ -1,0 +1,11 @@
+<h2> Chatroom </h2>
+
+<h5> <%=@proposal.user.firstname%> would like to take on your project!</h5>
+
+<p> <%=@proposal.user.firstname%>: <%=@proposal.pitch%> </p>
+
+<% @proposal.messages.each do |message| %>
+<div>
+  <p> <%= message.user.firstname %>: <%= message.content %> </p>
+</div>
+<% end %>
