@@ -8,9 +8,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:new, :create, :show, :index]
+  resources :users, only: [:new, :create, :show, :index] do
+    resources :reviews, only: [:create, :show]
+  end
 
   resources :helpers, only: :new
+  
 
   resources :projects, only: [] do
     resources :project_tags, only: [:new, :create]
