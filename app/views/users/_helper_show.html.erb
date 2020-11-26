@@ -2,24 +2,24 @@
   <h1 class="my-4">Current Projects</h1>
   <div class="dash">
     <% @project.each do |project| %>
-    <div class="project-img">
-      <div class="img-content">
-        <h2><%= project.title %></h2>
-        <p><%= project.description %></p>
+      <div class="project-img">
+        <div class="img-content">
+          <h2><%= project.title %></h2>
+          <p><%= project.description %></p>
+        </div>
       </div>
-    </div>
     <% end %>
     <div class="right-content text-center">
       <div class="messages p-3">
         <h2>Your messages</h2>
         <% @user.messages.each do |message| %>
-        <div class="card-product text-left">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <h2><%= message.proposal.user.firstname %></h2>
-            <p><%= message.proposal.pitch.first(25) %>...</p>
+          <div class="card-product text-left">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos">
+              <h2><%= message.proposal.user.firstname %></h2>
+              <p><%= message.proposal.pitch.first(25) %>...</p>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
       <div class="create-new btn btn-light text-center px-4">
@@ -29,33 +29,29 @@
     </div>
   </div>
 </div>
-
-
-  <h2>Reviews</h2>
-  <% @user.helper_reviews.each do |review| %>
+<h2>Reviews</h2>
+<% @user.helper_reviews.each do |review| %>
   <li class="list-group-item">
-  <small>
-  <% count = 0 %>
-  <% 5.times do %>
-  <% if review.rating > count %>
-    <i class="fas fa-star"></i>
-    <% else %>
-      <i class="far fa-star"></i>
-    <% end %>
-      <% count += 1 %>
-    <% end %>
-      </small>
-      <p><%= review.content %></p>
-      <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
-      </li>
-  <% end %>
-
-
+    <small>
+      <% count = 0 %>
+      <% 5.times do %>
+        <% if review.rating > count %>
+          <i class="fas fa-star"></i>
+        <% else %>
+          <i class="far fa-star"></i>
+        <% end %>
+        <% count += 1 %>
+      <% end %>
+    </small>
+    <p><%= review.content %></p>
+    <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
+  </li>
+<% end %>
 <div class="container">
- <h2 class='mt-4'>Add a new review</h2>
+  <h2 class='mt-4'>Add a new review</h2>
   <%= simple_form_for [@user, Review.new]  do |f| %>
-   <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
-   <%= f.input :content %>
-   <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
- <% end %>
+    <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
+    <%= f.input :content %>
+    <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
+  <% end %>
 </div>
