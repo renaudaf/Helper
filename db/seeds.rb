@@ -12,6 +12,9 @@ User.destroy_all
 Project.destroy_all
 Message.destroy_all
 Proposal.destroy_all
+Tag.destroy_all
+ProjectTag.destroy_all
+
 
 puts "Filling database"
 
@@ -60,10 +63,13 @@ message3 = Message.new(user_id: helper.id,
                       content: "I'm having serious second thoughts about working at your place...")
 message3.save!
 
-tags = ["Contractor", "Electrician", "Plumber", "Locksmith", "Renovation", "Demolition", "New"]
+tags = ["Electrical", "Plumbing", "Renovation", "Masonery", "Roofing", "Demolition", "Outdoor"]
 
 tags.each do |tag|
   Tag.create!(name: tag)
 end
+
+project_tag = ProjectTag.new(project: project2, tag: Tag.first)
+project_tag.save!
 
 puts "Done"
