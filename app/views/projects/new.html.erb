@@ -1,22 +1,21 @@
-<%= simple_form_for(@project) do |f| %>
-<%= f.input :title, placeholder: "Give a title that identifies your goal" %>
-<%= f.input :description, placeholder: "Explain your project as clearly as possible" %>
-<%= f.input :tags, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
-<% @project.measurements.each do |measurement| %>
-<!-- Insert multiple image attachement function once cloudinary is set up -->
-  <div>
-    <input > name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
-  </div>
-<% end %>
-  <label for="project[measurements][][name]">Measurements:</label>
-<div>
-  <input placeholder="What you are measuring" name="project[measurements][][name]" type="text"> <input placeholder="1m width 50 cm length" name="project[measurements][][dimension]" type="text">
+<div class="container">
+  <h1>Create your project</h1>
+  <%= simple_form_for(@project) do |f| %>
+    <%= f.input :title, placeholder: "Give a title that identifies your goal" %>
+    <%= f.input :description, placeholder: "Explain your project as clearly as possible" %>
+    <%= f.input :tags, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <% @project.measurements.each do |measurement| %>
+      <div>
+        <input > name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
+      </div>
+    <% end %>
+    <label for="project[measurements][][name]">Measurements:</label>
+    <div>
+      <input placeholder="What you are measuring" name="project[measurements][][name]" type="text"> <input placeholder="1m width 50 cm length" name="project[measurements][][dimension]" type="text">
+    </div>
+    <%= f.submit %>
+  <% end %>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 </div>
-
-
-<%= f.submit %>
-<% end %>
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-
-
 <!-- = simple_form_for(@user, html: { class: "form" }) do |f| = f.input :blog = f.input :github = f.input :twitter  -->
