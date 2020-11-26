@@ -2,13 +2,26 @@
   display: flex;
 }
 .project-img {
-  background-image: url("https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2");
   height: 66vh;
   width: 100%;
-  background-size: cover;
   position: relative;
-  border-radius: 25px;
-  box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
+  &:hover {
+    .imgs{
+      width: 102%;
+      height: 102%;
+    }
+    .img-content {
+      transform: translate(10px, 10px);
+    }
+  }
+    .imgs{
+      transition: .3s ease;
+      border-radius: 25px;
+      box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+    }
   // background: linear-gradient(176deg, rgba(169,167,152,1) 0%, rgba(203,207,206,1) 94%);
 }
 
@@ -16,7 +29,9 @@
   position: absolute;
   bottom: 12px;
   right: 12px;
-  max-width: 240px;
+  max-width: 282px;
+  color: black;
+  transition: .3s ease;
 }
 
 .create-new {
@@ -38,6 +53,7 @@
 .right-content {
   width: 464px;
   margin-left: 22px;
+  min-width: 280px;
 }
 
 .messages {
