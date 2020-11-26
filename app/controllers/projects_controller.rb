@@ -18,7 +18,6 @@ class ProjectsController < ApplicationController
     @tag = Tag.all
     @project = Project.new(project_params)
     @project.user = current_user
-
     if @project.save
       tag_ids = params[:project][:tags]
       redirect_to project_path(@project)

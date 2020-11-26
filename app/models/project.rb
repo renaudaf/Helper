@@ -7,5 +7,13 @@ class Project < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
+  after_commit :reject_empty_measures
 
+  def reject_empty_measures
+    self.measurements = self.measurements.reject do |measurement|
+      measurement["name"].empty?
+    end
+  end
 end
+
+# measurements = [{:name , :dimension]
