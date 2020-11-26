@@ -56,6 +56,7 @@
     </li> 
   <% else %>
     <% @user.helper_reviews.each do |review| %>
+    <div class="review-container">
       <li class="list-group-item">
         <small>
           <% count = 0 %>
@@ -70,7 +71,18 @@
         </small>
         <p><%= review.content %></p>
         <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
+        <% if policy(review).destroy? %>
+          <%= link_to "Remove", review_path(review),  class: "btn btn-primary",
+                                                      method: :delete,
+                                                      data: { confirm: "Are you sure?" } %>
+        <% end %>
+        <% if policy(review).update? %>
+          <%= link_to  "Edit", edit_review_path(review), class: "btn btn-primary" %>
+        <% end %>
       </li>
+        
+
+      </div>
     <% end %>
   <% end %>
   <% if current_user != @user %>
