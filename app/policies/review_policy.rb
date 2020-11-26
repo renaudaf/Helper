@@ -6,10 +6,18 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    !record == user
+    record != user
   end
 
   def destroy?
-    record == user
+    record.reviewer_id == user.id
+  end
+
+  def edit?
+    record.reviewer_id == user.id
+  end
+
+  def update?
+    record.reviewer_id == user.id
   end
 end

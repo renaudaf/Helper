@@ -18,6 +18,21 @@ class ReviewsController < ApplicationController
     redirect_to user_path(review.helper)
   end
 
+  def edit
+    @review = Review.find(params[:id])
+    authorize @review
+  end
+
+  def update
+    review = Review.find(params[:id])
+    authorize review
+    if review.update(review_params)
+      redirect_to user_path(review.helper)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
   def review_params
