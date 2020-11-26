@@ -11,8 +11,7 @@
     <% else %>
       <div class="project-content">
         <% @project.each do |project| %>
-
-         <%= link_to project_path(project) do %>
+          <%= link_to project_path(project) do %>
             <div class="project-img mb-4">
               <% if project.photos.first %>
                 <%= cl_image_tag project.photos.first.key, class: "imgs" %>
@@ -28,10 +27,6 @@
         <% end %>
       </div>
     <% end %>
-
-
-
-
     <div class="right-content text-center">
       <div class="messages p-3">
         <h2>Your messages</h2>
@@ -44,41 +39,46 @@
             </div>
           </div>
         <% end %>
+        <%= link_to  "Access your message", project_proposal_messages_path(@project, @proposal) %>
       </div>
       <%= link_to projects_path do %>
-      <div class="create-new btn btn-light text-center px-4">
-        <img src="https://image.flaticon.com/icons/svg/57/57064.svg" class="my-2" alt="">
-        <h3>See all projects</h3>
-      </div>
+        <div class="create-new btn btn-light text-center px-4">
+          <img src="https://image.flaticon.com/icons/svg/57/57064.svg" class="my-2" alt="">
+          <h3>See all projects</h3>
+        </div>
       <% end %>
     </div>
   </div>
-
   <h2 class="mt-4">Reviews</h2>
-  <% @user.helper_reviews.each do |review| %>
-  <li class="list-group-item">
-  <small>
-  <% count = 0 %>
-  <% 5.times do %>
-  <% if review.rating > count %>
-    <i class="fas fa-star"></i>
-    <% else %>
-      <i class="far fa-star"></i>
-    <% end %>
-      <% count += 1 %>
-    <% end %>
-      </small>
-      <p><%= review.content %></p>
-      <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
+  <% if @user.helper_reviews.empty? %>
+    <li class="list-group-item mb-4">
+      <p>There is no review at the moment</p>
+    </li> 
+  <% else %>
+    <% @user.helper_reviews.each do |review| %>
+      <li class="list-group-item">
+        <small>
+          <% count = 0 %>
+          <% 5.times do %>
+            <% if review.rating > count %>
+              <i class="fas fa-star"></i>
+            <% else %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <% count += 1 %>
+          <% end %>
+        </small>
+        <p><%= review.content %></p>
+        <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
       </li>
+    <% end %>
   <% end %>
-
-
-
- <h2 class='mt-4'>Add a new review</h2>
-  <%= simple_form_for [@user, Review.new]  do |f| %>
-   <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
-   <%= f.input :content %>
-   <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
- <% end %>
+  <% if current_user != @user %>
+    <h2 class='mt-4'>Add a new review</h2>
+    <%= simple_form_for [@user, Review.new]  do |f| %>
+      <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
+      <%= f.input :content %>
+      <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
+    <% end %>
+  <% end %>
 </div>
