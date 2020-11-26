@@ -15,5 +15,3 @@ class Project < ApplicationRecord
     end
   end
 end
-
-# measurements = [{:name , :dimension]

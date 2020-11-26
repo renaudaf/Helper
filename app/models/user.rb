@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :projects, dependent: :destroy
-  has_many :messages, dependent: :destroy
   has_many :proposals, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_one_attached :photo
   validates :firstname, presence: true
   has_many :reviewer_reviews, class_name: 'Review', foreign_key: 'reviewer_id', dependent: :destroy
