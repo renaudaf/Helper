@@ -36,13 +36,13 @@
       <div class="messages p-3">
         <h2>Your messages</h2>
         <% @user.messages.each do |message| %>
-        <div class="card-product text-left">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-          <div class="card-product-infos">
-            <h2><%= message.proposal.user.firstname %></h2>
-            <p><%= message.proposal.pitch.first(25) %>...</p>
+          <div class="card-product text-left">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos">
+              <h2><%= message.proposal.user.firstname %></h2>
+              <p><%= message.proposal.pitch.first(25) %>...</p>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
       <div class="create-new btn btn-light text-center px-4">

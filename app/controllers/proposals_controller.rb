@@ -2,7 +2,7 @@ class ProposalsController < ApplicationController
   before_action :load_proposal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @proposals = Proposal.all
+    @proposals = policy_scope(Proposal)
   end
 
   def show
@@ -11,6 +11,7 @@ class ProposalsController < ApplicationController
   def new
     @project = Project.find(params["project_id"])
     @proposal = Proposal.new
+    authorize @proposal
   end
 
   def create
@@ -18,6 +19,7 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     @proposal.user = current_user
     @proposal.project = @project
+    authorize @proposal
     if @proposal.save!
       redirect_to projects_path
     else

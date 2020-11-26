@@ -2,23 +2,26 @@ class ProjectsController < ApplicationController
   before_action :load_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = policy_scope(Project)
+    authorize Project
   end
 
   def show
     @proposal = Proposal.new
+    authorize @project
   end
 
   def new
     @project = Project.new
     @tag = Tag.all
+    authorize @project
   end
 
   def create
     @tag = Tag.all
     @project = Project.new(project_params)
     @project.user = current_user
-
+    authorize @project
     if @project.save
       tag_ids = params[:project][:tags]
       redirect_to project_path(@project)
@@ -43,6 +46,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
+    authorize @project
     redirect_to projects_path
   end
 
