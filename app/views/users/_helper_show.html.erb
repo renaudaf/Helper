@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="my-4">Current Projects</h1>
   <div class="dash">
-    <% if @project == [] %>
+    <% if @projects == [] %>
       <div class="project-img">
         <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
         <div class="img-content">
@@ -10,7 +10,7 @@
       </div>
     <% else %>
       <div class="project-content">
-        <% @project.each do |project| %>
+        <% @projects.each do |project| %>
           <%= link_to project_path(project) do %>
             <div class="project-img mb-4">
               <% if project.photos.first %>
@@ -39,7 +39,7 @@
             </div>
           </div>
         <% end %>
-        <%= link_to  "Access your message", project_proposal_messages_path(@project, @proposal) %>
+        <%= link_to  "Access your message", project_proposals_path(@projects, @proposals) %>
       </div>
       <%= link_to projects_path do %>
         <div class="create-new btn btn-light text-center px-4">
