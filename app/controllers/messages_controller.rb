@@ -11,6 +11,10 @@ class MessagesController < ApplicationController
     @message.user = current_user
     authorize @message
     @message.save! unless @message.content.nil?
+    ProposalChatChannel.broadcast_to(
+      @chatroom,
+      render_to_string(partial:"message", locals: {message: @message})
+      )
     if @message.save
       redirect_to project_proposal_path(@project, @proposal)
     else
