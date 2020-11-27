@@ -34,7 +34,7 @@
   text-decoration: none;
   h1 {
     // font-size: 28px;
-    transform: scale(1.2);
+    transform: translate(50%, -50%);
   }
   .helper-img {
     filter: blur(3px);
@@ -55,9 +55,12 @@
 .index-content {
   h1 {
     position: absolute;
-    top: 40%;
-    right: 22%;
-    transition: transform .6s ease;
+    top: 50%;
+    right: 50%;
+    // transition: transform .6s ease;
+    transform: translate(50%, -50%);
+    white-space: nowrap;
+    text-align: center;
   }
   ul {
     position: absolute;
