@@ -56,7 +56,7 @@
     </li>
   <% else %>
     <% @user.helper_reviews.each do |review| %>
-      <div class="review-container">
+      <div class="review-container mb-4">
         <li class="list-group-item">
           <small>
             <% count = 0 %>
@@ -96,6 +96,6 @@
       <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
     <% end %>
   </div>
-  <% end %>
   <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-4">Add a review</button>
+  <% end %>
 </div>
