@@ -1,11 +1,16 @@
 .footer {
+ clear: both; //prevents floating elements from right/left of footer
+ position: absolute; //Positions footer relative to other elements on hte page
+ z-index: 1; //z-index positions elements in front or behind eachother, most have a //natual z-index of -1
+ height: -3em; //exactly what it says...
+ margin-top: 40em; //moves footer to bottom of all elements
+ width: 100%;
  background: #fafafa;
  display: flex;
  align-items: center;
  justify-content: space-between;
- height: 150px;
  padding: 0px 50px;
- color: rgba(0,0,0,0.3);
+ color: rgba(0, 0, 0, 0.3);
  border-top: solid lightgray 1px;
  p {
   color: black;
@@ -14,10 +19,12 @@
   color: #07689f;
  }
 }
+
 .footer-links {
  display: flex;
  align-items: center;
 }
+
 .footer-links a {
  color: black;
  opacity: 0.15;
@@ -25,11 +32,32 @@
  font-size: 24px;
  padding: 0px 10px;
 }
+
 .footer-links a:hover {
  opacity: 1;
 }
-.footer .fa-heart {
- color: #D23333;
+
+.follow-bloc {
+ display: block;
+}
+
+.footer-h {
+ font-size: 60px;
+ font-family: "Lobster", cursive;
+ color: #07689f;
+}
+
+.footer-title {
+ display: flex;
+ align-items: center;
+}
+
+.location {
+ position: relative;
+}
+
+.contact {
+ position: relative;
 }
 
 .follow {
@@ -39,21 +67,6 @@
  align-items: center;
 }
 
-.follow-bloc {
- display: block;
-}
-
-.footer-h {
- font-size: 60px;
- font-family: 'Lobster', cursive;
- color: #07689f;
-}
-
-.footer-title {
- display: flex;
- align-items: center;
-}
-
-.footer p {
- color: black;
+.newsletter {
+ position: relative;
 }
