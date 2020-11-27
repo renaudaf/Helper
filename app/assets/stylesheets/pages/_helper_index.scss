@@ -38,6 +38,7 @@
   }
   .helper-img {
     filter: blur(3px);
+    transform: scale(1.1);
   }
 }
 
@@ -48,7 +49,7 @@
   width: 100%;
   border-radius: 25px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  transition: blur .6s ease;
+  transition: blur, transform .6s ease;
 }
 
 .index-content {
