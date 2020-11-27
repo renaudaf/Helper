@@ -3,13 +3,13 @@
  position: absolute; //Positions footer relative to other elements on hte page
  z-index: 1; //z-index positions elements in front or behind eachother, most have a //natual z-index of -1
  height: -3em; //exactly what it says...
- margin-top: 40em; //moves footer to bottom of all elements
  width: 100%;
  background: #fafafa;
  display: flex;
- align-items: center;
+ align-items: flex-start;
  justify-content: space-between;
  padding: 0px 50px;
+ padding-top: 50px;
  color: rgba(0, 0, 0, 0.3);
  border-top: solid lightgray 1px;
  p {
@@ -53,20 +53,24 @@
 }
 
 .location {
- position: relative;
+ height: 80%;
 }
 
 .contact {
- position: relative;
+ height: 80%;
 }
 
 .follow {
- height: 150px;
+ height: 80%;
  text-align: center;
  display: flex;
  align-items: center;
 }
 
 .newsletter {
- position: relative;
+ height: 80%;
+}
+
+.footer-copyright {
+ margin-top: -20px;
 }
