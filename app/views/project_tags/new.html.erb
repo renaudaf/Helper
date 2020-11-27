@@ -1,6 +1,6 @@
 <div class="container">
   <%= simple_form_for([@project, @project_tag]) do |f| %>
-    <%= f.input :tag, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
+    <%= f.input :tag, collection: @tag, input_html: { multiple: true },  include_hidden: false %>
     <%= f.submit %>
   <% end %>
 </div>

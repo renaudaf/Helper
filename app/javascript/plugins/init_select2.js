@@ -1,5 +1,6 @@
-import $ from 'jquery';
+import $, { removeData } from 'jquery';
 import 'select2';
+
 
 const initSelect2 = () => {
   $('#project_tags').select2({
