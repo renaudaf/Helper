@@ -37,11 +37,19 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:id])
+    authorize @project
+    @tags = Tag.all
   end
 
   def update
-    @project.update(project_params)
-    redirect_to project_path(@project)
+    @project = Project.find(params[:id])
+    authorize @project
+    if @project.update(project_params)
+      redirect_to project_path(@project)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
