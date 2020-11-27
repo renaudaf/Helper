@@ -7,8 +7,8 @@ class ProjectPolicy < ApplicationPolicy
 
   def index?
     user.typehelper
-  end  
-  
+  end
+
   def show?
     record.user == user || user.typehelper
   end
@@ -18,6 +18,14 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def create?
+    true
+  end
+
+  def edit?
+    true
+  end
+
+  def update?
     true
   end
 
