@@ -24,13 +24,13 @@ class ProjectsController < ApplicationController
     authorize @project
     if @project.save
       tag_ids = params[:project][:tags]
-      redirect_to project_path(@project)
       if tag_ids
         tag_ids.each do |tag|
           new_tag = ProjectTag.new(project_id: @project.id, tag_id: tag)
           new_tag.save!
         end
       end
+      redirect_to project_path(@project)
     else
       render "new"
     end
@@ -43,9 +43,18 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @tags = Tag.all
     @project = Project.find(params[:id])
     authorize @project
     if @project.update(project_params)
+      tag_ids = params[:project][:tags]
+      tag_ids.delete("")
+      if tag_ids && @project.tags.count + tag_ids.count <= 3
+        tag_ids.each do |tag|
+          new_tag = ProjectTag.new(project_id: @project.id, tag_id: tag)
+          new_tag.save!
+        end
+      end
       redirect_to project_path(@project)
     else
       render 'edit'
