@@ -34,17 +34,17 @@ project1 = Project.new(title: "Kitchen counter renewal",
                           description: "I want to remove my old kitchen counter and replace them with new ones.",
                           measurements: [{name: "counter", dimension: "13 by 15"}, {name: "kitchen", dimension: "20 by 20"}, {name: "counter height", dimension: "4ft"}],
                           address: "5330 rue Chambord H2J3N5 Quebec Canada")
-file = URI.open('https://assets.flatpyramid.com/wp-content/uploads/uploads/3d-models/images/interior/luxury_detailed_house_cutaway_3d_model_-3d-model-35873-519904.jpg')
+file = URI.open('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fhomededicated.com%2Fwp-content%2Fuploads%2F2017%2F04%2Fluxury-kitchen-ideas.jpg&f=1&nofb=1')
 project1.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 project1.save!
 
-project2 = Project.new(title: "Build a torture chamber",
+project2 = Project.new(title: "Build a black room",
                           user_id: user.id,
-                          description: "My wife recently saw fifty shades of grey and now wants to turn my office into a freaky sex room.",
-                          measurements: [{name: "Room", dimension: "25 by 25"}, {name: "Sex swing", dimension: "5 foot long"}, {name: "Sex toy shelf", dimension: "4ft"}],
+                          description: "My wife recently saw fifty shades of Black and now wants to turn my living into a black room.",
+                          measurements: [{name: "Room", dimension: "25ft by 25ft"}, {name: "Black Table", dimension: "5 foot long"}, {name: "Black shelf", dimension: "4ft"}],
                           address: "5350 rue Lanaudiere H2J3N5 Quebec Canada")
-# file = URI.open('https://assets.flatpyramid.com/wp-content/uploads/uploads/3d-models/images/interior/luxury_detailed_house_cutaway_3d_model_-3d-model-35873-519904.jpg')
-# project2.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+file = URI.open('https://assets.flatpyramid.com/wp-content/uploads/uploads/3d-models/images/interior/luxury_detailed_house_cutaway_3d_model_-3d-model-35873-519904.jpg')
+project2.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 project2.save!
 
 proposal1 = Proposal.new(user_id: helper.id,
