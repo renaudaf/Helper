@@ -8,7 +8,7 @@ class ProposalsController < ApplicationController
   def show
     @messages = Message.new
     authorize @proposal
-    @project = Project.find(params["project_id"])
+    @project = @proposal.project
   end
 
   def new

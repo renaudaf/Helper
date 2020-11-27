@@ -4,27 +4,28 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @project = Project.find(params[:project_id])
     @proposal = Proposal.find(params[:proposal_id])
     @message = Message.new(message_params)
     @message.proposal = @proposal
     @message.user = current_user
     authorize @message
-    @message.save! unless @message.content.nil?
-    ProposalChatChannel.broadcast_to(
-      @chatroom,
-      render_to_string(partial:"message", locals: {message: @message})
-      )
-    if @message.save
-      redirect_to project_proposal_path(@project, @proposal)
-    else
-      render "proposal/show"
+    @message.save!
+    if @message.save && !@message.content.nil?
+      ProposalChatChannel.broadcast_to(
+        @proposal,
+        render_to_string(partial: "message", locals: { message: @message })
+        )
     end
+    # if @message.save
+    #   redirect_to proposal_path(@proposal)
+    # else
+    #   render "proposal/show"
+    # end
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:content, :proposal_id, :project_id)
+    params.require(:message).permit(:content, :proposal_id)
   end
 end

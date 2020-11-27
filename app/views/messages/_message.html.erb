@@ -1,5 +1,3 @@
-<% @proposal.messages.each do |message| %>
-  <div class="message-container">
-  <p> <%= message.user.firstname %>: <%= message.content %> </p>
+  <div class="message" id="message-<%=message.id%>">
+  <p> <%= @message.user.firstname %>: <%= @message.content %> </p>
   </div>
-<%end%>
