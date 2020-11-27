@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Create your project</h1>
+  <h1 class="mt-4">Create your project</h1>
   <div class="infos">
     <%= simple_form_for(@project) do |f| %>
       <h5><%= f.input :title, label: "Name of your project:", placeholder: "Give a title that identifies your goal" %></h5>
@@ -15,7 +15,7 @@
         <% end %>
         <label for="project[measurements][][name]">Measurements:</label>
           <div class="addmeasurebutton">
-            <button id="add-measure" class="btn btn-primary">Add a measurement</button>
+            <button id="add-measure" class="btn btn-primary mt-2">Add a measurement</button>
           </div>
       </div>
 
