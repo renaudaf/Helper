@@ -2,14 +2,8 @@
   <div class="form">
     <h1 class="my-4">All projects</h1>
     <div class="grid-index">
-
-
-
       <% @projects.each do |project| %>
         <%= link_to project_path(project), class: "project-link" do %>
-
-
-
             <% if project.photos.first %>
               <div class="card-category" style="background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url(http://res.cloudinary.com/renaudaf/image/upload/<%= project.photos.first.key %>)">
             <% else %>
@@ -26,19 +20,8 @@
               </div>
             </div>
           </div>
-
-
-
-
-
         <% end %>
       <% end %>
-
-
-
-
-
-
     </div>
   </div>
 </div>
