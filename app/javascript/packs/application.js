@@ -18,6 +18,8 @@ require("channels")
 
 import { initSelect2 } from '../plugins/init_select2.js';
 import { addMeasureOnClick } from '../components/add_measure';
+import { initChatroomCable } from '../channels/proposal_chat_channel';
+import { chatScrollBottom } from '../components/chat_scroll_bottom';
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -34,4 +36,6 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initSelect2();
   addMeasureOnClick();
+  initChatroomCable();
+  chatScrollBottom();
 });

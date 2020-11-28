@@ -3,7 +3,6 @@
     <h1> <%= @project.title %></h1>
     <h1><%= "Project type" %> </h1>
   </div>
-
   <div class="infocard">
     <div class="description d-flex">
       <h5><%= 'Project description:' %> </h5>
@@ -11,25 +10,27 @@
         <p><%= @project.description %>  </p>
       </div>
     </div>
-
-    <div class="dimensions d-flex">
-      <h5><%='Dimensions:' %> </h5>
-      <div class="listdim">
-        <ul><% @project.measurements.each do |measurement| %>
-            <li> <%= measurement["name"] %>: <%= measurement["dimension"] %> </li>
-          <% end %>
-        </ul>
+    <% if @project.measurements.empty? == false  %>
+      <div class="dimensions d-flex">
+        <h5><%='Dimensions:' %> </h5>
+        <div class="listdim">
+          <ul><% @project.measurements.each do |measurement| %>
+              <li> <%= measurement["name"] %>: <%= measurement["dimension"] %> </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-    </div>
-
+    <% end %>
     <div class="tags">
       <% @project.tags.each do |tag| %>
         <li class="li-tags"><%= tag.name.capitalize %></li>
       <% end %>
     </div>
-
-    <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
-
+    <% if @project.photos.attached? %>
+      <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
+    <% else %>
+      <img class="imgs " src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+    <% end %>
     <!-- Delete project button only for the user who created the project -->
     <div class="btndelete text-center">
       <% if policy(@project).destroy? %>
