@@ -145,6 +145,7 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    pdfkit (0.8.4.3.2)
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -196,6 +197,8 @@ GEM
       ffi (~> 1.0)
     redis (4.2.5)
     regexp_parser (1.8.2)
+    render_anywhere (0.0.12)
+      rails (>= 3.0.7)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -261,6 +264,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    wkhtmltopdf-binary (0.12.6.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.1)
@@ -282,6 +286,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
+  pdfkit
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails
@@ -289,6 +294,7 @@ DEPENDENCIES
   pundit
   rails (~> 6.0.3, >= 6.0.3.4)
   redis (~> 4.0)
+  render_anywhere
   sass-rails (>= 6)
   selenium-webdriver
   simple_form
@@ -299,6 +305,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 2.6.6p146
