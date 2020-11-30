@@ -6,6 +6,8 @@ ruby '2.6.6'
 gem 'pdfkit'
 gem 'render_anywhere'
 gem 'wkhtmltopdf-binary'
+gem 'geocoder'
+
 gem 'jquery-rails'
 gem 'pundit'
 gem 'cloudinary', '~> 1.16.0'
@@ -29,6 +31,7 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
+gem "algoliasearch-rails"
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb

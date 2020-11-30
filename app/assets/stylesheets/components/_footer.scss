@@ -1,18 +1,14 @@
 .footer {
  clear: both; //prevents floating elements from right/left of footer
- position: absolute; //Positions footer relative to other elements on hte page
  z-index: 1; //z-index positions elements in front or behind eachother, most have a //natual z-index of -1
  width: 100%;
+ padding-top: 20px;
  bottom: 0;
  right: 0;
  background: #fafafa;
- display: flex;
- align-items: flex-start;
- justify-content: space-between;
- padding: 0px 50px;
- padding-top: 50px;
  color: rgba(0, 0, 0, 0.3);
  border-top: solid lightgray 1px;
+ text-align: center;
  p {
   color: black;
  }
@@ -22,8 +18,7 @@
 }
 
 .footer-links {
- display: flex;
- align-items: center;
+ text-align: center;
 }
 
 .footer-links a {
@@ -49,8 +44,7 @@
 }
 
 .footer-title {
- display: flex;
- align-items: center;
+ margin-bottom: 20px;
 }
 
 .location {
@@ -75,3 +69,4 @@
 .footer-copyright {
  margin-top: -20px;
 }
+

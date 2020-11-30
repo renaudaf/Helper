@@ -4,6 +4,7 @@
     <%= simple_form_for(@project) do |f| %>
       <h5><%= f.input :title, label: "Name of your project:", placeholder: "Give a title that identifies your goal" %></h5>
       <h5><%= f.input :description, label: "Describe your project:", placeholder: "Explain your project as clearly as possible" %></h5>
+      <h5><%= f.input :address, label: "Enter your address:", placeholder: "address" %></h5>
       <h5><%= f.input :tags, label: "Project Type:", collection: @tag, input_html: { multiple: true }, include_hidden: false %></h5>
       <h5><%= f.input :photos, label: "Add related images:", as: :file, input_html: { multiple: true }%></h5>
 
