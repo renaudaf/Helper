@@ -52,15 +52,11 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
        </ol>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
+        <% @project.photos.each_with_index do |photo, i| %>
+        <div class="carousel-item <%= "active " if i==0 %>">
+          <%= cl_image_tag photo.key, class: "imgs" %>
         </div>
-        <div class="carousel-item">
-          <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
-        </div>
-        <div class="carousel-item">
-          <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
-        </div>
+        <% end %>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
