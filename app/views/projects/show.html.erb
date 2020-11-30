@@ -4,33 +4,80 @@
     <h1><%= "Project type" %> </h1>
   </div>
   <div class="infocard">
-    <div class="description d-flex">
-      <h5><%= 'Project description:' %> </h5>
-      <div class="descontent">
-        <p><%= @project.description %>  </p>
+    <div class="descsection">
+      <div class="row">
+        <div class="col-sm-12 col-lg-3">
+          <div class="description">
+            <h5><%= 'Project description:' %> </h5>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-9">
+          <div class="descontent">
+            <p><%= @project.description %>  </p>
+          </div>  
+        </div>    
       </div>
     </div>
-    <% if @project.measurements.empty? == false  %>
-      <div class="dimensions d-flex">
-        <h5><%='Dimensions:' %> </h5>
-        <div class="listdim">
-          <ul><% @project.measurements.each do |measurement| %>
-              <li> <%= measurement["name"] %>: <%= measurement["dimension"] %> </li>
-            <% end %>
-          </ul>
+    <div class="dimensection">
+      <% if @project.measurements.empty? == false  %>
+      <div class="row">
+        <div class="col-sm-12 col-lg-3">
+          <div class="dimensions">        
+            <h5><%='Dimensions:' %></h5>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-9">
+          <div class="listdim">
+            <ul><% @project.measurements.each do |measurement| %>
+                <li> <%= measurement["name"] %>: <%= measurement["dimension"] %> </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
+    </div>
+      
     <% end %>
-    <div class="tags">
+    <div class="tags d-flex">
       <% @project.tags.each do |tag| %>
         <li class="li-tags"><%= tag.name.capitalize %></li>
       <% end %>
     </div>
+
     <% if @project.photos.attached? %>
-      <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+       <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+       </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
+        </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
+        </div>
+        <div class="carousel-item">
+          <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
     <% else %>
       <img class="imgs " src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
     <% end %>
+
+    
+
+
     <!-- Delete project button only for the user who created the project -->
     <div class="btndelete text-center">
       <% if policy(@project).destroy? %>

@@ -1,11 +1,12 @@
 <div class="container">
+  <% if current_user.typehelper %>
   <h1 class="my-4">Current Projects</h1>
   <div class="dash">
     <% if @projects == [] %>
       <div class="project-img">
-        <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+        <img class="imgs_show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
         <div class="img-content">
-          <h2 class="text-white">Create new project</h2>
+          <h2 class="text-white">Find a new project</h2>
         </div>
       </div>
     <% else %>
@@ -14,9 +15,9 @@
           <%= link_to project_path(project) do %>
             <div class="project-img mb-4">
               <% if project.photos.first %>
-                <%= cl_image_tag project.photos.first.key, class: "imgs" %>
+                <%= cl_image_tag project.photos.first.key, class: "imgs_show" %>
               <% else %>
-                <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+                <img class="imgs_show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
               <% end %>
               <div class="img-content">
                 <h2><%= project.title %></h2>
@@ -28,74 +29,81 @@
       </div>
     <% end %>
     <div class="right-content text-center">
-      <div class="messages p-3">
-        <h2>Your messages</h2>
-        <% @user.messages.each do |message| %>
-          <div class="card-product text-left">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-            <div class="card-product-infos">
-              <h2><%= message.proposal.user.firstname %></h2>
-              <p><%= message.proposal.pitch.first(25) %>...</p>
+      <% if @user == current_user %>
+        <div class="messages p-3">
+          <h2>Your messages</h2>
+          <% @user.proposals.each do |proposal| %>
+            <div class="card-product text-left">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+              <div class="card-product-infos">
+                <h2><%= proposal.user.firstname %></h2>
+                <p><%= proposal.pitch.first(25) %>...</p>
+                <%= link_to  "Access your messages", proposal_path(proposal) %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-        <%= link_to  "Access your message", project_proposals_path(@projects, @proposals) %>
       </div>
-      <%= link_to projects_path do %>
-        <div class="create-new btn btn-light text-center px-4">
-          <img src="https://image.flaticon.com/icons/svg/57/57064.svg" class="my-2" alt="">
-          <h3>See all projects</h3>
-        </div>
+        <%= link_to projects_path do %>
+          <div class="create-new btn btn-light text-center px-4">
+            <img src="https://image.flaticon.com/icons/svg/57/57064.svg" class="my-2" alt="">
+            <h3>See all projects</h3>
+          </div>
       <% end %>
     </div>
   </div>
-  <h2 class="mt-4">Reviews</h2>
-  <% if @user.helper_reviews.empty? %>
-    <li class="list-group-item mb-4">
-      <p>There is no review at the moment</p>
-    </li>
-  <% else %>
-    <% @user.helper_reviews.each do |review| %>
-      <div class="review-container mb-4">
-        <li class="list-group-item">
-          <small>
-            <% count = 0 %>
-            <% 5.times do %>
-              <% if review.rating > count %>
-                <i class="fas fa-star"></i>
-              <% else %>
-                <i class="far fa-star"></i>
-              <% end %>
-              <% count += 1 %>
-            <% end %>
-          </small>
-          <p><%= review.content %></p>
-          <div class="review-links d-flex">
-            <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
-            <% if policy(review).update? %>
-              <%= link_to edit_review_path(review) do %>
-                <span class="far fa-edit mx-2"></span>
-              <% end %>
-            <% end %>
-            <% if policy(review).destroy? %>
-              <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
-                <span class="far fa-trash-alt"></span>
-              <% end %>
-            <% end %>
-          </div>
-        </li>
-      </div>
-    <% end %>
   <% end %>
-  <% if current_user != @user %>
-  <div id="review-form">
-    <h2 class='mt-4'>Add a new review</h2>
-    <%= simple_form_for [@user, Review.new] do |f| %>
-      <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
-      <%= f.input :content %>
-      <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
-    <% end %>
-  </div>
-  <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-4">Add a review</button>
+  <% if @user.typehelper %>
+    <div class="container">
+      <h2 class="mt-4">Reviews</h2>
+      <% if @user.helper_reviews.empty? %>
+        <li class="list-group-item mb-4">
+          <p>There is no review at the moment</p>
+        </li>
+      <% else %>
+        <% @user.helper_reviews.each do |review| %>
+          <div class="review-container mb-4">
+            <li class="list-group-item">
+              <small>
+                <% count = 0 %>
+                <% 5.times do %>
+                  <% if review.rating > count %>
+                    <i class="fas fa-star"></i>
+                  <% else %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  <% count += 1 %>
+                <% end %>
+              </small>
+              <p><%= review.content %></p>
+              <div class="review-links d-flex">
+                <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
+                <% if policy(review).update? %>
+                  <%= link_to edit_review_path(review) do %>
+                    <span class="far fa-edit mx-2"></span>
+                  <% end %>
+                <% end %>
+                <% if policy(review).destroy? %>
+                  <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <span class="far fa-trash-alt"></span>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+          </div>
+        <% end %>
+      <% end %>
+      <% if current_user != @user %>
+        <div id="review-form">
+          <h2 class='mt-4'>Add a new review</h2>
+          <%= simple_form_for [@user, Review.new] do |f| %>
+            <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
+            <%= f.input :content %>
+            <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
+          <% end %>
+        </div>
+        <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-4">Add a review</button>
+      <% end %>
+    </div>
   <% end %>
 </div>
