@@ -1,35 +1,41 @@
-<div class="big-container">
-  <div class="container">
-    <h1 class="my-4">My Projects</h1>
-    <div class="dash">
-      <% if @projects == [] %>
-        <div class="project-img">
-          <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
-          <div class="img-content">
-            <h2>Create new project</h2>
+<div class="container">
+  <h1 class="usertitle mt-3 mb-3">My Projects</h1>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-9">
+      <div class="projectslist">
+        <% if @projects == [] %>
+          <div class="project-img">
+            <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+            <div class="img-content">
+              <h2>Create new project</h2>
+            </div>
           </div>
-        </div>
-      <% else %>
-        <div class="project-content">
-          <% @projects.each do |project| %>
-            <%= link_to project_path(project) do %>
-              <div class="project-img mb-4">
-                <% if project.photos.first %>
-                  <%= cl_image_tag project.photos.first.key, class: "imgs" %>
-                <% else %>
-                  <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
-                <% end %>
-                <div class="img-content">
-                  <h2 class="text-white"><%= project.title %></h2>
-                  <p class="text-white"><%= project.description %></p>
+        <% else %>
+          <div class="project-content">
+            <% @projects.each do |project| %>
+              <%= link_to project_path(project) do %>
+                <div class="project-img">
+                  <% if project.photos.first %>
+                    <%= cl_image_tag project.photos.first.key, class: "imgs" %>
+                  <% else %>
+                    <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+                  <% end %>
+                  <div class="img-content">
+                    <h2 class="text-white"><%= project.title %></h2>
+                    <p class="text-white"><%= (project.description.split.first 10).join(" ")... %></p>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-      <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-3">
       <div class="right-content text-center">
-        <div class="messages p-3">
+        <div class="messages">
           <h2>Your messages</h2>
           <% @user.proposals.each do |proposal| %>
             <div class="card-product text-left">
@@ -45,13 +51,17 @@
             <%= link_to  "Access your message", project_proposals_path(@projects, @proposals) %>
           <% end %>
         </div>
-        <%= link_to new_project_path do %>
-          <div class="create-new btn btn-light text-center">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Plus_font_awesome.svg" alt="">
-            <h3 class>Create new project</h3>
-          </div>
-        <% end %>
+        <div class="righ-content">
+          <%= link_to new_project_path do %>
+            <div class="create-new">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Plus_font_awesome.svg" alt="">
+              <h3 class="linkcreate">Create new project</h3>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
+
