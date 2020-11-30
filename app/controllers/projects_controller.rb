@@ -4,6 +4,11 @@ class ProjectsController < ApplicationController
   def index
     @projects = policy_scope(Project)
     authorize Project
+    if params[:query].present?
+      @projects = Project.algolia_search(params[:query])
+    else
+      @projects = policy_scope(Project)
+    end
   end
 
   def show
@@ -29,6 +34,7 @@ class ProjectsController < ApplicationController
           new_tag = ProjectTag.new(project_id: @project.id, tag_id: tag)
           new_tag.save!
         end
+        Project.reindex
       end
       redirect_to project_path(@project)
     else
@@ -54,6 +60,7 @@ class ProjectsController < ApplicationController
           new_tag = ProjectTag.new(project_id: @project.id, tag_id: tag)
           new_tag.save!
         end
+        Project.reindex
       end
       redirect_to project_path(@project)
     else
@@ -62,8 +69,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
     authorize @project
+    @project.destroy
     redirect_to projects_path
   end
 

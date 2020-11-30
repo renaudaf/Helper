@@ -9,9 +9,22 @@ class Project < ApplicationRecord
   validates :title, presence: true
   after_commit :reject_empty_measures
 
+  include AlgoliaSearch
+
   def reject_empty_measures
     self.measurements = self.measurements.reject do |measurement|
       measurement["name"].empty?
     end
+  end
+
+  algoliasearch  do
+    attributes :title, :tags_name
+    # all attributes will be sent
+  end
+
+  private
+
+  def tags_name
+    tags.pluck(:name)
   end
 end
