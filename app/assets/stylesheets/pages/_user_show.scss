@@ -6,15 +6,17 @@
   width: 100%;
   position: relative;
   &:hover {
-    .imgs{
-      width: 102%;
-      height: 102%;
+    .imgs_show{
+      // width: 102%;
+      // height: 102%;
+      transform: scale(1.02);
+      filter: blur(1px);
     }
     .img-content {
-      transform: translate(10px, 10px);
+      transform: scale(1.1);
     }
   }
-    .imgs{
+    .imgs_show{
       transition: .3s ease;
       border-radius: 25px;
       box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
@@ -38,13 +40,14 @@
   border-radius: 25px;
   background-color: white;
   box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
+  transition: transform .3s ease;
   &:hover {
+    transform: scale(1.1);
     img {
-      height: 62px;
+      // height: 62px;
     }
   }
   img {
-    transition: .3s ease;
     height: 52px;
   }
 }
