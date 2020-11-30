@@ -31,12 +31,13 @@
       <div class="right-content text-center">
         <div class="messages p-3">
           <h2>Your messages</h2>
-          <% @user.messages.each do |message| %>
+          <% @user.proposals.each do |proposal| %>
             <div class="card-product text-left">
               <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
               <div class="card-product-infos">
-                <h2><%= message.proposal.user.firstname %></h2>
-                <p><%= message.proposal.pitch.first(25) %>...</p>
+                <h2><%= proposal.user.firstname %></h2>
+                <p><%= proposal.pitch.first(25) %>...</p>
+                <%= link_to  "Access your messages", proposal_path(proposal) %>
               </div>
             </div>
           <% end %>
