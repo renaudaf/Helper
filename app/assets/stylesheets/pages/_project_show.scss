@@ -1,9 +1,9 @@
-.container {
-
-}
-
 .title {
   padding-top: 20px;
+}
+
+.descsection {
+  margin-bottom: 20px;
 }
 
 .infocard {
@@ -17,7 +17,10 @@
 }
 
 .descontent {
-  margin-left: 10px;
+  box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
+  border-radius: 5px;
+  border: solid #BCBABA;
+  padding: 20px;
 }
 
 .listdim {
@@ -26,9 +29,10 @@
   border: solid #BCBABA;
   padding-top: 20px;
   width: 100%;
-  margin-left: 70px;
   margin-bottom: 20px;
-
+  li {
+    list-style-type: none;
+  }
 }
 
 .dimensions ul li {
@@ -41,8 +45,7 @@
 
 
 .tags li {
-  list-style-type: none;
-  
+  list-style-type: none;  
 }
 
 .tags {

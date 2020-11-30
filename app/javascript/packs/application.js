@@ -23,6 +23,8 @@ import { chatScrollBottom } from '../components/chat_scroll_bottom';
 // import { searchResult } from '../components/search_bar';
 import { algoliaSearch } from '../components/search_bar';
 
+import { messageClear } from '../components/message_clear';
+import { initAutocomplete } from '../plugins/init_autocomplete.js';
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -34,6 +36,10 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+const chatConsole = document.querySelector('.chat-console');
+if (chatConsole) {
+  chatConsole.scrollTo(0, chatConsole.scrollHeight);
+}
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -42,5 +48,6 @@ document.addEventListener('turbolinks:load', () => {
   algoliaSearch();
   addMeasureOnClick();
   initChatroomCable();
-  chatScrollBottom();
+  messageClear();
+  initAutocomplete();
 });

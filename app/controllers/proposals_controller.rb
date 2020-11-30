@@ -7,8 +7,9 @@ class ProposalsController < ApplicationController
 
   def show
     @messages = Message.new
-    authorize @proposal
     @project = @proposal.project
+    @projects = Project.where(user: current_user)
+    authorize @proposal
   end
 
   def new
@@ -46,6 +47,7 @@ class ProposalsController < ApplicationController
   private
 
   def load_proposal
+    @proposals = Proposal.all
     @proposal = Proposal.find(params[:id])
   end
 

@@ -1,19 +1,40 @@
-
+<%# raise %>
 <div class="container">
-  <h2> Your Messages </h2>
-  <div class="chat-console overflow-auto message-container" data-proposal-id="<%= @proposal.id %>">
-    <h5> <%=@proposal.user.firstname%> would like to take on your project, you can interact with this helper below 🙂 </h5>
-    <br>
-    <div class="message" data-proposal-id="<%= @proposal.id %>" >
-      <p> <%=@proposal.user.firstname%>: <%=@proposal.pitch%> </p>
+  <div class="d-flex justify-content-between" id="chat-room-full">
+    <div id="chat-box w-75">
+      <h2> <%= current_user.typehelper == false ? "Chat with #{@proposal.user.firstname} for your #{@project.title}": "Your proposal for #{@project.user.firstname}'s #{@project.title}" %> project </h2>
+      <div class="chat-console overflow-auto message-container" data-proposal-id="<%= @proposal.id %>">
+        <h5> <%=@proposal.user.firstname%> would like to take on your project, you can interact with this helper below 🙂 </h5>
+        <br>
+        <div class="message" style="text-align:center;" data-proposal-id="<%= @proposal.id %>" >
+          <p> <strong> <%=@proposal.user.firstname%>: <%=@proposal.pitch%> </strong> </p>
+        </div>
+        <% @proposal.messages.each do |message| %>
+        <div class="message" style="<%= message.user == current_user ? "text-align:left; color: #07689f; font-weight:bold" : "text-align:right;" %>" id="message-<%=message.id%>">
+          <p> <%= message.content %> </p>
+          <small> from: <%= message.user.firstname %></small>
+        </div>
+        <%end%>
+      </div>
+      <%= simple_form_for [ @proposal, @messages ], remote: true do |f| %>
+      <%= f.input :content, label: false, autofocus: true, input_html: { :autocomplete => "off" } %>
+      <% end %>
     </div>
-    <% @proposal.messages.each do |message| %>
-    <div class="message" id="message-<%=message.id%>">
-      <p> <%= message.user.firstname %>: <%= message.content %> </p>
+    <div id="other-projects">
+      <h4 > <%= current_user.typehelper == true ? "Your proposals" : "Your projects" %>:</h4>
+      <div id="projects-box">
+        <ul>
+          <% if current_user.typehelper == true %>
+            <% current_user.proposals.each do |proposal| %>
+            <li><%= link_to "#{proposal.project.title}", project_path(proposal.project) %> </li>
+            <% end %>
+          <% else %>
+            <% @projects.each do |project| %>
+            <li> <%= link_to "#{project.title}", project_path(project) %> </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <%end%>
   </div>
-  <%= simple_form_for [ @proposal, @messages ], remote: true do |f| %>
-  <%= f.input :content, label: false, autofocus: true %>
-  <% end %>
 </div>
