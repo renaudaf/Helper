@@ -19,7 +19,7 @@ require("channels")
 import { initSelect2 } from '../plugins/init_select2.js';
 import { addMeasureOnClick } from '../components/add_measure';
 import { initChatroomCable } from '../channels/proposal_chat_channel';
-import { chatScrollBottom } from '../components/chat_scroll_bottom';
+import { messageClear } from '../components/message_clear';
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -31,11 +31,15 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+const chatConsole = document.querySelector('.chat-console');
+if (chatConsole) {
+  chatConsole.scrollTo(0, chatConsole.scrollHeight);
+}
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   initSelect2();
   addMeasureOnClick();
   initChatroomCable();
-  chatScrollBottom();
+  messageClear();
 });
