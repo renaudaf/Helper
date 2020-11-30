@@ -21,8 +21,7 @@ class Project < ApplicationRecord
   end
 
   algoliasearch  do
-    attributes :title, :tags_name
-    geoloc :lat_attr, :lng_attr
+    attributes :title, :tags_name, :address, :latitude, :longitude
     # all attributes will be sent
   end
 
