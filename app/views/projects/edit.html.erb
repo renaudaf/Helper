@@ -1,7 +1,6 @@
 <div class="container">
   <h1 class="mt-4">Edit your project</h1>
   <div class="infocard">
-
     <%= simple_form_for(@project) do |f| %>
       <div class="edit-title d-flex mb-4">
         <h4 class="mr-2">Name of your project:</h4>
@@ -10,6 +9,10 @@
       <div class="edit-title d-flex my-4">
         <h4 class="mr-2">Description:</h4>
         <%= f.input :description, label: false %>
+      </div>
+      <div class="edit-title d-flex my-4">
+        <h4 class="mr-2">Address:</h4>
+        <%= f.input :address, label: false %>
       </div>
       <div class="edit-title d-flex my-4">
         <h4 class="mr-2">Select Type:</h4>
@@ -23,21 +26,20 @@
         <h4 class="mr-2"><label for="project[measurements][][name]">Measurements:</label></h4>
         <p><em>You can refer to the images you attached to the file in orfer to give more informations to your potential helper</em></p>
       </div>
-        <div style="width: 100%; text-align: center;">
-          <% @project.measurements.each do |measurement| %>
-            <div class="mt-2 edit-page">
-              <input class="edit-measurement" name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input class="edit-measurement" name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
-            </div>
-          <% end %>
-          <div class="text-center mt-2">
-             <button id="add-measure" class="btn btn-primary mt-2">Add a measurement</button>
+      <div style="width: 100%; text-align: center;">
+        <% @project.measurements.each do |measurement| %>
+          <div class="mt-2 edit-page">
+            <input class="edit-measurement" name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input class="edit-measurement" name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
           </div>
+        <% end %>
+        <div class="text-center mt-2">
+          <button id="add-measure" class="btn btn-primary mt-2">Add a measurement</button>
         </div>
+      </div>
       <div class="submit-edit text-center mt-4">
         <%= f.submit class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>

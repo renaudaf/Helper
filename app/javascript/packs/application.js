@@ -20,6 +20,7 @@ import { initSelect2 } from '../plugins/init_select2.js';
 import { addMeasureOnClick } from '../components/add_measure';
 import { initChatroomCable } from '../channels/proposal_chat_channel';
 import { messageClear } from '../components/message_clear';
+import { initAutocomplete } from '../plugins/init_autocomplete.js';
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -42,4 +43,5 @@ document.addEventListener('turbolinks:load', () => {
   addMeasureOnClick();
   initChatroomCable();
   messageClear();
+  initAutocomplete();
 });
