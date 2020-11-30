@@ -11,7 +11,8 @@
         </div>
         <% @proposal.messages.each do |message| %>
         <div class="message" style="<%= message.user == current_user ? "text-align:left; color: #07689f; font-weight:bold" : "text-align:right;" %>" id="message-<%=message.id%>">
-          <p> <%= message.user.firstname %>: <%= message.content %> </p>
+          <p> <%= message.content %> </p>
+          <small> from: <%= message.user.firstname %></small>
         </div>
         <%end%>
       </div>
@@ -20,16 +21,16 @@
       <% end %>
     </div>
     <div id="other-projects">
-      <h4 > <%= current_user.typehelper == true ? "Your other proposals" : "Your other projects" %>:</h4>
+      <h4 > <%= current_user.typehelper == true ? "Your proposals" : "Your projects" %>:</h4>
       <div id="projects-box">
         <ul>
           <% if current_user.typehelper == true %>
             <% current_user.proposals.each do |proposal| %>
-            <li><%= proposal.project.title %> </li>
+            <li><%= link_to "#{proposal.project.title}", project_path(proposal.project) %> </li>
             <% end %>
           <% else %>
             <% @projects.each do |project| %>
-            <li> <%= project.title if project != @project %> </li>
+            <li> <%= link_to "#{project.title}", project_path(project) %> </li>
             <% end %>
           <% end %>
         </ul>

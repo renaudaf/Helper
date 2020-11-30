@@ -11,6 +11,10 @@
   margin-top: 8px;
 }
 
+#other-projects {
+  margin-left: 32px;
+}
+
 #projects-box {
   li {
     list-style-type: none;
@@ -28,4 +32,16 @@
 #chat-room-full {
   margin-top: 32px;
   margin-bottom: 32px;
+}
+
+.message {
+  p {
+    margin: 0px;
+    font-size: 24px;
+    padding: 0px;
+  }
+  small {
+    font-size: 12px;
+  }
+  margin: 24px 0px;
 }

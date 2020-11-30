@@ -32,7 +32,9 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 const chatConsole = document.querySelector('.chat-console');
-chatConsole.scrollTo(0, chatConsole.scrollHeight);
+if (chatConsole) {
+  chatConsole.scrollTo(0, chatConsole.scrollHeight);
+}
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
