@@ -9,14 +9,15 @@ class Project < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
-  after_commit :reject_empty_measures
+  after_commit :reject_empty_measures, on: %i[create update]
 
   include AlgoliaSearch
 
   def reject_empty_measures
-    self.measurements = self.measurements.reject do |measurement|
+    new_measurements = self.measurements.reject do |measurement|
       measurement["name"].empty?
     end
+    self.measurements = new_measurements
   end
 
   algoliasearch  do
