@@ -19,6 +19,10 @@ require("channels")
 import { initSelect2 } from '../plugins/init_select2.js';
 import { addMeasureOnClick } from '../components/add_measure';
 import { initChatroomCable } from '../channels/proposal_chat_channel';
+import { chatScrollBottom } from '../components/chat_scroll_bottom';
+// import { searchResult } from '../components/search_bar';
+import { algoliaSearch } from '../components/search_bar';
+
 import { messageClear } from '../components/message_clear';
 import { initAutocomplete } from '../plugins/init_autocomplete.js';
 
@@ -39,7 +43,9 @@ if (chatConsole) {
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
+  // searchResult();
   initSelect2();
+  algoliaSearch();
   addMeasureOnClick();
   initChatroomCable();
   messageClear();
