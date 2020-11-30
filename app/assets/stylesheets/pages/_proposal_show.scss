@@ -6,3 +6,26 @@
   padding: 16px;
   margin-top: 16px;
 }
+
+#new_message {
+  margin-top: 8px;
+}
+
+#projects-box {
+  li {
+    list-style-type: none;
+  }
+  ul {
+    padding-inline-start: 8px;
+  }
+  border: 1px solid black;
+  border-radius: 8px;
+  text-align:left;
+  padding: 8px;
+
+}
+
+#chat-room-full {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}

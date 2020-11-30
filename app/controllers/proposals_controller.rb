@@ -9,6 +9,7 @@ class ProposalsController < ApplicationController
     @messages = Message.new
     authorize @proposal
     @project = @proposal.project
+    @projects = Project.where(user: current_user)
   end
 
   def new
