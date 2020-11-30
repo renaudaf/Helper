@@ -23,5 +23,9 @@ Rails.application.routes.draw do
     resources :project_tags, only: [:new, :create]
   end
 
+  resources :projects, only: [:index, :show] do
+    resources :download, only: [:show]
+  end
+
 end
 
