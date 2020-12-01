@@ -4,33 +4,15 @@
   border-radius: 25px;
   box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.3);
   padding: 16px;
+}
+
+#chat-room-full {
+  padding: 16px;
   margin-top: 16px;
 }
 
 #new_message {
   margin-top: 8px;
-}
-
-#other-projects {
-  margin-left: 32px;
-}
-
-#projects-box {
-  li {
-    list-style-type: none;
-  }
-  ul {
-    padding-inline-start: 8px;
-  }
-  border: 1px solid black;
-  border-radius: 8px;
-  text-align: left;
-  padding: 8px;
-}
-
-#chat-room-full {
-  margin-top: 32px;
-  margin-bottom: 32px;
 }
 
 .message {
@@ -43,4 +25,16 @@
     font-size: 12px;
   }
   margin: 24px 0px;
+}
+
+#chat-title {
+  margin: 16px auto;
+}
+
+#other-title {
+  text-align: center;
+}
+
+#chat-other {
+  text-align: left;
 }
