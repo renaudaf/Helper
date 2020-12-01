@@ -24,24 +24,26 @@
     </div>
     <div class="right-content text-center w-25">
       <div class="messages p-3" id="chat-other">
-        <h2 > <%= current_user.typehelper == true ? "Your proposals" : "Your projects" %></h2>
-        <ul>
-          <% if current_user.typehelper == true %>
-          <% current_user.proposals.each do |proposal| %>
-
-          <div class="card-product text-left">
-            <%= cl_image_tag proposal.project.photos.first.key, class: "imgs_show" %>
-            <div class="card-product-infos">
-              <p><%= link_to "#{proposal.project.title}", project_path(proposal.project) %> </p>
-            </div>
+        <h2 id="other-title"> <%= current_user.typehelper == true ? "Your proposals" : "Your projects" %></h2>
+        <% if current_user.typehelper == true %>
+        <% current_user.proposals.each do |proposal| %>
+        <div class="card-product text-left">
+          <%= cl_image_tag proposal.project.photos.first.key, class: "imgs_show" %>
+          <div class="card-product-infos">
+            <p><%= link_to "#{proposal.project.title}", project_path(proposal.project) %> </p>
           </div>
-          <% end %>
-          <% else %>
-          <% @projects.each do |project| %>
-          <li> <%= link_to "#{project.title}", project_path(project) %> </li>
-          <% end %>
-          <% end %>
-        </ul>
+        </div>
+        <% end %>
+        <% else %>
+        <% @projects.each do |project| %>
+        <div class="card-product text-left">
+          <%= cl_image_tag project.photos.first.key, class: "imgs_show" %>
+          <div class="card-product-infos">
+            <p> <%= link_to "#{project.title}", project_path(project) %> </p>
+          </div>
+        </div>
+        <% end %>
+        <% end %>
       </div>
     </div>
   </div>
