@@ -26,28 +26,24 @@
               </div>
             <% end %>
           <% end %>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="right-content text-center">
-      <% if @user == current_user %>
-        <div class="messages p-3">
-          <h2>Your proposals</h2>
-          <% if @user.proposals.empty? %>
-            <p> You haven't made any proposals yet</p>
-          <% else %>
-          <% @user.proposals.each do |proposal| %>
-            <div class="card-product text-left">
-              <%= cl_image_tag proposal.project.photos.first.key, class: "imgs_show" %>
-              <div class="card-product-infos">
-                <p><%= link_to "#{proposal.project.title}", proposal_path(proposal)%></p>
+        </div>
+      <% end %>
+      <div class="right-content text-center">
+        <% if @user == current_user %>
+          <div class="messages p-3">
+            <h2>Your messages</h2>
+            <% @user.proposals.each do |proposal| %>
+              <div class="card-product text-left">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <div class="card-product-infos">
+                  <h2><%= proposal.user.firstname %></h2>
+                  <p><%= proposal.pitch.first(25) %>...</p>
+                  <%= link_to  "Access your messages", proposal_path(proposal) %>
+                </div>
               </div>
             <% end %>
           <% end %>
-
-        <% end %>
-        <% end %>
-      </div>
+        </div>
         <%= link_to projects_path do %>
           <div class="create-new btn btn-light text-center px-4">
             <img src="https://image.flaticon.com/icons/svg/57/57064.svg" class="my-2" alt="">
