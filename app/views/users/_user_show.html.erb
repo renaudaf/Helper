@@ -32,22 +32,18 @@
       <div class="right-content text-center">
         <div class="messages p-3">
           <h2>Helper Offers</h2>
-          <% if @user.projects.first.proposals.empty?%>
-            <p> Sorry you have no offers yet </p>
-          <% else %>
-            <% @user.projects.each do |project| %>
-              <h5><%= project.title %></h5>
-              <% project.proposals.each do |proposal| %>
-                <div class="card-product text-left">
-                  <%= cl_image_tag proposal.project.photos.first.key, class: "imgs_show" %>
-                  <div class="card-product-infos">
-                    <div>
-                      <p> <%= link_to "View #{proposal.user.firstname}'s' offer", proposal_path(proposal) %></p>
-                  </div>
-                </div>
+          <% @user.projects.each do |project| %>
+          <h5><%= project.title %></h5>
+                <% project.proposals.each do |proposal| %>
+          <div class="card-product text-left">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos">
+              <div>
+                <p> <%= link_to "View #{proposal.user.firstname}'s' offer", proposal_path(proposal) %></p>
               </div>
-              <% end %>
-            <% end %>
+            </div>
+          </div>
+          <% end %>
           <% end %>
         </div>
         <%= link_to new_project_path do %>
