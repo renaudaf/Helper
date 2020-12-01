@@ -1,0 +1,20 @@
+.helper-card {
+ display: flex;
+ align-items: center;
+ border: 1px solid lightgray;
+ border-radius: 24px;
+ justify-content: space-around;
+ height: 400px;
+ width: 800px;
+ box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.3);
+}
+
+.card-img {
+ margin: 4px;
+ border-radius: 8px;
+}
+
+#reviews-box {
+ width: 800px;
+ border-radius: 8px;
+}
