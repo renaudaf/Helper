@@ -15,9 +15,9 @@
           <%= link_to project_path(project) do %>
             <div class="project-img mb-4">
               <% if project.photos.first %>
-                <%= cl_image_tag project.photos.first.key, class: "imgs_show" %>
+                <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
               <% else %>
-                <img class="imgs_show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+                <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
               <% end %>
               <div class="img-content">
                 <h2><%= project.title %></h2>
