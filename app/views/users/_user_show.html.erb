@@ -32,11 +32,11 @@
       <div class="right-content text-center">
         <div class="messages p-3">
           <h2>Helper Offers</h2>
-          <% if @user.projects.first.proposals.empty?%>
-            <p> Sorry you have no offers yet </p>
-          <% else %>
             <% @user.projects.each do |project| %>
               <h5><%= project.title %></h5>
+              <% if project.proposals.empty? %>
+                <p><i>Sorry no offers yet on this project</i></p>
+              <% else %>
               <% project.proposals.each do |proposal| %>
                 <div class="card-product text-left">
                   <%= cl_image_tag proposal.project.photos.first.key, class: "imgs_show" %>
@@ -47,8 +47,8 @@
                 </div>
               </div>
               <% end %>
+              <% end %>
             <% end %>
-          <% end %>
         </div>
         <%= link_to new_project_path do %>
         <div class="create-new btn btn-light text-center">
