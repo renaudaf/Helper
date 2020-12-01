@@ -134,6 +134,8 @@ project_tag7 = ProjectTag.new(project: project5, tag: Tag.all[3])
 project_tag7.save!
 project_tag8 = ProjectTag.new(project: project5, tag: Tag.all[5])
 project_tag8.save!
-Project.reindex
+
+# Project.reindex
+index.save_objects(Project.all)
 
 puts "Done"
