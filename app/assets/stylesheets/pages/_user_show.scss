@@ -1,12 +1,13 @@
 .dash {
   display: flex;
 }
+
 .project-img {
   height: 66vh;
   width: 100%;
   position: relative;
   &:hover {
-    .imgs_show{
+    .imgs-show{
       // width: 102%;
       // height: 102%;
       transform: scale(1.02);
@@ -16,7 +17,7 @@
       transform: scale(1.1);
     }
   }
-    .imgs_show{
+    .imgs-show{
       transition: .3s ease;
       border-radius: 25px;
       box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
@@ -41,6 +42,8 @@
   background-color: white;
   box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
   transition: transform .3s ease;
+
+  padding: 10px;
   &:hover {
     transform: scale(1.1);
   }
@@ -54,6 +57,7 @@
   width: 464px;
   margin-left: 22px;
   min-width: 280px;
+
 }
 
 .messages {

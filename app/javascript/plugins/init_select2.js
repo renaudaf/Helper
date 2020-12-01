@@ -7,7 +7,7 @@ const initSelect2 = () => {
     placeholder: 'Select an option',
     maximumSelectionLength: 3,
     theme: "classic"});
-  console.log(document.getElementById('project_tag_tag'));
+    document.getElementById('project_tag_tag');
 };
 
 export { initSelect2 };
