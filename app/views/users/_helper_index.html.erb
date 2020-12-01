@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 class="my-4">Helpers</h1>
+  <div class="row">
+    <% @users.each do |user| %>
+      <% if user.typehelper == true %>    
+        <div class="col-sm-12 col-lg-6">
+          <div class="cardinfo mb-3" link_to user_path(user)>  
+            <%= link_to user_path(user) do %>
+            <div class="cardborder">      
+              <div class="name">
+                <h3><%= user.firstname.capitalize %> <%= user.lastname.capitalize %></h3>
+                <h5><%= user.certification.capitalize %> <%= user.profession.capitalize %></h5>
+              </div>
+              <div class="emailinfo">
+                <h5><%= "Email:" %></h5> <h6><%= user.email %></h6>
+              </div>
+                <h6><%= user.experience %> <%= "years of experience" %></h6>           
+            </div> 
+            <% end %>  
+          </div>
+        </div>    
+      <% end %> 
+    <% end %>
+  </div>
+</div>

@@ -28,6 +28,11 @@ helper = User.new(email: "tony@lewagon.org", password: "123456",
                     certification: "Professional", experience: 10, profession: "contractor")
 helper.save!
 
+helper2 = User.new(email: "mike@lewagon.org", password: "123456",
+                    firstname: "Mike", lastname: "Tyson", typehelper: true,
+                    certification: "Apprentice", experience: 2, profession: "demolisher")
+helper2.save!
+
 
 project1 = Project.new(title: "Kitchen counter renewal",
                           user_id: user.id,
