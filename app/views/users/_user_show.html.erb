@@ -4,7 +4,7 @@
     <div class="dash">
       <% if @projects == [] %>
       <div class="project-img">
-        <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+        <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
         <div class="img-content">
           <h2>Create new project</h2>
         </div>
@@ -15,9 +15,9 @@
         <%= link_to project_path(project) do %>
         <div class="project-img mb-4">
           <% if project.photos.first %>
-          <%= cl_image_tag project.photos.first.key, class: "imgs" %>
+          <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
           <% else %>
-          <img class="imgs" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+          <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
           <% end %>
           <div class="img-content">
             <h2 class="text-white"><%= project.title %></h2>
