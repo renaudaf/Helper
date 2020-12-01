@@ -1,20 +1,79 @@
 <div class="container">
-  <h1 class="mt-4">Create your project</h1>
+  <h1 class="titlenew mt-4">Create your project</h1>
   <div class="infos">
-    <%= simple_form_for(@project) do |f| %>
-      <h5><%= f.input :title, label: "Name of your project:", placeholder: "Give a title that identifies your goal" %></h5>
-      <h5><%= f.input :description, label: "Describe your project:", placeholder: "Explain your project as clearly as possible" %></h5>
-      <h5><%= f.input :address, label: "Enter your address:", placeholder: "address" %></h5>
-      <h5><%= f.input :tags, label: "Project Type:", collection: @tag, input_html: { multiple: true }, include_hidden: false %></h5>
-      <h5><%= f.input :photos, label: "Add related images:", as: :file, input_html: { multiple: true }%></h5>
+    <%= simple_form_for(@project) do |f| %>      
+      <div class= "row mb-3">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+          <div class="boxname">
+            <h5>Name of your project:</h5>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-9">  
+          <div class="boxspace">
+            <%= f.input :title, placeholder: "Give a title that identifies your goal", label: false %>
+          </div>
+        </div>
+      </div>
+      
+      <div class= "row mb-3">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+          <div class="boxname">
+            <h5>Describe your project:</h5>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-9">  
+          <div class="boxspace">
+            <%= f.input :description, label: false, placeholder: "Explain your project as clearly as possible" %>
+          </div>
+        </div>
+      </div>
+      
+      <div class= "row mb-3">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+          <div class="boxname">
+            <h5>Enter your address:</h5>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-9">  
+          <div class="boxspace">
+            <%= f.input :address, label: false, placeholder: "address" %>
+          </div>
+        </div>
+      </div>
+      
+      <div class= "row mb-3">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+          <div class="boxname">
+            <h5>Project Type:</h5>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-9">  
+          <div class="boxspace">
+            <%= f.input :tags, label: false, collection: @tag, input_html: { multiple: true }, include_hidden: false %>
+          </div>
+        </div>
+      </div>
 
-      <div class="measure">
+      <div class= "row mb-3 d-flex">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+          <div class="boxname">
+            <h5>Add related images:</h5>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-9">  
+          <div class="boxspace">
+            <%= f.input :photos, label: false, as: :file, input_html: { multiple: true }%>
+          </div>
+        </div>
+      </div>
+
+      <div class="measure text-center">
         <% @project.measurements.each do |measurement| %>
           <div>
             <input name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
           </div>
         <% end %>
-        <label for="project[measurements][][name]">Measurements:</label>
+          <label for="project[measurements][][name]"><h5>Measurements:</h5></label>
           <div class="addmeasurebutton">
             <button id="add-measure" class="btn btn-primary mt-2">Add a measurement</button>
           </div>
