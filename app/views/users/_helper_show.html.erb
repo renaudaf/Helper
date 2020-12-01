@@ -1,71 +1,85 @@
 <div class="container">
   <% if current_user.typehelper %>
-  <h1 class="my-4">Current Projects</h1>
-  <div class="dash">
-    <% if @projects == [] %>
-      <%= link_to projects_path do %>
-      <div class="project-img">
-        <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
-        <div class="img-content">
-          <h2 class="text-white">Find a new project</h2>
+    <h1 class="my-4">Current Projects</h1>
+    <div class="dash">
+      <% if @projects == [] %>
+        <div class="project-img">
+          <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+          <div class="img-content">
+            <h2 class="text-white">Find a new project</h2>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <div class="project-content">
+          <% @projects.each do |project| %>
+            <%= link_to project_path(project) do %>
+              <div class="project-img mb-4">
+                <% if project.photos.first %>
+                  <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
+                <% else %>
+                  <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
+                <% end %>
+                <div class="img-content">
+                  <h2><%= project.title %></h2>
+                  <p><%= project.description %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
-    <% else %>
-      <div class="project-content">
-        <% @projects.each do |project| %>
-          <%= link_to project_path(project) do %>
-            <div class="project-img mb-4">
-              <% if project.photos.first %>
-                <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
-              <% else %>
-                <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
-              <% end %>
-              <div class="img-content">
-                <h2><%= project.title %></h2>
-                <p><%= project.description %></p>
+      <div class="right-content text-center">
+        <% if @user == current_user %>
+          <div class="messages p-3">
+            <h2>Your messages</h2>
+            <% @user.proposals.each do |proposal| %>
+              <div class="card-product text-left">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                <div class="card-product-infos">
+                  <h2><%= proposal.user.firstname %></h2>
+                  <p><%= proposal.pitch.first(25) %>...</p>
+                  <%= link_to  "Access your messages", proposal_path(proposal) %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="right-content text-center">
-      <% if @user == current_user %>
-        <div class="messages p-3">
-          <h2>Your messages</h2>
-          <% @user.proposals.each do |proposal| %>
-            <div class="card-product text-left">
-              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-              <div class="card-product-infos">
-                <h2><%= proposal.user.firstname %></h2>
-                <p><%= proposal.pitch.first(25) %>...</p>
-                <%= link_to  "Access your messages", proposal_path(proposal) %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+        </div>
         <%= link_to projects_path do %>
           <div class="create-new btn btn-light text-center px-4">
             <img src="https://image.flaticon.com/icons/svg/57/57064.svg" class="my-2" alt="">
             <h3>See all projects</h3>
           </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <h1 class="mt-4"><%= @user.firstname  %> <%= @user.lastname  %> </h1>
+    <div class="helper-card">
+      <div class="helper-img">
+        <% if @user.photo.attached? == false %>
+          <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
+        <% else %>
+          <%= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
+        <% end %>
+      </div>
+      <div class="help-description mt-4">
+        <h5><strong>Profession:</strong> <%= @user.profession %></h5> <br>
+        <h5><strong>Certification:</strong> <%= @user.certification %></h5> <br>
+        <h5><strong>Experience:</strong> <%= @user.experience %> years</h5> <br>
+      </div>
+    </div>
   <% end %>
   <% if @user.typehelper %>
     <div class="container">
       <h2 class="mt-4">Reviews</h2>
       <% if @user.helper_reviews.empty? %>
-        <li class="list-group-item mb-4">
+        <li class="list-group-item mb-4" id="reviews-box">
           <p>There is no review at the moment</p>
         </li>
       <% else %>
         <% @user.helper_reviews.each do |review| %>
           <div class="review-container mb-4">
-            <li class="list-group-item">
+            <li class="list-group-item" id="reviews-box">
               <small>
                 <% count = 0 %>
                 <% 5.times do %>
@@ -104,7 +118,7 @@
             <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
           <% end %>
         </div>
-        <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-4">Add a review</button>
+        <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-2">Add a review</button>
       <% end %>
     </div>
   <% end %>

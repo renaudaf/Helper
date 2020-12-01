@@ -1,6 +1,7 @@
 .dash {
   display: flex;
 }
+
 .project-img {
   height: 66vh;
   width: 100%;
@@ -41,11 +42,10 @@
   background-color: white;
   box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
   transition: transform .3s ease;
+
+  padding: 10px;
   &:hover {
     transform: scale(1.1);
-    img {
-      // height: 62px;
-    }
   }
   img {
     height: 52px;
@@ -57,6 +57,7 @@
   width: 464px;
   margin-left: 22px;
   min-width: 280px;
+
 }
 
 .messages {
