@@ -44,12 +44,12 @@
       <% end %>
     </div>
 
-    <% if @project.photos.attached? %>
+    <% if @project.photos.count > 1 %>
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
        <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+       <% @project.photos.each_with_index do |photo, i| %>
+          <li data-target="#carouselExampleIndicators" data-slide-to="<%= i %>" class="<%= "active" if i ==0 %>"></li>
+       <% end %>
        </ol>
       <div class="carousel-inner">
         <% @project.photos.each_with_index do |photo, i| %>
@@ -67,6 +67,8 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+    <% elsif @project.photos.count == 1 %>
+      <%= cl_image_tag photo.key, class: "imgs" %>
     <% else %>
       <img class="imgs " src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
     <% end %>
