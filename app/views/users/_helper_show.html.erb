@@ -32,14 +32,18 @@
       <% if @user == current_user %>
         <div class="messages p-3">
           <h2>Your proposals</h2>
+          <% if @user.proposals.empty? %>
+            <p> You haven't made any proposals yet</p>
+          <% else %>
           <% @user.proposals.each do |proposal| %>
             <div class="card-product text-left">
               <%= cl_image_tag proposal.project.photos.first.key, class: "imgs_show" %>
               <div class="card-product-infos">
-                <h2><%= link_to "#{proposal.project.title}", proposal_path(proposal)%></h2>
+                <p><%= link_to "#{proposal.project.title}", proposal_path(proposal)%></p>
               </div>
             </div>
           <% end %>
+        <% end %>
         <% end %>
       </div>
         <%= link_to projects_path do %>
