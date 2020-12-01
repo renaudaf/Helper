@@ -68,7 +68,7 @@
       </a>
     </div>
     <% elsif @project.photos.count == 1 %>
-      <%= cl_image_tag photo.key, class: "imgs" %>
+      <%= cl_image_tag @project.photos.first.key, class: "imgs" %>
     <% else %>
       <img class="imgs " src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
     <% end %>
