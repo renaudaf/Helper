@@ -2,9 +2,7 @@
   display: flex;
 }
 
-.usertitle {
-  font-family: "Lobster", cursive;
-}
+
 
 .project-img {
   max-width: 100%;
@@ -49,7 +47,7 @@
   box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
   transition: transform .3s ease;
   padding: 10px;
-  
+
   &:hover {
     transform: scale(1.1);
     img {
@@ -66,7 +64,7 @@
   // width: 464px;
   // margin-left: 22px;
   // min-width: 280px;
-  
+
 }
 
 .messages {
