@@ -2,13 +2,19 @@
   <% if current_user == @user%>
     <h1 class="my-4">Current Projects</h1>
     <div class="dash">
-      <% if @projects == [] %>
-        <div class="project-img">
-          <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
-          <div class="img-content">
-            <h2 class="text-white">Find a new project</h2>
+      <% if @projects.empty? %>
+          <div class="e-project-card">
+            <div class="project-title">
+            </div>
+            <div class="i-project-card">
+              <h3 class='a mt-3'>You don't have any project yet?</h3>
+              <h6 class="b mt-3">Take a look at the projects <br> <i class="fas fa-search mt-2"></i></h6>
+              <h6 class="c mt-3">Find the one! <br> <i class="far fa-hand-point-up mt-2"></i></h6>
+              <h6 class="d mt-3">Make a proposal <br> <i class="fas fa-pencil-alt mt-2"></i></h6>
+              <h6 class="e mt-3">Make a first contact <br> <i class="far fa-address-book mt-2"></i></i></h6>
+              <h6 class="g mt-3">Start the project! <br> <i class="far fa-check-square mt-2"></i></h6>
+            </div>
           </div>
-        </div>
       <% else %>
         <div class="project-content">
           <% @projects.each do |project| %>
