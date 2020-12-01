@@ -29,6 +29,7 @@ const algoliaSearch = () => {
 
     inputField.addEventListener("input", () => {
       index.search(inputField.value).then((content) => {
+        console.log(content);
         const resultIds = content.hits.map(hit => hit.objectID);
         allCards.forEach(card => {
           if (resultIds.includes(card.dataset.projectId)) {
