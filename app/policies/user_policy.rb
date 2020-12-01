@@ -10,6 +10,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def index?
-    false
+    true
   end
 end
