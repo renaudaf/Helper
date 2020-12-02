@@ -81,6 +81,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :address, photos: [], measurements: [:name, :dimension], :accepted)
+    params.require(:project).permit(:title, :description, :address, :accepted, photos: [], measurements: [:name, :dimension])
   end
 end
