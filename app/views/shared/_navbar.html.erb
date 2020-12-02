@@ -39,8 +39,6 @@
   <% else %>
     <li class="nav-item d-flex">
       <%= link_to "Login", new_user_session_path, class: "nav-link", id:"nav-a" %>
-      <%= link_to "Create your project", new_user_registration_path, class: "nav-link", id:"nav-a" %>
-      <%= link_to "Become a Helper", new_user_registration_path({type: "helper"}), class: "nav-link", id:"nav-a" %>
     </li>
   <% end %>
 </ul>
