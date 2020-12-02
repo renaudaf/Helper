@@ -24,6 +24,7 @@ import { algoliaSearch } from '../components/search_bar';
 
 import { messageClear } from '../components/message_clear';
 import { initAutocomplete } from '../plugins/init_autocomplete.js';
+import { initReadMore } from '../components/read_more';
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -43,6 +44,7 @@ if (chatConsole) {
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // searchResult();
+  initReadMore();
   initSelect2();
   algoliaSearch();
   addMeasureOnClick();

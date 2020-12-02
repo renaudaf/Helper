@@ -11,7 +11,7 @@
     </div>
     <div class="dash mb-4">
       <div class="project-content">
-        <h3 class="user-border-title">Currents Projects</h3>
+        <h1 class="user-border-title">My projects</h1>
         <div class="all-user-projects">
           <% @projects.each do |project| %>
             <%= link_to project_path(project) do %>
@@ -26,28 +26,40 @@
         </div>
       </div>
       <div class="right-content text-center">
-        <h3 class="user-border-title text-left">Yours proposals</h3>
+        <h3 class="user-border-title text-left">Helper offers</h3>
         <div class="messages p-3">
-          <h2>Helper Offers</h2>
           <% @user.projects.each do |project| %>
-            <h5><%= project.title %></h5>
-            <% if project.proposals.empty? %>
-              <p><i>Sorry no offers yet on this project</i></p>
-            <% else %>
             <% project.proposals.each do |proposal| %>
-              <div class="card-product text-left">
-                <% if current_user.photo.attached? == false %>
-                  <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
-                <% else %>
-                  <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
-                <% end %>
-                <div class="card-product-infos">
-                  <div>
-                    <p> <%= link_to "View #{proposal.user.firstname}'s' offer", proposal_path(proposal) %></p>
+              <div class="user-project-proposal text-left">
+                <div class="card-proposal-avatar text-left">
+                  <% if current_user.photo.attached? == false %>
+                    <div class="text-center">
+                      <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
+                      <p><%= proposal.user.firstname %></p>
+                    </div>
+                  <% else %>
+                    <div class="text-center">
+                        <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
+                        <p><%= proposal.user.firstname %></p>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="card-proposal-product">
+                  <h5><%= project.title %></h5>
+                  <div class="pitch">
+                    <% if proposal.pitch.length > 75 %>
+                      <%= truncate(proposal.pitch, length: 75) %>
+                      <%= link_to '...Read more', '', class: "read-more", data: {full_pitch: proposal.pitch} %>
+
+                    <% else %>
+                      <%= proposal.pitch %>
+                    <% end %>
                   </div>
+                  <%= link_to proposal_path(proposal) ,class: "user-message" do %>
+                    <i class="fas fa-envelope"></i>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
             <% end %>
           <% end %>
         </div>
