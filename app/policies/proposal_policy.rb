@@ -22,7 +22,7 @@ class ProposalPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user || record.project.user == user
   end
 
   def destroy?

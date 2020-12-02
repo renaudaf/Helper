@@ -36,6 +36,7 @@ class ProposalsController < ApplicationController
 
   def update
     @proposal.update(proposal_params)
+    authorize @proposal
     redirect_to proposal_path(@proposal)
   end
 
@@ -52,6 +53,6 @@ class ProposalsController < ApplicationController
   end
 
   def proposal_params
-    params.require(:proposal).permit(:pitch)
+    params.require(:proposal).permit(:pitch, :accepted)
   end
 end
