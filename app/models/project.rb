@@ -20,7 +20,7 @@ class Project < ApplicationRecord
     self.measurements = new_measurements
   end
 
-  algoliasearch  do
+  algoliasearch do
     attributes :title, :tags_name, :address, :latitude, :longitude
     # all attributes will be sent
   end
