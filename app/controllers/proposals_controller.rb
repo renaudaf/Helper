@@ -9,7 +9,6 @@ class ProposalsController < ApplicationController
     @messages = Message.new
     @project = @proposal.project
     @projects = Project.where(user: current_user)
-    authorize @proposal
   end
 
   def new
@@ -23,7 +22,6 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.new(proposal_params)
     @proposal.user = current_user
     @proposal.project = @project
-    authorize @proposal
     if @proposal.save!
       redirect_to projects_path
     else
@@ -36,8 +34,12 @@ class ProposalsController < ApplicationController
 
   def update
     @proposal.update(proposal_params)
-    authorize @proposal
-    redirect_to proposal_path(@proposal)
+    @proposal.project.update accepted: true
+    @message = Message.create(user: current_user, proposal: @proposal, content: "The proposal has been accepted by #{current_user.firstname}, Congratulations from the Helper team!")
+     ProposalChatChannel.broadcast_to(
+        @proposal,
+        render_to_string(partial: "messages/message", locals: { message: @message })
+        )
   end
 
   def destroy
@@ -50,6 +52,7 @@ class ProposalsController < ApplicationController
   def load_proposal
     @proposals = Proposal.all
     @proposal = Proposal.find(params[:id])
+    authorize @proposal
   end
 
   def proposal_params
