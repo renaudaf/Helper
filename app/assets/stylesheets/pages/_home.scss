@@ -1,34 +1,32 @@
-.sign-up {
-  display: flex;
-  align-items: center;
-  width: 500px;
-  margin: 0 auto;
-  img {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    margin-right: 14px;
-  }
-}
 .box-home {
   width: 100vw;
   height: 100vh;
+  background-image: url("https://assets.flatpyramid.com/wp-content/uploads/uploads/3d-models/images/interior/luxury_detailed_house_cutaway_3d_model_-3d-model-35873-519904.jpg");
   display: flex;
   align-items: center;
   justify-content: center;
+  background-size: cover;
+  background-position: center;
+  .content {
+    color: white;
+  }
 }
 
 .home-container {
-  width: 92vw;
-  height: 92vh;
-  border: 1px solid black;
-  border-radius: 25px;
-  box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 64%;
 }
 
-.content {
-  height: 92%;
-  overflow: scroll;
+.content-btn {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 32px;
+  .home-btn {
+    border-radius: 4px;
+    width: 152px;
+    padding: 12px 0;
+  }
 }
+
