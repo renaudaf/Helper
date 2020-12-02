@@ -1,24 +1,40 @@
+<div class="show-banner">
+  <div class="user-h1">
+    <h1>Find your first project</h1>
+  </div>
+  <form action="/projects" method="get">
+    <input type="submit", value="Get started", class="btn btn-primary home-btn user-show-btn">
+  </form>
+</div>
 <div class="container">
   <% if current_user == @user%>
-    <h1 class="my-4">Current Projects</h1>
+    <div class="welcome-title">
+      <h1>Welcome <%= @user.firstname %></h1>
+    </div>
     <div class="dash">
       <div class="project-content">
-        <% @user.proposals.each do |proposal| %>
-          <%= link_to project_path(proposal.project) do %>
-            <div class="project-img mb-4">
-              <%= cl_image_tag proposal.project.photos.first.key, class: "imgs-show" %>
-              <div class="img-content">
-                <h2 class="text-white"><%= proposal.project.title %></h2>
-                <p class="text-white"><%= proposal.project.description %></p>
+        <div class="project-h">
+          <h1>Current Projects</h1>
+        </div>
+        <div class="all-user-project">
+          <% @user.proposals.each do |proposal| %>
+            <%= link_to project_path(proposal.project) do %>
+              <div class="project-img mb-4">
+                <%= cl_image_tag proposal.project.photos.first.key, class: "imgs-show" %>
+                <div class="img-content">
+                  <h4 class="text-white"><%= proposal.project.title %></h4>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-      <div class="right-content text-center">
-        <% if @user == current_user %>
+      <div class="message-container">
+        <div class="project-h">
+          <h1>Your proposals</h1>
+        </div>
+        <div class="right-content text-center">
           <div class="messages p-3">
-            <h2>Your proposals</h2>
             <% if @user.proposals.empty? %>
               <p> You haven't made any proposals yet</p>
             <% else %>
@@ -35,14 +51,8 @@
                 </div>
               <% end %>
             <% end %>
-          <% end %>
-        </div>
-        <%= link_to projects_path do %>
-          <div class="create-new btn btn-light text-center px-4">
-            <img src="https://image.flaticon.com/icons/svg/57/57064.svg" class="my-2" alt="">
-            <h3>See all projects</h3>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   <% else %>
@@ -65,7 +75,7 @@
       </div>
     </div>
   <% end %>
-  <div class="container">
+  <div class="reviews">
     <h2 class="mt-4">Reviews</h2>
     <% if @user.helper_reviews.empty? %>
       <li class="list-group-item mb-4" id="reviews-box">
