@@ -9,18 +9,10 @@
 }
 
 .project-img {
- height: 66vh;
- width: 100%;
+ height: 90%;
+ width: 90%;
  position: relative;
- &:hover {
-   .imgs-show{
-     transform: scale(1.02);
-     filter: blur(1px);
-   }
-   .img-content {
-     transform: scale(1.1);
-   }
- }
+ margin: 0 auto;
    .imgs-show{
      transition: .3s ease;
      border-radius: 25px;

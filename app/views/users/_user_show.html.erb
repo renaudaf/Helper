@@ -1,29 +1,32 @@
 <div class="big-container">
   <div class="user-show-banner">
-    <h1>Create your project</h1>
-    <%= link_to "Get started", new_project_path, class: "home-btn btn btn-primary" %>
+    <div class="user-h1">
+      <h1>Create your project</h1>
+    </div>
+    <%= link_to "Get started", new_project_path, class: "user-show-btn home-btn btn btn-primary" %>
   </div>
   <div class="container">
-
-
-
-
-
-    <div class="dash">
+    <div class="welcome-user d-flex justify-content-center align-items-center">
+      <h1>Welcome <%= @user.firstname %>!</h1>
+    </div>
+    <div class="dash mb-4">
       <div class="project-content">
-        <% @projects.each do |project| %>
-          <%= link_to project_path(project) do %>
-            <div class="project-img mb-4">
-              <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
-              <div class="img-content">
-                <h2 class="text-white"><%= project.title %></h2>
-                <p class="text-white"><%= project.description %></p>
+        <h3 class="user-border-title">Currents Projects</h3>
+        <div class="all-user-projects">
+          <% @projects.each do |project| %>
+            <%= link_to project_path(project) do %>
+              <div class="project-img mb-4">
+                <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
+                <div class="img-content">
+                  <h4 class="text-white"><%= project.title %></h4>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
       <div class="right-content text-center">
+        <h3 class="user-border-title text-left">Yours proposals</h3>
         <div class="messages p-3">
           <h2>Helper Offers</h2>
           <% @user.projects.each do |project| %>
