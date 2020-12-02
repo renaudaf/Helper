@@ -1,34 +1,78 @@
-.sign-up {
-  display: flex;
-  align-items: center;
-  width: 500px;
-  margin: 0 auto;
-  img {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    margin-right: 14px;
-  }
-}
 .box-home {
   width: 100vw;
   height: 100vh;
+  background-image: url("https://assets.flatpyramid.com/wp-content/uploads/uploads/3d-models/images/interior/luxury_detailed_house_cutaway_3d_model_-3d-model-35873-519904.jpg");
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
   justify-content: center;
+  position: relative;
 }
 
-.home-container {
-  width: 92vw;
-  height: 92vh;
-  border: 1px solid black;
-  border-radius: 25px;
-  box-shadow: 0px 0px 14px rgba(149, 149, 149, .3);
+  .content {
+    color: white;
+    width: 700px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    background-color: rgba(59, 40, 204, .15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
+  }
+
+
+.content-btn {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  margin: 0 32px;
+  width: 100%;
+    margin: 0 auto;
+    margin-bottom: 60px;
+  .home-btn {
+    border-radius: 4px;
+    width: 152px;
+    padding: 12px 0;
+    background-color: #3B28CC;
+    border: none;
+    &:hover {
+
+    }
+  }
+}
+.btn-project {
+  margin: 60px;
 }
 
-.content {
-  height: 92%;
-  overflow: scroll;
+.home-btn:after,
+.home-btn:before {
+  backface-visibility: hidden;
+  border: 1px solid rgba(#fff, 0);
+  bottom: 0px;
+  content: " ";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  transition: all 280ms ease-in-out;
+  width: 0;
 }
+
+.home-btn:hover:after,
+.home-btn:hover:before {
+  backface-visibility: hidden;
+  border-color: #fff;
+  transition: width 350ms ease-in-out;
+  width: 70%;
+}
+
+.home-btn:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 70%;
+}
+
