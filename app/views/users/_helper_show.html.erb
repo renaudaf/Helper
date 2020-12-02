@@ -1,11 +1,11 @@
-<div class="show-banner">
-  <div class="user-h1">
-    <h1>Find your first project</h1>
-  </div>
-    <%= link_to "Start browsing", projects_path, class: "user-show-btn home-btn btn btn-primary" %>
-</div>
-<div class="container">
   <% if current_user == @user%>
+  <div class="show-banner">
+    <div class="user-h1">
+      <h1>Find your first project</h1>
+    </div>
+    <%= link_to "Start browsing", projects_path, class: "user-show-btn home-btn btn btn-primary" %>
+  </div>
+  <div class="container">
     <div class="welcome-title">
       <h1>Welcome <%= @user.firstname %>!</h1>
     </div>
@@ -38,12 +38,15 @@
             <p> You haven't made any proposals yet</p>
           <% else %>
             <% @user.proposals.each do |proposal| %>
-              <div class="card-product text-left">
-                <% if current_user.photo.attached? == false %>
-                  <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
-                <% else %>
-                  <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
-                <% end %>
+              <div class="card-product text-left mb-4">
+                <div class="text-center">
+                  <% if proposal.user.photo.attached? == false %>
+                    <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
+                  <% else %>
+                    <%= cl_image_tag proposal.user.photo.key, class: "imgs-show" %>
+                  <% end %>
+                  <p><%= proposal.project.user.firstname %></p>
+                </div>
                 <div class="card-product-infos">
                   <p><%= link_to "#{proposal.project.title}", proposal_path(proposal)%></p>
                   <p><%= proposal.project.accepted %></p>
@@ -55,64 +58,66 @@
       </div>
     </div>
   <% else %>
-    <h1 class="mt-4"><%= @user.firstname  %> <%= @user.lastname  %> </h1>
-    <div class="helper-card">
-      <div class="helper-img">
-        <% if @user.photo.attached? == false %>
-          <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
-        <% else %>
-          <%= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
-        <% end %>
-      </div>
-      <div class="help-description mt-4">
-        <h5><strong>Profession:</strong> <%= @user.profession %></h5>
-        <br>
-        <h5><strong>Certification:</strong> <%= @user.certification %></h5>
-        <br>
-        <h5><strong>Experience:</strong> <%= @user.experience %> years</h5>
-        <br>
-      </div>
-    </div>
-  <% end %>
-  <div class="reviews">
-    <h2 class="mt-4">Reviews</h2>
-    <% if @user.helper_reviews.empty? %>
-      <li class="list-group-item mb-4" id="reviews-box">
-        <p>There is no review at the moment</p>
-      </li>
-    <% else %>
-      <% @user.helper_reviews.each do |review| %>
-        <div class="review-container mb-4">
-          <li class="list-group-item" id="reviews-box">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if review.rating > count %>
-                  <i class="fas fa-star"></i>
-                <% else %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-            </small>
-            <p><%= review.content %></p>
-            <div class="review-links d-flex">
-              <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
-              <% if policy(review).update? %>
-                <%= link_to edit_review_path(review) do %>
-                  <span class="far fa-edit mx-2"></span>
-                <% end %>
-              <% end %>
-              <% if policy(review).destroy? %>
-                <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
-                  <span class="far fa-trash-alt"></span>
-                <% end %>
-              <% end %>
-            </div>
-          </li>
+    <div class="container">
+      <h1 class="mt-4"><%= @user.firstname  %> <%= @user.lastname  %> </h1>
+      <div class="helper-card">
+        <div class="helper-img">
+          <% if @user.photo.attached? == false %>
+            <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
+          <% else %>
+            <%= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
+          <% end %>
         </div>
-      <% end %>
+        <div class="help-description mt-4">
+          <h5><strong>Profession:</strong> <%= @user.profession %></h5>
+          <br>
+          <h5><strong>Certification:</strong> <%= @user.certification %></h5>
+          <br>
+          <h5><strong>Experience:</strong> <%= @user.experience %> years</h5>
+          <br>
+        </div>
+      </div>
     <% end %>
+    <div class="reviews">
+      <h2 class="mt-4">Reviews</h2>
+      <% if @user.helper_reviews.empty? %>
+        <li class="list-group-item mb-4" id="reviews-box">
+          <p>There is no review at the moment</p>
+        </li>
+      <% else %>
+        <% @user.helper_reviews.each do |review| %>
+          <div class="review-container mb-4">
+            <li class="list-group-item" id="reviews-box">
+              <small>
+                <% count = 0 %>
+                <% 5.times do %>
+                  <% if review.rating > count %>
+                    <i class="fas fa-star"></i>
+                  <% else %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  <% count += 1 %>
+                <% end %>
+              </small>
+              <p><%= review.content %></p>
+              <div class="review-links d-flex">
+                <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
+                <% if policy(review).update? %>
+                  <%= link_to edit_review_path(review) do %>
+                    <span class="far fa-edit mx-2"></span>
+                  <% end %>
+                <% end %>
+                <% if policy(review).destroy? %>
+                  <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <span class="far fa-trash-alt"></span>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
     <% if current_user != @user %>
       <div id="review-form">
         <h2 class='mt-4'>Add a new review</h2>

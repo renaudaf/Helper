@@ -52,6 +52,7 @@
   border-bottom: solid black 1px;
   margin-top: 20px;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .identical-container {
@@ -78,4 +79,9 @@
 
 .reviews {
   margin-top: 25px;
+}
+
+#reviews-box {
+  border-radius: 8px;
+  box-shadow: 0px 3px 15px rgba(149, 149, 149, 0.2);
 }
