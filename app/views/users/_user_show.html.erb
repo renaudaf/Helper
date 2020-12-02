@@ -1,64 +1,53 @@
 <div class="big-container">
+  <div class="user-show-banner">
+    <h1>Create your project</h1>
+    <%= link_to "Get started", new_project_path, class: "home-btn btn btn-primary" %>
+  </div>
   <div class="container">
-    <h1 class="my-4">My Projects</h1>
+
+
+
+
+
     <div class="dash">
-      <% if @projects == [] %>
-        <div class="project-img">
-          <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
-          <div class="img-content">
-            <h2>Create new project</h2>
-          </div>
-        </div>
-      <% else %>
-        <div class="project-content">
-          <% @projects.each do |project| %>
-            <%= link_to project_path(project) do %>
-              <div class="project-img mb-4">
-                <% if project.photos.first %>
-                  <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
-                <% else %>
-                  <img class="imgs-show" src="https://www.homerenodirect.com/communities/homecon2015/assets/htmltextboxuserimages/kitchen-renovation-feature.jpg?ver2" alt="">
-                <% end %>
-                <div class="img-content">
-                  <h2 class="text-white"><%= project.title %></h2>
-                  <p class="text-white"><%= project.description %></p>
-                </div>
+      <div class="project-content">
+        <% @projects.each do |project| %>
+          <%= link_to project_path(project) do %>
+            <div class="project-img mb-4">
+              <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
+              <div class="img-content">
+                <h2 class="text-white"><%= project.title %></h2>
+                <p class="text-white"><%= project.description %></p>
               </div>
-            <% end %>
+            </div>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <div class="right-content text-center">
         <div class="messages p-3">
           <h2>Helper Offers</h2>
-            <% @user.projects.each do |project| %>
-              <h5><%= project.title %></h5>
-              <% if project.proposals.empty? %>
-                <p><i>Sorry no offers yet on this project</i></p>
-              <% else %>
-              <% project.proposals.each do |proposal| %>
-                <div class="card-product text-left">
-                  <% if current_user.photo.attached? == false %>
-                    <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
-                  <% else %>
-                    <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
-                  <% end %>
-                  <div class="card-product-infos">
-                    <div>
-                      <p> <%= link_to "View #{proposal.user.firstname}'s' offer", proposal_path(proposal) %></p>
-                    </div>
+          <% @user.projects.each do |project| %>
+            <h5><%= project.title %></h5>
+            <% if project.proposals.empty? %>
+              <p><i>Sorry no offers yet on this project</i></p>
+            <% else %>
+            <% project.proposals.each do |proposal| %>
+              <div class="card-product text-left">
+                <% if current_user.photo.attached? == false %>
+                  <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
+                <% else %>
+                  <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
+                <% end %>
+                <div class="card-product-infos">
+                  <div>
+                    <p> <%= link_to "View #{proposal.user.firstname}'s' offer", proposal_path(proposal) %></p>
                   </div>
                 </div>
-              <% end %>
-              <% end %>
+              </div>
             <% end %>
+            <% end %>
+          <% end %>
         </div>
-        <%= link_to new_project_path do %>
-          <div class="create-new btn btn-light text-center">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Plus_font_awesome.svg" alt="">
-            <h3 class>Create new project</h3>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>
