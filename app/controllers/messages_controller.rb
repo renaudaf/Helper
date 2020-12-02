@@ -16,11 +16,6 @@ class MessagesController < ApplicationController
         render_to_string(partial: "message", locals: { message: @message })
         )
     end
-    # if @message.save
-    #   redirect_to proposal_path(@proposal)
-    # else
-    #   render "proposal/show"
-    # end
   end
 
   private
