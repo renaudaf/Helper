@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     @users = policy_scope(User)
     @users = User.all
     authorize @users
+    @reviews = Review.all
   end
 
   def show

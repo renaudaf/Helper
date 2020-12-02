@@ -14,11 +14,27 @@
               <div class="emailinfo">
                 <h5><%= "Email:" %></h5> <h6><%= user.email %></h6>
               </div>
-                <h6><%= user.experience %> <%= "years of experience" %></h6>           
+                <h6><%= user.experience %> <%= "years of experience" %></h6>
+                <% arr = [] %>        
+                <% @reviews.each do |review| %>              
+                  <% if review.helper_id == user.id %>                
+                    <% arr << review.rating %>
+                  <% end %>              
+                <% end %>  
+                <% rate = arr.sum / arr.count %>   
+                <% count = 0 %>
+                <% 5.times do %>
+                <% if rate > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+                <% end %>         
             </div> 
             <% end %>  
           </div>
-        </div>    
+        </div>                    
       <% end %> 
     <% end %>
   </div>
