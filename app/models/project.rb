@@ -9,12 +9,13 @@ class Project < ApplicationRecord
   validates :title, :photos, presence: true
   after_commit :reject_empty_measures, on: %i[create update]
   after_commit :accepted, default: true
+  before_validation :reject_empty_measures
 
   include AlgoliaSearch
 
   def reject_empty_measures
     new_measurements = self.measurements.reject do |measurement|
-      measurement["name"].empty?
+      measurement["name"].empty? || measurement["dimension"].empty?
     end
     self.measurements = new_measurements
   end
