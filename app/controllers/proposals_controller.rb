@@ -35,12 +35,23 @@ class ProposalsController < ApplicationController
 
   def update
     @proposal.update(proposal_params)
-    @proposal.project.update accepted: true
-    @message = Message.create(user: current_user, proposal: @proposal, content: "The proposal has been accepted by #{current_user.firstname}, Congratulations from the Helper team!")
-     ProposalChatChannel.broadcast_to(
+    if @proposal.accepted == "accepted"
+      @proposal.project.update(accepted: true)
+      @message = Message.create(user: current_user, proposal: @proposal, content: "The proposal has been accepted by #{current_user.firstname}, Congratulations from the Helper team!")
+      ProposalChatChannel.broadcast_to(
         @proposal,
         render_to_string(partial: "messages/message", locals: { message: @message })
         )
+    elsif @proposal.accepted == "pending"
+      @proposal.project.update(accepted: false)
+    else
+      @proposal.project.update(accepted: false)
+      @message = Message.create(user: current_user, proposal: @proposal, content: "Proposal denied")
+      ProposalChatChannel.broadcast_to(
+        @proposal,
+        render_to_string(partial: "messages/message", locals: { message: @message })
+        )
+    end
   end
 
   def destroy

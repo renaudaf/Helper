@@ -46,7 +46,7 @@
         <% end %>
       </div>
         <%= simple_form_for @proposal do |f| %>
-        <%= f.input :accepted, as: :radio_buttons, label: "Accept the offer"%>
+        <%= f.input :accepted, label: "Change the status of this offer", collection: ["accepted", "denied", "pending"]%>
         <%= f.submit "Confirm" %>
         <% end %>
     </div>
