@@ -20,17 +20,21 @@
                   <% if review.helper_id == user.id %>                
                     <% arr << review.rating %>
                   <% end %>              
-                <% end %>  
+                <% end %> 
+                <% if arr.count == 0 %> 
+                  <% rate = 0 %>
+                <% else %>
                 <% rate = arr.sum / arr.count %>   
                 <% count = 0 %>
                 <% 5.times do %>
                 <% if rate > count %>
                   <i class="fas fa-star"></i>
-                <% else %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                <% count += 1 %>
-                <% end %>         
+                  <% else %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  <% count += 1 %>
+                <% end %>   
+                <% end %>      
             </div> 
             <% end %>  
           </div>
