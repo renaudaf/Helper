@@ -13,15 +13,6 @@
  width: 90%;
  position: relative;
  margin: 0 auto;
- &:hover {
-   .imgs-show{
-     transform: scale(1.02);
-     filter: blur(1px);
-   }
-   .img-content {
-     transform: scale(1.1);
-   }
- }
    .imgs-show{
      transition: .3s ease;
      border-radius: 25px;
