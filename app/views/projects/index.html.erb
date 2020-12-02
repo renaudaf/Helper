@@ -13,6 +13,7 @@
       <% end %>
     </div>
     <div class="grid-index">
+      <% @projects = @projects.select { |project| project.accepted == false} %>
       <% @projects.each do |project| %>
         <%= link_to project_path(project), class: "project-link", data: {"project-id"=> project.id} do %>
             <% if project.photos.first %>
