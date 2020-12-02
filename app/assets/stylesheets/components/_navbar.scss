@@ -1,4 +1,6 @@
 .navbar-lewagon {
+  position: fixed;
+  z-index: 1;
   justify-content: space-between;
   background-color: transparent;
   width: 100%;
@@ -28,3 +30,7 @@
   font-family: "Lobster", cursive;
   color: #07689f;
  }
+
+ .navbar-lewagon-white {
+  background-color: white;
+}
