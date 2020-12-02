@@ -17,6 +17,9 @@
   flex-direction: column;
   align-items: center;
   padding-top: 22px;
+  min-height: 100px;
+  max-height: 500px;
+  height: auto;
 }
 
 .img-content {
@@ -27,6 +30,10 @@
   color: black;
   transition: 0.3s ease;
   text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
+  p {
+    font-size: smaller;
+    margin: 0;
+  }
 }
 
 .right-content {
@@ -37,11 +44,13 @@
 }
 
 .messages {
-  height: 90%;
+  height: 500px;
   background-color: white;
   border-radius: 24px;
-  box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.3);
+  box-shadow: 0px 3px 15px rgba(149, 149, 149, 0.2);
   margin-bottom: 22px;
+  min-height: 100px;
+  height: auto;
   a {
     text-decoration: none;
   }
