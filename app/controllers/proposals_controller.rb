@@ -20,6 +20,7 @@ class ProposalsController < ApplicationController
   def create
     @project = Project.find(params["project_id"])
     @proposal = Proposal.new(proposal_params)
+    authorize @proposal
     @proposal.user = current_user
     @proposal.project = @project
     if @proposal.save!
