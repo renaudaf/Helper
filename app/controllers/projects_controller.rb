@@ -52,7 +52,8 @@ class ProjectsController < ApplicationController
     @tags = Tag.all
     @project = Project.find(params[:id])
     authorize @project
-    if @project.update(project_params)
+    @project.assign_attributes(project_params)
+    if @project.save
       tag_ids = params[:project][:tags]
       tag_ids.delete("")
       if tag_ids && @project.tags.count + tag_ids.count <= 3

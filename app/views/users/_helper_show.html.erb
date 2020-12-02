@@ -2,19 +2,17 @@
   <div class="user-h1">
     <h1>Find your first project</h1>
   </div>
-  <form action="/projects" method="get">
-    <input type="submit", value="Get started", class="btn btn-primary home-btn user-show-btn">
-  </form>
+    <%= link_to "Start browsing", projects_path, class: "user-show-btn home-btn btn btn-primary" %>
 </div>
 <div class="container">
   <% if current_user == @user%>
     <div class="welcome-title">
-      <h1>Welcome <%= @user.firstname %></h1>
+      <h1>Welcome <%= @user.firstname %>!</h1>
     </div>
     <div class="dash">
       <div class="project-content">
         <div class="project-h">
-          <h1>Current Projects</h1>
+          <h1>Current clients</h1>
         </div>
         <div class="all-user-project">
           <% @user.proposals.each do |proposal| %>
@@ -23,35 +21,36 @@
                 <%= cl_image_tag proposal.project.photos.first.key, class: "imgs-show" %>
                 <div class="img-content">
                   <h4 class="text-white"><%= proposal.project.title %></h4>
+                  <p class="text-white"><%= proposal.project.user.firstname %></p>
+                  <p class="text-white"><%= proposal.project.address %></p>
                 </div>
               </div>
             <% end %>
           <% end %>
         </div>
       </div>
-      <div class="message-container">
+      <div class="right-content text-center">
         <div class="project-h">
-          <h1>Your proposals</h1>
+          <h1>My proposals</h1>
         </div>
-        <div class="right-content text-center">
-          <div class="messages p-3">
-            <% if @user.proposals.empty? %>
-              <p> You haven't made any proposals yet</p>
-            <% else %>
-              <% @user.proposals.each do |proposal| %>
-                <div class="card-product text-left">
-                  <% if current_user.photo.attached? == false %>
-                    <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
-                  <% else %>
-                    <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
-                  <% end %>
-                  <div class="card-product-infos">
-                    <p><%= link_to "#{proposal.project.title}", proposal_path(proposal)%></p>
-                  </div>
+        <div class="messages p-3">
+          <% if @user.proposals.empty? %>
+            <p> You haven't made any proposals yet</p>
+          <% else %>
+            <% @user.proposals.each do |proposal| %>
+              <div class="card-product text-left">
+                <% if current_user.photo.attached? == false %>
+                  <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
+                <% else %>
+                  <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
+                <% end %>
+                <div class="card-product-infos">
+                  <p><%= link_to "#{proposal.project.title}", proposal_path(proposal)%></p>
+                  <p><%= proposal.project.accepted %></p>
                 </div>
-              <% end %>
+              </div>
             <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
