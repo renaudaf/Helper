@@ -32,17 +32,15 @@
             <% project.proposals.each do |proposal| %>
               <div class="user-project-proposal text-left">
                 <div class="card-proposal-avatar text-left">
-                  <% if current_user.photo.attached? == false %>
-                    <div class="text-center">
+                  <div class="text-center">
+                    <% if current_user.photo.attached? == false %>
                       <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
                       <p><%= proposal.user.firstname %></p>
-                    </div>
-                  <% else %>
-                    <div class="text-center">
-                        <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
-                        <p><%= proposal.user.firstname %></p>
-                    </div>
-                  <% end %>
+                    <% else %>
+                      <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
+                      <p><%= proposal.user.firstname %></p>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="card-proposal-product">
                   <h5><%= project.title %></h5>
@@ -50,7 +48,6 @@
                     <% if proposal.pitch.length > 75 %>
                       <%= truncate(proposal.pitch, length: 75) %>
                       <%= link_to '...Read more', '', class: "read-more", data: {full_pitch: proposal.pitch} %>
-
                     <% else %>
                       <%= proposal.pitch %>
                     <% end %>
