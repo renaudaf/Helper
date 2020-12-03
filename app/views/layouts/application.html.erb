@@ -14,10 +14,8 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="main-layout">
       <%= yield %>
-    </div>
-    <% unless request.path == "/users/sign_in" || request.path == "/" %>
+    <% unless request.path == "/users/sign_in" || request.path == "/" || request.path == "/users/sign_up" %>
       <%= render 'shared/footer' %>
     <% end %>
   </body>
