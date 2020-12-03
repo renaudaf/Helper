@@ -23,7 +23,7 @@ class ProposalsController < ApplicationController
     @proposal.user = current_user
     @proposal.project = @project
     if @proposal.save
-      redirect_to projects_path
+      redirect_to proposal_path(@proposal)
     else
       redirect_to project_path(@project)
     end
