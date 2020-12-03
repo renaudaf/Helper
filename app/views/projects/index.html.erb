@@ -1,39 +1,41 @@
-<div class="container">
+<div class="layout">
   <div class="footer-layout">
-    <div class="index-header d-flex justify-content-between">
-      <h1 class="my-4">All projects</h1>
-      <%= form_tag projects_path, method: :get, class: "search-bar d-flex align-items-center" do %>
-        <%= text_field_tag :query,
+    <div class="container">
+      <div class="index-header d-flex justify-content-between">
+        <h1 class="my-4">All projects</h1>
+        <%= form_tag projects_path, method: :get, class: "search-bar d-flex align-items-center" do %>
+          <%= text_field_tag :query,
           params[:query],
           class: "form-control",
           id: "search-input",
           placeholder: "Find a projet"
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-    <div class="grid-index">
-      <% @projects = @projects.select { |project| project.accepted == false} %>
-      <% @projects.each do |project| %>
-        <%= link_to project_path(project), class: "project-link", data: {"project-id"=> project.id} do %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <div class="grid-index">
+        <% @projects = @projects.select { |project| project.accepted == false} %>
+        <% @projects.each do |project| %>
+          <%= link_to project_path(project), class: "project-link", data: {"project-id"=> project.id} do %>
             <% if project.photos.first %>
               <div class="card-category" style="background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url(http://res.cloudinary.com/renaudaf/image/upload/<%= project.photos.first.key %>)">
-            <% else %>
-              <div class="card-category" style="background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-            <% end %>
-              <div class="index-content">
-                <h1><%= project.title %></h1>
-                <div class="index-tags">
-                  <ul class="m-0">
-                    <% project.tags.each do |tag| %>
-                      <li class="li-tags px-1"><%= tag.name.capitalize %></li>
-                    <% end %>
-                  </ul>
+              <% else %>
+                <div class="card-category" style="background-image: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+                <% end %>
+                <div class="index-content">
+                  <h1><%= project.title %></h1>
+                  <div class="index-tags">
+                    <ul class="m-0">
+                      <% project.tags.each do |tag| %>
+                        <li class="li-tags px-1"><%= tag.name.capitalize %></li>
+                      <% end %>
+                    </ul>
+                  </div>
                 </div>
               </div>
-          </div>
-        <% end %>
-      <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-</div>
