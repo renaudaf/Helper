@@ -38,20 +38,36 @@
             <p> You haven't made any proposals yet</p>
           <% else %>
             <% @user.proposals.each do |proposal| %>
-              <div class="card-product text-left mb-4">
-                <div class="text-center">
-                  <% if proposal.user.photo.attached? == false %>
-                    <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
-                  <% else %>
-                    <%= cl_image_tag proposal.user.photo.key, class: "imgs-show" %>
-                  <% end %>
-                  <p><%= proposal.project.user.firstname %></p>
+              <div class="h-proposal">
+                <div class="helper-project-proposal text-left">
+                  <div class="h-card-proposal-avatar text-left">
+                    <div class="text-center">
+                      <% if proposal.user.photo.attached? == false %>
+                        <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
+                      <% else %>
+                        <%= cl_image_tag proposal.user.photo.key, class: "h-imgs" %>
+                      <% end %>
+                      <% if proposal.accepted == 'pending' %>
+                        <i class="fas fa-circle" id="yellow-circle"></i>
+                      <% end %>
+                      <% if proposal.accepted == 'denied' %>
+                        <i class="fas fa-circle" id="red-circle"></i>
+                      <% end %>
+                      <% if proposal.accepted == 'accepted' %>
+                        <i class="fas fa-circle" id="green-circle"></i>
+                      <% end %>
+                      <p><strong><%= proposal.project.user.firstname %></strong></p>
+                    </div>
+                  </div>
+                  <div class="card-proposal-product mt-2">
+                    <h5><%= proposal.project.title %></h5>
+                    <p><%= proposal.project.address %></p>
+                    <%= link_to proposal_path(proposal) ,class: "user-message" do %>
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-product-infos">
-                  <p><%= link_to "#{proposal.project.title}", proposal_path(proposal)%></p>
-                  <p><%= proposal.project.accepted %></p>
-                </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
