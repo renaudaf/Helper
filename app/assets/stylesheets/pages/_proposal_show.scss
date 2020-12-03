@@ -1,9 +1,5 @@
 .chat-console {
   height: 500px;
-  border: 1px solid black;
-  border-radius: 25px;
-  box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.3);
-  padding: 16px;
 }
 
 #chat-room-full {
@@ -11,20 +7,66 @@
   margin-top: 16px;
 }
 
+#chat-box {
+  box-shadow: 0px 3px 15px rgba(149, 149, 149, 0.2);
+  border-radius: 8px;
+  background-color: rgba(187, 187, 187, .15);
+}
+
 #new_message {
   margin-top: 8px;
+  padding: 0 18px;
 }
 
 .message {
-  p {
-    margin: 0px;
-    font-size: 24px;
-    padding: 0px;
-  }
+  max-width: 50%;
+  margin: 10px 32px;
   small {
-    font-size: 12px;
+    font-size: 10px;
+    margin: 0 16px;
   }
-  margin: 24px 0px;
+  h6 {
+    line-height: 20px;
+    margin: 0;
+    padding: 8px 20px;
+  }
+  .msg-content {
+    background-color: white;
+    border-radius: 40px;
+  }
+}
+
+.all-msg-chat {
+  display: flex;
+  flex-direction: column;
+  height: 406px;
+  .msg-sent {
+    align-self: flex-start;
+    max-width: 50%;
+    color: #09689F;
+  }
+  .msg-received {
+    align-self: flex-end;
+    text-align: right;
+    max-width: 50%;
+  }
+}
+
+.message-proposal {
+  display: flex;
+  background-color: rgba(187, 187, 187, .25);
+  padding: 6px 20px;
+  border-radius: 8px 8px 0 0;
+  .helper-name {
+    font-size: 18px;
+    white-space: nowrap;
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+  .helper-pitch {
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
 }
 
 #chat-title {
@@ -37,4 +79,18 @@
 
 #chat-other {
   text-align: left;
+}
+
+.sent {
+  position: relative;
+  .search_button {
+    position: absolute;
+    bottom: 12px;
+    right: 34px;
+    height: 16px;
+    transition: transform .3s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }

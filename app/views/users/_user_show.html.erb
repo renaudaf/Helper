@@ -45,9 +45,9 @@
                 <div class="card-proposal-product">
                   <h5><%= project.title %></h5>
                   <div class="pitch">
-                    <% if proposal.pitch.length > 75 %>
-                      <%= truncate(proposal.pitch, length: 75) %>
-                      <%= link_to '...Read more', '', class: "read-more", data: {full_pitch: proposal.pitch} %>
+                    <% if proposal.pitch.length > 65 %>
+                      <%= truncate(proposal.pitch, length: 65) %>
+                      <%= link_to 'Read more', '', class: "read-more", data: {full_pitch: proposal.pitch} %>
                     <% else %>
                       <%= proposal.pitch %>
                     <% end %>
