@@ -23,10 +23,10 @@ class ProposalsController < ApplicationController
     authorize @proposal
     @proposal.user = current_user
     @proposal.project = @project
-    if @proposal.save!
+    if @proposal.save
       redirect_to projects_path
     else
-      render "projects/show"
+      redirect_to project_path(@project)
     end
   end
 
