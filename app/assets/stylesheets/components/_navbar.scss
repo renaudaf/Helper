@@ -1,4 +1,4 @@
-.navbar-lewagon {
+.navbar {
   position: fixed;
   z-index: 1;
   justify-content: space-between;
@@ -8,11 +8,11 @@
   transition: 0.5s background-color ease;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar .navbar-brand img {
   width: 40px;
 }
 

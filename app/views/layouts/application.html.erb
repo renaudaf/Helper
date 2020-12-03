@@ -21,11 +21,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+    <% if request.path == "/" || request.path == "/users/#{params[:id]}" %>
+      <div class="navbar-lewagon">
+        <%= render 'shared/navbar' %>
+      </div>
+    <% else %>
+      <div style="height: 80px;">
+        <%= render 'shared/navbar' %>
+      </div>
+    <% end %>
     <%= render 'shared/flashes' %>
       <%= yield %>
-    <% unless request.path == "/users/sign_in" || request.path == "/" || request.path == "/users/sign_up" %>
-      <%= render 'shared/footer' %>
-    <% end %>
+      <% unless request.path == "/users/sign_in" || request.path == "/" || request.path == "/users/sign_up" %>
+        <div style="height: 64px;">
+            <%= render 'shared/footer' %>
+        </div>
+      <% end %>
   </body>
 </html>
