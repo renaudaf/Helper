@@ -11,7 +11,7 @@
     </div>
     <div class="dash mb-4">
       <div class="project-content">
-        <h1 class="user-border-title">My projects</h1>
+        <h2 class="user-border-title">My projects</h2>
         <div class="all-user-projects">
           <% @projects.each do |project| %>
             <%= link_to project_path(project) do %>
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="right-content text-center">
-        <h3 class="user-border-title text-left">Helper offers</h3>
+        <h2 class="user-border-title text-left">Helper offers</h2>
         <div class="messages p-3">
           <% @user.projects.each do |project| %>
             <% project.proposals.each do |proposal| %>

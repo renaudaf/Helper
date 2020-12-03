@@ -72,7 +72,7 @@
   background-position: 50% 50%;
   .user-h1 {
     position: absolute;
-    top: 162px;
+    top: 42%;  // to be approved
     left: 50%;
     transform: translate(-50%, 0);
     width: 400px;
@@ -86,7 +86,7 @@
 }
 
 .user-show-btn {
-  margin-bottom: 90px;
+  margin-bottom: 190px !important; // to be approved
   border-radius: 4px;
   background-color: #3B28CC;
   border: none;
@@ -136,6 +136,7 @@
   padding: 8px;
   position: relative;
   padding-left: 10px;
+  width: 100%;
 }
 
 .pitch {
