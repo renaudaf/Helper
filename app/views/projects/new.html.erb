@@ -7,7 +7,6 @@
       <h5><%= f.input :address, label: "Enter your address:", placeholder: "address" %></h5>
       <h5><%= f.input :tags, label: "Project Type:", collection: @tag, input_html: { multiple: true }, include_hidden: false %></h5>
       <h5><%= f.input :photos, label: "Add related images:", as: :file, input_html: { multiple: true }%></h5>
-
       <div class="measure">
         <% @project.measurements.each do |measurement| %>
           <div>
@@ -15,18 +14,14 @@
           </div>
         <% end %>
         <label for="project[measurements][][name]">Measurements:</label>
-          <div class="addmeasurebutton">
-            <button id="add-measure" class="btn btn-primary mt-2">Add a measurement</button>
-          </div>
+        <div class="addmeasurebutton">
+          <button id="add-measure" class="btn btn-primary mt-2">Add a measurement</button>
+        </div>
       </div>
-
       <div class="subbutton">
         <%= f.submit class: "btn btn-primary", id: :submitnew %>
       </div>
-
     <% end %>
   </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-

@@ -17,6 +17,8 @@
     <div class="main-layout">
       <%= yield %>
     </div>
-    <%# <%= render 'shared/footer' %>
+    <% unless request.path == "/users/sign_in" || request.path == "/" %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>
