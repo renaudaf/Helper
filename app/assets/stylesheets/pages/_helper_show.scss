@@ -5,15 +5,15 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url("https://www.decoraid.com/wp-content/uploads/2018/04/renovation-banner.jpg");
   background-size: cover;
-  height: 575px;
+  height: 344px;
   justify-content: flex-end;
   position: relative;
   width: 100%;
   background-attachment: fixed;
-  background-position: 50% 50%;
+  background-position: 50% -240px;
   .user-h1 {
     position: absolute;
-    top: 42%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, 0);
     width: 400px;
