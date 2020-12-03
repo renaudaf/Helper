@@ -67,15 +67,15 @@
   align-items: center;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://freshome.com/wp-content/uploads/2018/02/renovation-intro.jpg");
   background-size: cover;
-  height: 575px;
+  height: 344px;
   justify-content: flex-end;
   position: relative;
   width: 100%;
   background-attachment: fixed;
-  background-position: 50% 80%;
+  background-position: 50% -240px;
   .user-h1 {
     position: absolute;
-    top: 42%;  // to be approved
+    top: 30%;  // to be approved
     left: 50%;
     transform: translate(-50%, 0);
     width: 400px;
@@ -89,7 +89,7 @@
 }
 
 .user-show-btn {
-  margin-bottom: 190px;
+  margin-bottom: 120px;
   border-radius: 4px;
   background-color: #3B28CC;
   border: none;
