@@ -3,7 +3,11 @@
   <% if current_user == @user%>
     <div class="show-banner">
       <div class="user-h1">
-        <h1>Find your first project</h1>
+        <% if @user.proposals.empty? %>
+          <h1>Find your first project</h1>
+        <% else %>
+          <h1>Find a project</h1>
+        <% end  %>
       </div>
       <%= link_to "Start browsing", projects_path, class: "user-show-btn home-btn btn btn-primary" %>
     </div>
@@ -14,7 +18,7 @@
       <div class="dash">
         <div class="project-content">
           <div class="project-h">
-            <h1>Current clients</h1>
+            <h2>Current clients</h2>
           </div>
           <div class="all-user-project">
             <% @user.proposals.each do |proposal| %>
@@ -33,7 +37,7 @@
         </div>
         <div class="right-content text-center">
           <div class="project-h">
-            <h1>My proposals</h1>
+            <h2>My proposals</h2>
           </div>
           <div class="messages p-3">
             <% if @user.proposals.empty? %>
@@ -44,10 +48,10 @@
                   <div class="helper-project-proposal text-left">
                     <div class="h-card-proposal-avatar text-left">
                       <div class="text-center">
-                        <% if proposal.user.photo.attached? == false %>
+                        <% if proposal.project.user.photo.attached? == false %>
                           <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
                         <% else %>
-                          <%= cl_image_tag proposal.user.photo.key, class: "h-imgs" %>
+                          <%= cl_image_tag proposal.project.user.photo.key, class: "h-imgs" %>
                         <% end %>
                         <% if proposal.accepted == 'pending' %>
                           <i class="fas fa-circle" id="yellow-circle"></i>
