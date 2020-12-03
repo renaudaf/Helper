@@ -9,7 +9,7 @@
 
 .all-user-projects {
   box-shadow: 0px 3px 15px rgba(149, 149, 149, 0.2);
-  border-radius: 25px;
+  border-radius: 8px;
   width: 100%;
   min-height: 100px;
   height: auto;
@@ -22,6 +22,7 @@
   min-height: 100px;
   max-height: 500px;
   height: auto;
+  margin-top: 24px;
 }
 
 .img-content {
@@ -50,11 +51,13 @@
   height: auto;
   max-height: 436px;
   background-color: white;
-  border-radius: 24px;
+  border-radius: 8px;
   box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.2);
   overflow: auto;
+  margin-top: 24px;
   a {
     text-decoration: none;
+    font-size: 10px;
   }
 }
 
@@ -112,9 +115,9 @@
 .user-project-proposal {
   // big one
   display: flex;
-  border: 1px solid black;
   margin-bottom: 18px;
   border-radius: 4px;
+  background-color: rgba(187, 187, 187, .1);
 }
 
 .card-proposal-avatar {
@@ -124,7 +127,6 @@
   align-items: center;
   width: 90px;
   padding: 8px;
-  border-right: 1px solid black;
   flex-shrink: 0;
   p {
     margin-bottom: 0;
@@ -142,14 +144,21 @@
 .pitch {
   font-weight: 100;
   font-size: 14px;
+  width: 92%;
 }
 
 .user-message {
   position: absolute;
-  bottom: -8px;
-  right: -18px;
+  bottom: -14px;
+  right: 16px;
+  width: 10px;
 }
 
 .h-proposal {
   box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.2);
+}
+
+.fa-envelope {
+  font-size: 18px;
+  margin-right: 0;
 }
