@@ -14,11 +14,11 @@
   min-height: 100px;
   height: auto;
   max-height: 436px;
-  overflow: scroll;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 22px;
+  padding-top: 15px;
   min-height: 100px;
   max-height: 500px;
   height: auto;
@@ -55,6 +55,7 @@
   box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.2);
   overflow: auto;
   margin-top: 24px;
+  padding-top: 15px;
   a {
     text-decoration: none;
     font-size: 10px;
@@ -91,10 +92,10 @@
 .user-show-btn {
   margin-bottom: 190px;
   border-radius: 4px;
-  background-color: #3B28CC;
+  background-color: #07689f;
   border: none;
   &:hover {
-    background-color: #3B28CC;
+    background-color: #07689f;
   }
 }
 

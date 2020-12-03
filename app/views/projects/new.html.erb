@@ -1,28 +1,32 @@
 <div class="layout">
-  <div class="container">
-    <h1 class="mt-4">Create your project</h1>
-    <div class="infos">
-      <%= simple_form_for(@project) do |f| %>
-        <h5><%= f.input :title, label: "Name of your project:", placeholder: "Give a title that identifies your goal" %></h5>
-        <h5><%= f.input :description, label: "Describe your project:", placeholder: "Explain your project as clearly as possible" %></h5>
-        <h5><%= f.input :address, label: "Enter your address:", placeholder: "address" %></h5>
-        <h5><%= f.input :tags, label: "Project Type:", collection: @tag, input_html: { multiple: true }, include_hidden: false %></h5>
-        <h5><%= f.input :photos, label: "Add related images:", as: :file, input_html: { multiple: true }%></h5>
-        <div class="measure">
-          <% @project.measurements.each do |measurement| %>
-            <div>
-              <input name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
+  <div class="footer-layout">
+    <div class="container">
+      <div class="editing-title">
+        <h1>Create your project</h1>
+      </div>
+      <div class="infos">
+        <%= simple_form_for(@project) do |f| %>
+          <h5><%= f.input :title, label: "Name of your project:", placeholder: "Give a title that identifies your goal" %></h5>
+          <h5><%= f.input :description, label: "Describe your project:", placeholder: "Explain your project as clearly as possible" %></h5>
+          <h5><%= f.input :address, label: "Enter your address:", placeholder: "Address" %></h5>
+          <h5><%= f.input :tags, label: "Project Type:", collection: @tag, input_html: { multiple: true }, include_hidden: false %></h5>
+          <h5><%= f.input :photos, label: "Add related images:", as: :file, input_html: { multiple: true }%></h5>
+          <div class="measure">
+            <% @project.measurements.each do |measurement| %>
+              <div>
+                <input name="project[measurements][][name]" type="text" value="<%=measurement["name"] %>"> <input name="project[measurements][][dimension]" value="<%=measurement["dimension"]%>" type="text">
+              </div>
+            <% end %>
+            <label for="project[measurements][][name]">Measurements:</label>
+            <div class="addmeasurebutton">
+              <button id="add-measure" class="btn btn-primary mt-2">Add a measurement</button>
             </div>
-          <% end %>
-          <label for="project[measurements][][name]">Measurements:</label>
-          <div class="addmeasurebutton">
-            <button id="add-measure" class="btn btn-primary mt-2">Add a measurement</button>
           </div>
-        </div>
-        <div class="subbutton">
-          <%= f.submit class: "btn btn-primary", id: :submitnew %>
-        </div>
-      <% end %>
+          <div class="subbutton">
+            <%= f.submit class: "btn btn-primary", id: :submitnew %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
