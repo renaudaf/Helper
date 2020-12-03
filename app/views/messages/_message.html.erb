@@ -1,4 +1,11 @@
-<div class="message" style="<%= message.user == current_user ? "text-align:left; color: #07689f; font-weight:bold" : "text-align:right;" %>" id="message-<%=message.id%>">
+<!-- <div class="message" style="<%#= message.user == current_user ? "text-align:left; color: #07689f; font-weight:bold" : "text-align:right;" %>" id="message-<%=message.id%>">
   <p> <%= message.content %> </p>
   <small> from: <%= message.user.firstname %></small>
+</div> -->
+
+<div class="message <%= message.user == current_user ? "msg-sent" : "msg-received"%>" id="message-<%=message.id%>" >
+  <small><%= message.user.firstname %></small>
+  <div class="msg-content">
+    <h6> <%= message.content %> </h6>
+  </div>
 </div>
