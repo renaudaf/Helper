@@ -2,73 +2,43 @@
  clear: both; //prevents floating elements from right/left of footer
  z-index: 1; //z-index positions elements in front or behind eachother, most have a //natual z-index of -1
  width: 100%;
- position: absolute;
+ position: fixed;
  bottom: 0;
  right: 0;
  background: #fafafa;
- color: rgba(0, 0, 0, 0.3);
- border-top: solid lightgray 1px;
  text-align: center;
- display: flex;
- align-items: flex-start;
- justify-content: space-between;
- padding: 0px 50px;
- padding-top: 50px;
+ padding: 10px 0;
  p {
   color: black;
- }
- h4 {
-  color: #07689f;
+  font-size: 10px;
+  margin: 0;
  }
 }
 
-.footer-links {
+.footer-up {
  display: flex;
  align-items: center;
+ justify-content: space-between;
+ padding-top: 10px;
 }
 
-.footer-links a {
- color: black;
- opacity: 0.15;
- text-decoration: none;
- font-size: 24px;
- padding: 0px 10px;
+.legal-footer {
+ font-size: 10px;
 }
 
-.footer-links a:hover {
- opacity: 1;
-}
-
-.follow-bloc {
- display: block;
-}
-
-.footer-h {
- font-size: 50px;
- font-family: "Lobster", cursive;
+#envelope-footer {
+ font-size: medium;
  color: #07689f;
+ margin-right: 10px;
 }
 
-.location {
- height: 80%;
+.fa-phone {
+ font-size: medium;
+ color: #07689f;
+ margin-right: 10px;
+ margin-left: 10px;
 }
 
-.contact {
- height: 80%;
-}
-
-.follow {
- height: 80%;
- text-align: center;
+.info-footer {
  display: flex;
- align-items: center;
 }
-
-.newsletter {
- height: 80%;
-}
-
-.footer-copyright {
- margin-top: -20px;
-}
-
