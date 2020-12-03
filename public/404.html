@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
   <style>
     
@@ -52,8 +52,8 @@
   .mainmessage {
     font-size: 20px;
     color: white;
-    font-family: 'Righteous', cursive;
-    -webkit-text-stroke: 1px  #07689f;
+    font-family: "Playfair Display", serif;
+    text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3)
   }
 
   .dialog {
@@ -65,13 +65,19 @@
 
   .optmessage {
     color: white;
-    font-family: 'Righteous', cursive;
-    -webkit-text-stroke: 1px  #07689f;
-    font-size: 30px;    
+    font-family: "Playfair Display", serif;
+    font-size: 30px;   
+    text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3) 
   }
 
   h1 {
     margin: 10px;
+  }
+
+  .transback {
+    background: rgba(59, 40, 204, .15);
+    opacity: 90%;
+    border-radius: 5px;
   }
 
  
@@ -82,20 +88,18 @@
   <!-- This file lives in public/404.html -->
   
   <div class="dialog">
-    <div class="logo">
-      <h1>Helper<i class="fas fa-wrench"></i></p>
-    </div>
-    <div class="main404">
-      <h1>404</h1>
-    </div> 
-    
-    <div class="mainmessage">
-      <h1>The page you were looking for doesn't exist.</h1>
-    </div>  
+    <div class="transback">
+      <div class="logo">
+        <h1>Helper<i class="fas fa-wrench"></i></p>
+      </div>
+      
+      <div class="mainmessage">
+        <h1>The page you were looking for doesn't exist.</h1>
+      </div>  
 
-    <div class='optmessage'>
-      <p>You may have mistyped the address or the page may have moved.</p>
-      <p>If you are the application owner check the logs for more information.</p>
+      <div class='optmessage'>
+        <p>You may have mistyped the address or the page may have moved.</p>
+      </div>
     </div>
   </div>
 </body>

@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
     <style>
       
@@ -14,6 +14,7 @@
       background-color: #EFEFEF;    
       text-align: center;    
       font-size: 30px;    
+      
     }
   
     .rails-default-error-page div.dialog {
@@ -26,6 +27,7 @@
       padding-top: 20px;
       box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
       border-radius: 15px;
+      
     }
   
     .rails-default-error-page h1 {   
@@ -38,7 +40,6 @@
       font-size: 50px;
       color: #07689f;
       font-family: "Lobster", cursive;
-      
     }
   
     .main404 {
@@ -51,8 +52,8 @@
     .mainmessage {
       font-size: 20px;
       color: white;
-      font-family: 'Righteous', cursive;
-      -webkit-text-stroke: 1px  #07689f;
+      font-family: "Playfair Display", serif;
+      text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3)
     }
   
     .dialog {
@@ -60,17 +61,23 @@
       background-image: url(/assets/helperbackg.png); 
       background-repeat: no-repeat;
     }
+    
   
     .optmessage {
       color: white;
-      font-family: 'Righteous', cursive;
-      -webkit-text-stroke: 1px  #07689f;
-      font-size: 30px;
-      
+      font-family: "Playfair Display", serif;
+      font-size: 30px;   
+      text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3) 
     }
   
     h1 {
       margin: 10px;
+    }
+  
+    .transback {
+      background: rgba(59, 40, 204, .15);
+      opacity: 90%;
+      border-radius: 5px;
     }
   
    
@@ -80,16 +87,18 @@
 <body class="rails-default-error-page">
   <!-- This file lives in public/500.html -->
   <div class="dialog">
-    <div class="logo">
-      <h1>Helper<i class="fas fa-wrench"></i></p>
+    <div class="transback">
+      <div class="logo">
+        <h1>Helper<i class="fas fa-wrench"></i></p>
+      </div>
+      
+      <div class="mainmessage">
+        <h1>We're sorry, but something went wrong.</h1>
+      </div>
+      <div class='optmessage'>
+      <p>If you are the application owner check the logs for more information.</p>
+      </div>
     </div>
-    
-    <div class="mainmessage">
-      <h1>We're sorry, but something went wrong.</h1>
-    </div>
-    <div class='optmessage'>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
   </div>
 </body>
 </html>
