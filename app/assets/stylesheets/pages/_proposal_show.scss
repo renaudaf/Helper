@@ -12,7 +12,7 @@
   border-radius: 8px;
   background-color: rgba(187, 187, 187, .15);
   min-width: 376px;
-  max-width: 450px;
+  max-width: 550px;
 }
 
 #new_message {
@@ -41,7 +41,7 @@
 .all-msg-chat {
   display: flex;
   flex-direction: column;
-  height: 406px;
+  height: 390px;
   .msg-sent {
     align-self: flex-start;
     max-width: 50%;
