@@ -44,10 +44,10 @@
                   <div class="helper-project-proposal text-left">
                     <div class="h-card-proposal-avatar text-left">
                       <div class="text-center">
-                        <% if proposal.user.photo.attached? == false %>
+                        <% if proposal.project.user.photo.attached? == false %>
                           <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
                         <% else %>
-                          <%= cl_image_tag proposal.user.photo.key, class: "h-imgs" %>
+                          <%= cl_image_tag proposal.project.user.photo.key, class: "h-imgs" %>
                         <% end %>
                         <% if proposal.accepted == 'pending' %>
                           <i class="fas fa-circle" id="yellow-circle"></i>
