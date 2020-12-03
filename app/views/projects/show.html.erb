@@ -1,4 +1,3 @@
-<div class="layout">
 <div class="container">
   <div class="title d-flex justify-content-between">
     <h1> <%= @project.title %></h1>
@@ -87,18 +86,17 @@
         <%= link_to "Delete this project", project_path, method: :delete, class: 'btn btn-primary mb-2', data: {confirm: "Are you sure you want to delete this project?"} unless current_user != @project.user %>
       <% end %>
       <!-- If the user is a helper, he will have the form to make a pitch -->
-      <% if current_user.typehelper %>    
-        <% @status = true %>   
+      <% if current_user.typehelper %>
+        <% @status = true %>
         <% @project.proposals.each do |proposal| %>
           <% if proposal.user_id == current_user.id %>
-            <% @status = false %>                 
-          <% end %>           
+            <% @status = false %>
+          <% end %>
         <% end %>
         <% if @status %>
-          <%= render partial: "proposals/new" %>  
+          <%= render partial: "proposals/new" %>
         <% end %>
       <% end %>
     </div>
   </div>
-</div>
 </div>
