@@ -27,10 +27,9 @@
         </div>
         <div class="col-sm-12 col-lg-9">
           <div class="listdim">
-            <ul><% @project.measurements.each do |measurement| %>
-                <li> <%= measurement["name"] %>: <%= measurement["dimension"] %> </li>
+            <% @project.measurements.each do |measurement| %>
+                <%= measurement["name"] %>: <%= measurement["dimension"] %> <br>
               <% end %>
-            </ul>
           </div>
         </div>
       </div>

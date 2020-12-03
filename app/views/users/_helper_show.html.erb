@@ -1,3 +1,4 @@
+
   <% if current_user == @user%>
     <div class="show-banner">
       <div class="user-h1">
@@ -19,16 +20,22 @@
             <h2>Current clients</h2>
           </div>
           <div class="all-user-project">
-            <% @user.proposals.each do |proposal| %>
-              <%= link_to project_path(proposal.project) do %>
-                <div class="project-img mb-4">
-                  <%= cl_image_tag proposal.project.photos.first.key, class: "imgs-show" %>
-                  <div class="img-content">
-                    <h4 class="text-white"><%= proposal.project.title %></h4>
-                    <p class="text-white"><%= proposal.project.user.firstname %></p>
-                    <p class="text-white"><%= proposal.project.address %></p>
+            <% if @projects.empty? %>
+              <strong>
+                <p class="mt-4"> You don't have any project yet</p>
+              </strong>
+            <% else %>
+              <% @user.proposals.each do |proposal| %>
+                <%= link_to project_path(proposal.project) do %>
+                  <div class="project-img mb-4">
+                    <%= cl_image_tag proposal.project.photos.first.key, class: "imgs-show" %>
+                    <div class="img-content">
+                      <h4 class="text-white"><%= proposal.project.title %></h4>
+                      <p class="text-white"><%= proposal.project.user.firstname %></p>
+                      <p class="text-white"><%= proposal.project.address %></p>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
             <% end %>
           </div>
@@ -37,7 +44,7 @@
           <div class="project-h">
             <h2>My proposals</h2>
           </div>
-          <div class="messages p-3">
+          <div class="messages">
             <% if @user.proposals.empty? %>
               <p> You haven't made any proposals yet</p>
             <% else %>
@@ -78,78 +85,80 @@
         </div>
       </div>
     <% else %>
-    <div class="layout">
-      <div class="container">
-        <h1 class="mt-4"><%= @user.firstname  %> <%= @user.lastname  %> </h1>
-        <div class="helper-card">
-          <div class="helper-img">
-            <% if @user.photo.attached? == false %>
-              <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
-            <% else %>
-              <%= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
+      <div class="layout">
+        <div class="container">
+          <div class="editing-title-2">
+            <h1><%= @user.firstname  %> <%= @user.lastname  %> </h1>
+          </div>
+          <div class="helper-card">
+            <div class="helper-img">
+              <% if @user.photo.attached? == false %>
+                <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
+              <% else %>
+                <%= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
+              <% end %>
+            </div>
+            <div class="help-description mt-4">
+              <h5><strong>Profession:</strong> <%= @user.profession %></h5>
+              <br>
+              <h5><strong>Certification:</strong> <%= @user.certification %></h5>
+              <br>
+              <h5><strong>Experience:</strong> <%= @user.experience %> years</h5>
+              <br>
+            </div>
+          </div>
+        <% end %>
+        <div class="reviews">
+          <h2>Reviews</h2>
+          <% if @user.helper_reviews.empty? %>
+            <li class="list-group-item" id="reviews-box">
+              <p>There is no review at the moment</p>
+            </li>
+          <% else %>
+            <% @user.helper_reviews.each do |review| %>
+              <div class="review-container mb-4">
+                <li class="list-group-item" id="reviews-box">
+                  <small>
+                    <% count = 0 %>
+                    <% 5.times do %>
+                      <% if review.rating > count %>
+                        <i class="fas fa-star"></i>
+                      <% else %>
+                        <i class="far fa-star"></i>
+                      <% end %>
+                      <% count += 1 %>
+                    <% end %>
+                  </small>
+                  <p><%= review.content %></p>
+                  <div class="review-links d-flex">
+                    <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
+                    <% if policy(review).update? %>
+                      <%= link_to edit_review_path(review) do %>
+                        <span class="far fa-edit mx-2"></span>
+                      <% end %>
+                    <% end %>
+                    <% if policy(review).destroy? %>
+                      <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
+                        <span class="far fa-trash-alt"></span>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </li>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <% if current_user != @user %>
+          <div id="review-form">
+            <h2 class='mt-4'>Add a new review</h2>
+            <%= simple_form_for [@user, Review.new] do |f| %>
+              <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
+              <%= f.input :content %>
+              <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
             <% end %>
           </div>
-          <div class="help-description mt-4">
-            <h5><strong>Profession:</strong> <%= @user.profession %></h5>
-            <br>
-            <h5><strong>Certification:</strong> <%= @user.certification %></h5>
-            <br>
-            <h5><strong>Experience:</strong> <%= @user.experience %> years</h5>
-            <br>
-          </div>
-        </div>
-      <% end %>
-      <div class="reviews">
-        <h2 class="mt-4">Reviews</h2>
-        <% if @user.helper_reviews.empty? %>
-          <li class="list-group-item mb-4" id="reviews-box">
-            <p>There is no review at the moment</p>
-          </li>
-        <% else %>
-          <% @user.helper_reviews.each do |review| %>
-            <div class="review-container mb-4">
-              <li class="list-group-item" id="reviews-box">
-                <small>
-                  <% count = 0 %>
-                  <% 5.times do %>
-                    <% if review.rating > count %>
-                      <i class="fas fa-star"></i>
-                    <% else %>
-                      <i class="far fa-star"></i>
-                    <% end %>
-                    <% count += 1 %>
-                  <% end %>
-                </small>
-                <p><%= review.content %></p>
-                <div class="review-links d-flex">
-                  <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
-                  <% if policy(review).update? %>
-                    <%= link_to edit_review_path(review) do %>
-                      <span class="far fa-edit mx-2"></span>
-                    <% end %>
-                  <% end %>
-                  <% if policy(review).destroy? %>
-                    <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
-                      <span class="far fa-trash-alt"></span>
-                    <% end %>
-                  <% end %>
-                </div>
-              </li>
-            </div>
-          <% end %>
+          <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-2">Add a review</button>
         <% end %>
       </div>
-      <% if current_user != @user %>
-        <div id="review-form">
-          <h2 class='mt-4'>Add a new review</h2>
-          <%= simple_form_for [@user, Review.new] do |f| %>
-            <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
-            <%= f.input :content %>
-            <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
-          <% end %>
-        </div>
-        <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-2">Add a review</button>
-      <% end %>
-      </div>
     </div>
-  </div>
+
