@@ -20,7 +20,6 @@ class ProposalsController < ApplicationController
   def create
     @project = Project.find(params["project_id"])
     @proposal = Proposal.new(proposal_params)
-    authorize @proposal
     @proposal.user = current_user
     @proposal.project = @project
     if @proposal.save
@@ -28,6 +27,7 @@ class ProposalsController < ApplicationController
     else
       redirect_to project_path(@project)
     end
+    authorize @proposal
   end
 
   def edit
