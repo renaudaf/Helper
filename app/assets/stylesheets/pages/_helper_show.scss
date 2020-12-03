@@ -13,7 +13,7 @@
   background-position: 50% 50%;
   .user-h1 {
     position: absolute;
-    top: 162px;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, 0);
     width: 400px;
@@ -23,16 +23,6 @@
     justify-content: center;
     color: white;
     text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
-  }
-}
-
-.user-show-btn {
-  margin-bottom: 90px;
-  border-radius: 4px;
-  background-color: #3b28cc;
-  border: none;
-  &:hover {
-    background-color: #3b28cc;
   }
 }
 
@@ -60,14 +50,14 @@
   width: 400px;
   min-height: 100px;
   max-height: 300px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .all-user-project {
   box-shadow: 0px 3px 15px rgba(149, 149, 149, 0.2);
   border-radius: 25px;
+  overflow: auto;
   width: 100%;
-  overflow: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,4 +74,30 @@
 #reviews-box {
   border-radius: 8px;
   box-shadow: 0px 3px 15px rgba(149, 149, 149, 0.2);
+}
+
+.helper-project-proposal {
+  // big one
+  display: flex;
+  margin-bottom: 18px;
+  border-radius: 4px;
+}
+
+.h-card-proposal-avatar {
+  // left div with avatar
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  padding: 8px;
+  flex-shrink: 0;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.h-imgs {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }

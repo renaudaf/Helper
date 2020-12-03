@@ -1,4 +1,4 @@
-<div class="big-container">
+<div class="footer-layout">
   <div class="user-show-banner">
     <div class="user-h1">
       <h1>Create your project</h1>
@@ -11,7 +11,7 @@
     </div>
     <div class="dash mb-4">
       <div class="project-content">
-        <h1 class="user-border-title">My projects</h1>
+        <h2 class="user-border-title">My projects</h2>
         <div class="all-user-projects">
           <% @projects.each do |project| %>
             <%= link_to project_path(project) do %>
@@ -26,31 +26,28 @@
         </div>
       </div>
       <div class="right-content text-center">
-        <h3 class="user-border-title text-left">Helper offers</h3>
+        <h2 class="user-border-title text-left">Helper offers</h2>
         <div class="messages p-3">
           <% @user.projects.each do |project| %>
             <% project.proposals.each do |proposal| %>
               <div class="user-project-proposal text-left">
                 <div class="card-proposal-avatar text-left">
-                  <% if current_user.photo.attached? == false %>
-                    <div class="text-center">
+                  <div class="text-center">
+                    <% if current_user.photo.attached? == false %>
                       <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
                       <p><%= proposal.user.firstname %></p>
-                    </div>
-                  <% else %>
-                    <div class="text-center">
-                        <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
-                        <p><%= proposal.user.firstname %></p>
-                    </div>
-                  <% end %>
+                    <% else %>
+                      <%= cl_image_tag current_user.photo.key, class: "imgs-show" %>
+                      <p><%= proposal.user.firstname %></p>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="card-proposal-product">
                   <h5><%= project.title %></h5>
                   <div class="pitch">
-                    <% if proposal.pitch.length > 75 %>
-                      <%= truncate(proposal.pitch, length: 75) %>
-                      <%= link_to '...Read more', '', class: "read-more", data: {full_pitch: proposal.pitch} %>
-
+                    <% if proposal.pitch.length > 65 %>
+                      <%= truncate(proposal.pitch, length: 65) %>
+                      <%= link_to 'Read more', '', class: "read-more", data: {full_pitch: proposal.pitch} %>
                     <% else %>
                       <%= proposal.pitch %>
                     <% end %>
@@ -66,4 +63,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

@@ -21,11 +21,25 @@ puts "Filling database"
 
 user = User.new(email: "bob@lewagon.org", password: "123456",
                    firstname: "Robert", lastname: "Smith", typehelper: false)
+file = URI.open('https://cdn.extra.ie/wp-content/uploads/2020/03/31083633/PRI148024672.jpg')
+user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user.save!
 
-helper = User.new(email: "tony@lewagon.org", password: "123456",
-                    firstname: "Tony", lastname: "Montana", typehelper: true,
-                    certification: "Professional", experience: 10, profession: "contractor")
+user2 = User.new(email: "anon@lewagon.org", password: "123456",
+                   firstname: "Anony", lastname: "Mous", typehelper: false)
+user2.save!
+
+user3 = User.new(email: "peach@lewagon.org", password: "123456",
+                   firstname: "Princess", lastname: "Peach", typehelper: false)
+file = URI.open('http://images2.fanpop.com/image/photos/13500000/peachy-princess-peach-13537344-600-1143.jpg')
+user3.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+user3.save!
+
+helper = User.new(email: "supermario@lewagon.org", password: "123456",
+                    firstname: "Mario", lastname: "Super", typehelper: true,
+                    certification: "Professional", experience: 10, profession: "plumber")
+file = URI.open('https://images.indulgexpress.com/uploads/user/imagelibrary/2017/11/15/original/Supermario.jpg')
+helper.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 helper.save!
 
 helper2 = User.new(email: "mike@lewagon.org", password: "123456",
@@ -59,7 +73,7 @@ project2.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png'
 project2.save!
 
 project3 = Project.new(title: "Paint the wall!",
-                          user_id: user.id,
+                          user_id: user2.id,
                           description: "Its so white everywhere, I feel like i'm in an hospital! Please bring color to my appartement",
                           measurements: [{name: "living room", dimension: "25ft by 10ft"}],
                           address: "498 rue de la tourelle, Quebec, Qc, Canada")
@@ -70,7 +84,7 @@ project3.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/png'
 project3.save!
 
 project4 = Project.new(title: "Have a bigger kitchen",
-                          user_id: user.id,
+                          user_id: user2.id,
                           description: "I want to remove my kitchen counter and extend my kitchen so I have more space to cook.",
                           measurements: [{name: "counter", dimension: "6ft by 2ft"}, {name: "kitchen", dimension: "10 by 2"}],
                           address: "345 rue lavigueur, Quebec, Qc, Canada")
@@ -83,7 +97,7 @@ project4.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png'
 project4.save!
 
 project5 = Project.new(title: "Renovate my bathroom",
-                          user_id: user.id,
+                          user_id: user3.id,
                           description: "I want to the floor tiles and remove the stair for the bath",
                           measurements: [{name: "bath", dimension: "2ft by 1ft"}, {name: "length", dimension: "10"}, {name: "width", dimension: "4"}],
                           address: "249 rue rimbaud, Saguenay, Qc, Canada")
@@ -94,9 +108,9 @@ project5.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/png'
 project5.save!
 
 
-proposal1 = Proposal.new(user_id: helper.id,
+proposal1 = Proposal.new(user_id: helper2.id,
                         project_id: project1.id,
-                        pitch: "Hello, I am available next week and could do this, I can do it for 500$"
+                        pitch: "Hello, I am available next week and could do thith, I can do it for 500$"
                         )
 proposal1.save!
 
