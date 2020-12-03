@@ -85,3 +85,29 @@
   border-radius: 8px;
   box-shadow: 0px 3px 15px rgba(149, 149, 149, 0.2);
 }
+
+.helper-project-proposal {
+  // big one
+  display: flex;
+  margin-bottom: 18px;
+  border-radius: 4px;
+}
+
+.h-card-proposal-avatar {
+  // left div with avatar
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  padding: 8px;
+  flex-shrink: 0;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.h-imgs {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
