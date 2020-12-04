@@ -13,8 +13,8 @@ class MessagesController < ApplicationController
     if @message.save && !@message.content.nil?
       ProposalChatChannel.broadcast_to(
         @proposal,
-        render_to_string(partial: "message", locals: { message: @message })
-        )
+        render_to_string(partial: "message_sent", locals: { message: @message })
+      )
     end
   end
 

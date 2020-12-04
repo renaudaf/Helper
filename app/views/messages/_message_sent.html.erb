@@ -3,7 +3,8 @@
   <small> from: <%= message.user.firstname %></small>
 </div> -->
 
-<div class="message <%= message.user == current_user ? "msg-sent" : "msg-received"%>" id="message-<%=message.id%>" >
+<div class="message" id="message-<%=message.id%>" data-senderId="<%= message.user_id %>" >
+<!-- <div class="message <%#= message.user == current_user ? "msg-sent" : "msg-received"%>" id="message-<%=message.id%>" > -->
   <small><%= message.user.firstname %></small>
   <div class="msg-content">
     <h6> <%= message.content %> </h6>
