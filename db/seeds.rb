@@ -114,7 +114,7 @@ proposal1 = Proposal.new(user_id: helper2.id,
                         )
 proposal1.save!
 
-proposal2 = Proposal.new(user_id: helper.id,
+proposal2 = Proposal.new(user_id: helper2.id,
                         project_id: project2.id,
                         pitch: "Hello, I am available next week and could do this, I can do it for 500$, please clean everything before"
                         )
