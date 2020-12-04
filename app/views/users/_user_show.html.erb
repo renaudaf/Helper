@@ -14,7 +14,7 @@
       <div class="all-user-projects">
         <% if @projects.empty? %>
           <strong>
-            <p class="mt-4"> You don't have any project yet</p>
+            <p class="mt-4"> You don't have any projects yet</p>
           </strong>
         <% else %>
           <% @projects.each do |project| %>
@@ -35,7 +35,7 @@
       <div class="messages">
         <% if @projects.empty? %>
           <strong>
-            <p class="mt-4"> You haven't receive any proposals yet</p>
+            <p class="mt-4"> You haven't received any proposals yet</p>
           </strong>
         <% else %>
           <% @user.projects.each do |project| %>

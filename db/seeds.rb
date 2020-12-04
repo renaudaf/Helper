@@ -49,7 +49,7 @@ helper2.save!
 
 
 project1 = Project.new(title: "Living room renewal",
-                          user_id: user.id,
+                          user_id: user2.id,
                           description: "I want my living room to be brand new!",
                           measurements: [{name: "Couch", dimension: "13ft by 15ft"}, {name: "TV stand", dimension: "10ft by 12ft"}, {name: "Table", dimension: "15ft by 15ft"}],
                           address: "5330 rue Chambord, Montreal, Qc, Canada")
@@ -60,7 +60,7 @@ project1.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/png'
 project1.save!
 
 project2 = Project.new(title: "New kitchen, new life!",
-                          user_id: user.id,
+                          user_id: user2.id,
                           description: "I want to remove those ugly green faience and change the cupboards",
                           measurements: [{name: "Counter", dimension: "25ft by 2ft"}, {name: "Table", dimension: "5ft by 2ft"}, {name: "Black shelf", dimension: "4ft"}],
                           address: "5320 rue Lanaudiere, Montreal, Qc, Canada")
@@ -72,8 +72,8 @@ project2.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/png'
 project2.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 project2.save!
 
-project3 = Project.new(title: "Paint the wall!",
-                          user_id: user2.id,
+project3 = Project.new(title: "Painting job for appartement",
+                          user_id: user3.id,
                           description: "Its so white everywhere, I feel like i'm in an hospital! Please bring color to my appartement",
                           measurements: [{name: "living room", dimension: "25ft by 10ft"}],
                           address: "498 rue de la tourelle, Quebec, Qc, Canada")
@@ -84,7 +84,7 @@ project3.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/png'
 project3.save!
 
 project4 = Project.new(title: "Have a bigger kitchen",
-                          user_id: user2.id,
+                          user_id: user3.id,
                           description: "I want to remove my kitchen counter and extend my kitchen so I have more space to cook.",
                           measurements: [{name: "counter", dimension: "6ft by 2ft"}, {name: "kitchen", dimension: "10 by 2"}],
                           address: "345 rue lavigueur, Quebec, Qc, Canada")
@@ -120,11 +120,6 @@ proposal2 = Proposal.new(user_id: helper.id,
                         )
 proposal2.save!
 
-message2 = Message.new(user_id: user.id,
-                      proposal_id: proposal2.id,
-                      content: "Hello, 500 is fine for me. I will try to clean it as much as possible")
-message2.save!
-
 
 tags = ["Electrical", "Plumbing", "Renovation", "Masonery", "Roofing", "Demolition", "Outdoor", "Painting"]
 
@@ -144,7 +139,7 @@ project_tag5 = ProjectTag.new(project: project4, tag: Tag.all[3])
 project_tag5.save!
 project_tag6 = ProjectTag.new(project: project4, tag: Tag.all[5])
 project_tag6.save!
-project_tag7 = ProjectTag.new(project: project5, tag: Tag.all[3])
+project_tag7 = ProjectTag.new(project: project5, tag: Tag.all[1])
 project_tag7.save!
 project_tag8 = ProjectTag.new(project: project5, tag: Tag.all[5])
 project_tag8.save!
