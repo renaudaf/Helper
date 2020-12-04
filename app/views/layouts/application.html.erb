@@ -32,7 +32,7 @@
     <% end %>
     <%= render 'shared/flashes' %>
       <%= yield %>
-      <% unless request.path == "/users/sign_in" || request.path == "/" || request.path == "/users/sign_up" %>
+      <% unless request.path == "/" %>
         <div style="height: 64px;">
             <%= render 'shared/footer' %>
         </div>

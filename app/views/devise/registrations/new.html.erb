@@ -1,60 +1,62 @@
 <div class="container">
-  <% if params[:type] == "helper" || resource.typehelper %>
-    <div class="editing-title">
-      <h1>Helper sign up</h1>
-    </div>
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
-      <div class="form-inputs">
-        <%= f.input :typehelper, as: :hidden, input_html: {value: true} %>
-        <%= f.input :firstname, label: "First name", placeholder: 'Joe', autofocus: true %>
-        <%= f.input :lastname, label: "Last name", placeholder: 'Smith' %>
-        <%= f.input :photo, as: :file %>
-        <%= f.input :email,
+  <div class="form-container">
+    <% if params[:type] == "helper" || resource.typehelper %>
+      <div class="editing-title">
+        <h1>Helper sign up</h1>
+      </div>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :typehelper, as: :hidden, input_html: {value: true} %>
+          <%= f.input :firstname, label: "First name", placeholder: 'Joe', autofocus: true %>
+          <%= f.input :lastname, label: "Last name", placeholder: 'Smith' %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :email,
                         placeholder: 'Joe.Smith@email.com',
                         required: true,
                         input_html: { autocomplete: "off" } %>
-        <%= f.input :password,
+          <%= f.input :password,
                         required: true,
                         hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                         input_html: { autocomplete: "off" } %>
-        <%= f.input :password_confirmation,
+          <%= f.input :password_confirmation,
                         required: true,
                         input_html: { autocomplete: "off" } %>
-        <%= f.input :experience, placeholder: 'Number of years'%>
-        <%= f.input :profession %>
-        <%= f.input :certification %>
+          <%= f.input :experience, placeholder: 'Number of years'%>
+          <%= f.input :profession %>
+          <%= f.input :certification %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up", class: "mb-5"  %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="editing-title">
+        <h1>User sign up</h1>
       </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up", class: "mb-5"  %>
-      </div>
-    <% end %>
-  <% else %>
-    <div class="editing-title">
-      <h1>User sign up</h1>
-    </div>
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
-      <div class="form-inputs">
-        <%= f.input :typehelper, as: :hidden, input_html: {value: false} %>
-        <%= f.input :firstname, label: "First name", placeholder: 'Joe', autofocus: true %>
-        <%= f.input :lastname, label: "Last name", placeholder: 'Smith' %>
-        <%= f.input :photo, as: :file %>
-        <%= f.input :email,
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :typehelper, as: :hidden, input_html: {value: false} %>
+          <%= f.input :firstname, label: "First name", placeholder: 'Joe', autofocus: true %>
+          <%= f.input :lastname, label: "Last name", placeholder: 'Smith' %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :email,
                         required: true,
                         placeholder: 'Joe.Smith@email.com',
                         input_html: { autocomplete: "off" }%>
-        <%= f.input :password,
+          <%= f.input :password,
                         required: true,
                         hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                         input_html: { autocomplete: "off" } %>
-        <%= f.input :password_confirmation,
+          <%= f.input :password_confirmation,
                         required: true,
                         input_html: { autocomplete: "off" } %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Sign up" %>
-      </div>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

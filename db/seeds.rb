@@ -43,7 +43,7 @@ helper.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 helper.save!
 
 helper2 = User.new(email: "mike@lewagon.org", password: "123456",
-                    firstname: "Mike", lastname: "Tyson", typehelper: true,
+                    firstname: "Mike", lastname: "Tyssonier", typehelper: true,
                     certification: "Apprentice", experience: 2, profession: "demolisher")
 helper2.save!
 

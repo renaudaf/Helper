@@ -51,22 +51,14 @@
               <div class="h-proposal">
                 <div class="helper-project-proposal text-left">
                   <div class="h-card-proposal-avatar text-left">
-                    <div class="text-center">
+                    <div class="text-center" style="position:relative; height:70px; width:70px;">
                       <% if proposal.project.user.photo.attached? == false %>
-                        <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
+                        <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "h-imgs" %>
                       <% else %>
                         <%= cl_image_tag proposal.project.user.photo.key, class: "h-imgs" %>
+                        <%= render  "/shared/notifications", proposal: proposal %>
                       <% end %>
-                      <% if proposal.accepted == 'pending' %>
-                        <i class="fas fa-circle" id="yellow-circle"></i>
-                      <% end %>
-                      <% if proposal.accepted == 'denied' %>
-                        <i class="fas fa-circle" id="red-circle"></i>
-                      <% end %>
-                      <% if proposal.accepted == 'accepted' %>
-                        <i class="fas fa-circle" id="green-circle"></i>
-                      <% end %>
-                      <p><strong><%= proposal.project.user.firstname %></strong></p>
+                      <p class="pr-2"><strong><%= proposal.project.user.firstname %></strong></p>
                     </div>
                   </div>
                   <div class="card-proposal-product mt-2">
