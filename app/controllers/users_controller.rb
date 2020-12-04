@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @projects = @user.projects
-    @proposals = Proposal.where(project_id: @projects.map(&:id))
+    @proposals = @user.proposals
+    @uproposals = Proposal.where(project_id: @projects.map(&:id))
     authorize @user
     @reviews = Review.all
   end
