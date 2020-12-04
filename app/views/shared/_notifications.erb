@@ -1,0 +1,9 @@
+<% if proposal.accepted == 'pending' %>
+  <i class="fas fa-circle" id="yellow-circle"></i>
+<% end %>
+<% if proposal.accepted == 'denied' %>
+  <i class="fas fa-circle" id="red-circle"></i>
+<% end %>
+<% if proposal.accepted == 'accepted' %>
+  <i class="fas fa-circle" id="green-circle"></i>
+<% end %>

@@ -41,4 +41,8 @@
 
 .info-footer {
  display: flex;
+ a {
+  text-decoration: none;
+  font-size: 10px;
+ }
 }
