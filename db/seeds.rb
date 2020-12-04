@@ -29,16 +29,16 @@ user2 = User.new(email: "anon@lewagon.org", password: "123456",
                    firstname: "Anony", lastname: "Mous", typehelper: false)
 user2.save!
 
-user3 = User.new(email: "peach@lewagon.org", password: "123456",
-                   firstname: "Princess", lastname: "Peach", typehelper: false)
+user3 = User.new(email: "emilie@lewagon.org", password: "123456",
+                   firstname: "Emilie", lastname: "Something", typehelper: false)
 file = URI.open('http://images2.fanpop.com/image/photos/13500000/peachy-princess-peach-13537344-600-1143.jpg')
 user3.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 user3.save!
 
-helper = User.new(email: "supermario@lewagon.org", password: "123456",
-                    firstname: "Mario", lastname: "Super", typehelper: true,
+helper = User.new(email: "mario@lewagon.org", password: "123456",
+                    firstname: "Mario", lastname: "Tremblay", typehelper: true,
                     certification: "Professional", experience: 10, profession: "plumber")
-file = URI.open('https://images.indulgexpress.com/uploads/user/imagelibrary/2017/11/15/original/Supermario.jpg')
+file = URI.open('https://media.istockphoto.com/photos/smiling-male-plumber-with-pipe-wrench-standing-arms-crossed-picture-id1048532228?k=6&m=1048532228&s=612x612&w=0&h=tFB38ToGIK1w5thraooHrmNRrAp6BP4Lq5C_shFUNSc=')
 helper.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 helper.save!
 
