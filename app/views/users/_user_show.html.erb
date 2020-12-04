@@ -37,8 +37,13 @@
           <strong>
             <p class="mt-4"> You haven't received any proposals yet</p>
           </strong>
-        <% else %>
-          <% @user.projects.each do |project| %>
+        <% end %>
+        <% @user.projects.each do |project| %>
+          <% if project.proposals.empty? %>
+            <strong>
+              <p class="mt-4"> You haven't received any proposals yet</p>
+            </strong>
+          <% else %>
             <% project.proposals.each do |proposal| %>
               <div class="user-project-proposal text-left">
                 <div class="card-proposal-avatar text-left">
@@ -50,7 +55,6 @@
                       <%= cl_image_tag proposal.user.photo.key, class: "imgs-show" %>
                       <p><%= proposal.user.firstname %></p>
                     <% end %>
-
                     <div class="review-star-on-user-show">
                       <% arr = [] %>
                       <% @reviews.each do |review| %>
@@ -72,7 +76,6 @@
                           <% count += 1 %>
                         <% end %>
                       <% end %>
-
                     </div>
                   </div>
                 </div>
