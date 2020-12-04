@@ -1,72 +1,75 @@
-  <div class="user-show-banner">
-    <div class="user-h1">
-      <h1>Create your project</h1>
-    </div>
-    <%= link_to "Get started", new_project_path, class: "user-show-btn home-btn btn btn-primary" %>
+<div class="user-show-banner">
+  <div class="user-h1">
+    <h1>Create your project</h1>
   </div>
-  <div class="container">
-    <div class="welcome-user d-flex justify-content-center align-items-center">
-      <h1>Welcome <%= @user.firstname %>!</h1>
-    </div>
-    <div class="dash mb-4">
-      <div class="project-content">
-        <h2 class="user-border-title">My projects</h2>
-          <div class="all-user-projects">
+  <%= link_to "Get started", new_project_path, class: "user-show-btn home-btn btn btn-primary" %>
+</div>
+<div class="container">
+  <div class="welcome-user d-flex justify-content-center align-items-center">
+    <h1>Welcome <%= @user.firstname %>!</h1>
+  </div>
+  <div class="dash">
+    <div class="project-content">
+      <h2 class="user-border-title">My projects</h2>
+      <div class="all-user-projects">
         <% if @projects.empty? %>
-          <strong><p class="mt-4"> You don't have any project yet</p></strong>
+          <strong>
+            <p class="mt-4"> You don't have any project yet</p>
+          </strong>
         <% else %>
-            <% @projects.each do |project| %>
-              <%= link_to project_path(project) do %>
-                <div class="project-img mb-4">
-                  <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
-                  <div class="img-content">
-                    <h4 class="text-white"><%= project.title %></h4>
-                  </div>
+          <% @projects.each do |project| %>
+            <%= link_to project_path(project) do %>
+              <div class="project-img">
+                <%= cl_image_tag project.photos.first.key, class: "imgs-show" %>
+                <div class="img-content">
+                  <h4 class="text-white"><%= project.title %></h4>
                 </div>
-              <% end %>
+              </div>
             <% end %>
+          <% end %>
         <% end %>
-        </div>
       </div>
-      <div class="right-content text-center">
-        <h2 class="user-border-title text-left">Helper offers</h2>
-        <div class="messages">
-          <% if @user.proposals.empty? %>
-            <strong><p class="mt-4"> You haven't receive any proposals yet</p></strong>
-          <% else %>
-            <% @user.projects.each do |project| %>
-              <% project.proposals.each do |proposal| %>
-                <div class="user-project-proposal text-left">
-                  <div class="card-proposal-avatar text-left">
-                    <div class="text-center">
-                      <% if proposal.user.photo.attached? == false %>
-                        <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
-                        <p><%= proposal.user.firstname %></p>
-                      <% else %>
-                        <%= cl_image_tag proposal.user.photo.key, class: "imgs-show" %>
-                        <p><%= proposal.user.firstname %></p>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="card-proposal-product">
-                    <h5><%= project.title %></h5>
-                    <div class="pitch">
-                      <% if proposal.pitch.length > 65 %>
-                        <%= truncate(proposal.pitch, length: 65) %>
-                        <%= link_to 'Read more', '', class: "read-more", data: {full_pitch: proposal.pitch} %>
-                      <% else %>
-                        <%= proposal.pitch %>
-                      <% end %>
-                    </div>
-                    <%= link_to proposal_path(proposal) ,class: "user-message" do %>
-                      <i class="fas fa-envelope"></i>
+    </div>
+    <div class="right-content text-center">
+      <h2 class="user-border-title text-left">Helper offers</h2>
+      <div class="messages">
+        <% if @projects.empty? %>
+          <strong>
+            <p class="mt-4"> You haven't receive any proposals yet</p>
+          </strong>
+        <% else %>
+          <% @user.projects.each do |project| %>
+            <% project.proposals.each do |proposal| %>
+              <div class="user-project-proposal text-left">
+                <div class="card-proposal-avatar text-left">
+                  <div class="text-center">
+                    <% if proposal.user.photo.attached? == false %>
+                      <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
+                      <p><%= proposal.user.firstname %></p>
+                    <% else %>
+                      <%= cl_image_tag proposal.user.photo.key, class: "imgs-show" %>
+                      <p><%= proposal.user.firstname %></p>
                     <% end %>
                   </div>
                 </div>
-              <% end %>
+                <div class="card-proposal-product">
+                  <h5><%= project.title %></h5>
+                  <div class="pitch">
+                    <% if proposal.pitch.length > 65 %>
+                      <%= truncate(proposal.pitch, length: 65) %>
+                      <%= link_to 'Read more', '', class: "read-more", data: {full_pitch: proposal.pitch} %>
+                    <% else %>
+                      <%= proposal.pitch %>
+                    <% end %>
+                  </div>
+                  <%= link_to proposal_path(proposal) ,class: "user-message" do %>
+                    <i class="fas fa-envelope"></i>
+                  <% end %>
+                </div>
+              </div>
             <% end %>
           <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

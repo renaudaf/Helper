@@ -1,50 +1,48 @@
-    <div class="container">
-      <div class="editing-title my-4">
-        <h1>Helpers</h1>
-      </div>
-      <div class="row">
-        <% @users.each do |user| %>
-          <% if user.typehelper == true %>
-            <div class="col-sm-12 col-lg-6">
-              <div class="cardinfo mb-3" link_to user_path(user)>
-                <%= link_to user_path(user) do %>
-                  <div class="cardborder">
-                    <div class="name">
-                      <h3><%= user.firstname.capitalize %> <%= user.lastname.capitalize %></h3>
-                      <h5><%= user.certification.capitalize %> <%= user.profession.capitalize %></h5>
-                    </div>
-                    <div class="emailinfo">
-                      <h5><%= "Email:" %></h5>
-                      <h6><%= user.email %></h6>
-                    </div>
-                    <h6><%= user.experience %> <%= "years of experience" %></h6>
-                    <% arr = [] %>
-                    <% @reviews.each do |review| %>
-                      <% if review.helper_id == user.id %>
-                        <% arr << review.rating %>
-                      <% end %>
-                    <% end %>
-                    <% if arr.count == 0 %>
-                      <% rate = 0 %>
+<div class="container">
+  <div class="editing-title my-4">
+    <h1>Helpers</h1>
+  </div>
+  <div class="row">
+    <% @users.each do |user| %>
+      <% if user.typehelper == true %>
+        <div class="col-sm-12 col-lg-6">
+          <div class="cardinfo mb-3" link_to user_path(user) id="helper-a">
+            <%= link_to user_path(user) do %>
+              <div class="cardborder">
+                <div class="name">
+                  <h3><%= user.firstname.capitalize %> <%= user.lastname.capitalize %></h3>
+                  <h5><%= user.certification.capitalize %> <%= user.profession.capitalize %></h5>
+                </div>
+                <div class="emailinfo">
+                  <h5><%= "Email:" %></h5>
+                  <h6><%= user.email %></h6>
+                </div>
+                <h6><%= user.experience %> <%= "years of experience" %></h6>
+                <% arr = [] %>
+                <% @reviews.each do |review| %>
+                  <% if review.helper_id == user.id %>
+                    <% arr << review.rating %>
+                  <% end %>
+                <% end %>
+                <% if arr.count == 0 %>
+                  <% rate = 0 %>
+                <% else %>
+                  <% rate = arr.sum / arr.count %>
+                  <% count = 0 %>
+                  <% 5.times do %>
+                    <% if rate > count %>
+                      <i class="fas fa-star"></i>
                     <% else %>
-                      <% rate = arr.sum / arr.count %>
-                      <% count = 0 %>
-                      <% 5.times do %>
-                        <% if rate > count %>
-                          <i class="fas fa-star"></i>
-                        <% else %>
-                          <i class="far fa-star"></i>
-                        <% end %>
-                        <% count += 1 %>
-                      <% end %>
+                      <i class="far fa-star"></i>
                     <% end %>
-                  </div>
+                    <% count += 1 %>
+                  <% end %>
                 <% end %>
               </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
-
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

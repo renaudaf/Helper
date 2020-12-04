@@ -1,6 +1,6 @@
 <div class="container">
- <%= simple_form_for [ @project, @proposal ] do |f| %>
- <%= f.input :pitch, placeholder: "Begin your initial interaction with the potential customer here" %>
- <%= f.submit %>
- <% end %>
+  <%= simple_form_for [ @project, @proposal ] do |f| %>
+    <%= f.input :pitch, placeholder: "Begin your initial interaction with the potential customer here" %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
 </div>

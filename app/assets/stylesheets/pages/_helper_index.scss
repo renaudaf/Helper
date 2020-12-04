@@ -70,6 +70,7 @@
   text-align: center;
   color: black;
   transition: transform .6s ease;
+  min-height: 316px;
   h3 {
     text-decoration-line: underline;
     color: black;
@@ -95,4 +96,11 @@
   border: solid #07689F;
   padding: 40px;
   border-radius: 5px;
+  min-height: 270px;
+}
+
+#helper-a {
+  a {
+    text-decoration: none;
+  }
 }

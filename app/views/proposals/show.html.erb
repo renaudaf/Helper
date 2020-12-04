@@ -1,6 +1,6 @@
 <div class="container">
   <div id="chat-title">
-    <h2> <%= current_user.typehelper == false ? "Chat with #{@proposal.user.firstname} for your #{@project.title}": "Your proposal for #{@project.user.firstname}'s #{@project.title}" %> project </h2>
+    <h2 class="text-center"> <%= current_user.typehelper == false ? "Chat with #{@proposal.user.firstname} for your #{@project.title}": "Your proposal for #{@project.user.firstname}'s #{@project.title}" %> project </h2>
   </div>
   <div class="d-flex justify-content-around" id="chat-room-full">
     <div id="chat-box">
@@ -28,11 +28,11 @@
         <% end %>
       </div>
     </div>
-    <div class="right-content text-center w-25">
-      <% if current_user.typehelper == false %>
+    <% if current_user.typehelper == false %>
+      <div class="right-content text-center w-25">
         <%= simple_form_for @proposal do |f| %>
           <%= f.input :accepted, label: "Change the status of this offer", collection: ["accepted", "denied", "pending"]%>
-          <%= f.submit "Confirm" %>
+          <%= f.submit "Confirm", class: "btn btn-primary" %>
         <% end %>
       <% end %>
     </div>

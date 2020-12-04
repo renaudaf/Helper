@@ -1,164 +1,163 @@
-
-  <% if current_user == @user%>
-    <div class="show-banner">
-      <div class="user-h1">
-        <% if @user.proposals.empty? %>
-          <h1>Find your first project</h1>
-        <% else %>
-          <h1>Find a project</h1>
-        <% end  %>
-      </div>
-      <%= link_to "Start browsing", projects_path, class: "user-show-btn home-btn btn btn-primary" %>
+<% if current_user == @user%>
+  <div class="show-banner">
+    <div class="user-h1">
+      <% if @user.proposals.empty? %>
+        <h1>Find your first project</h1>
+      <% else %>
+        <h1>Find a project</h1>
+      <% end  %>
     </div>
-    <div class="container">
-      <div class="welcome-title">
-        <h1>Welcome <%= @user.firstname %>!</h1>
-      </div>
-      <div class="dash">
-        <div class="project-content">
-          <div class="project-h">
-            <h2>Current clients</h2>
-          </div>
-          <div class="all-user-project">
-            <% if @projects.empty? %>
-              <strong>
-                <p class="mt-4"> You don't have any project yet</p>
-              </strong>
-            <% else %>
-              <% @user.proposals.each do |proposal| %>
-                <%= link_to project_path(proposal.project) do %>
-                  <div class="project-img mb-4">
-                    <%= cl_image_tag proposal.project.photos.first.key, class: "imgs-show" %>
-                    <div class="img-content">
-                      <h4 class="text-white"><%= proposal.project.title %></h4>
-                      <p class="text-white"><%= proposal.project.user.firstname %></p>
-                      <p class="text-white"><%= proposal.project.address %></p>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
+    <%= link_to "Start browsing", projects_path, class: "user-show-btn home-btn btn btn-primary" %>
+  </div>
+  <div class="container">
+    <div class="welcome-title">
+      <h1>Welcome <%= @user.firstname %>!</h1>
+    </div>
+    <div class="dash">
+      <div class="project-content">
+        <div class="project-h">
+          <h2>Current clients</h2>
         </div>
-        <div class="right-content text-center">
-          <div class="project-h">
-            <h2>My proposals</h2>
-          </div>
-          <div class="messages">
-            <% if @user.proposals.empty? %>
-              <p> You haven't made any proposals yet</p>
-            <% else %>
-              <% @user.proposals.each do |proposal| %>
-                <div class="h-proposal">
-                  <div class="helper-project-proposal text-left">
-                    <div class="h-card-proposal-avatar text-left">
-                      <div class="text-center">
-                        <% if proposal.project.user.photo.attached? == false %>
-                          <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
-                        <% else %>
-                          <%= cl_image_tag proposal.project.user.photo.key, class: "h-imgs" %>
-                        <% end %>
-                        <% if proposal.accepted == 'pending' %>
-                          <i class="fas fa-circle" id="yellow-circle"></i>
-                        <% end %>
-                        <% if proposal.accepted == 'denied' %>
-                          <i class="fas fa-circle" id="red-circle"></i>
-                        <% end %>
-                        <% if proposal.accepted == 'accepted' %>
-                          <i class="fas fa-circle" id="green-circle"></i>
-                        <% end %>
-                        <p><strong><%= proposal.project.user.firstname %></strong></p>
-                      </div>
-                    </div>
-                    <div class="card-proposal-product mt-2">
-                      <h5><%= proposal.project.title %></h5>
-                      <p><%= proposal.project.address %></p>
-                      <%= link_to proposal_path(proposal) ,class: "user-message" do %>
-                        <i class="fas fa-envelope"></i>
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% else %>
-      <div class="layout">
-        <div class="container">
-          <div class="editing-title-2">
-            <h1><%= @user.firstname  %> <%= @user.lastname  %> </h1>
-          </div>
-          <div class="helper-card">
-            <div class="helper-img">
-              <% if @user.photo.attached? == false %>
-                <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
-              <% else %>
-                <%= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
-              <% end %>
-            </div>
-            <div class="help-description mt-4">
-              <h5><strong>Profession:</strong> <%= @user.profession %></h5>
-              <br>
-              <h5><strong>Certification:</strong> <%= @user.certification %></h5>
-              <br>
-              <h5><strong>Experience:</strong> <%= @user.experience %> years</h5>
-              <br>
-            </div>
-          </div>
-        <% end %>
-        <div class="reviews">
-          <h2>Reviews</h2>
-          <% if @user.helper_reviews.empty? %>
-            <li class="list-group-item" id="reviews-box">
-              <p>There is no review at the moment</p>
-            </li>
+        <div class="all-user-project">
+          <% if @user.proposals.empty? %>
+            <strong>
+              <p class="mt-4"> You don't have any project yet</p>
+            </strong>
           <% else %>
-            <% @user.helper_reviews.each do |review| %>
-              <div class="review-container mb-4">
-                <li class="list-group-item" id="reviews-box">
-                  <small>
-                    <% count = 0 %>
-                    <% 5.times do %>
-                      <% if review.rating > count %>
-                        <i class="fas fa-star"></i>
-                      <% else %>
-                        <i class="far fa-star"></i>
-                      <% end %>
-                      <% count += 1 %>
-                    <% end %>
-                  </small>
-                  <p><%= review.content %></p>
-                  <div class="review-links d-flex">
-                    <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
-                    <% if policy(review).update? %>
-                      <%= link_to edit_review_path(review) do %>
-                        <span class="far fa-edit mx-2"></span>
-                      <% end %>
-                    <% end %>
-                    <% if policy(review).destroy? %>
-                      <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
-                        <span class="far fa-trash-alt"></span>
-                      <% end %>
-                    <% end %>
+            <% @user.proposals.each do |proposal| %>
+              <%= link_to project_path(proposal.project) do %>
+                <div class="project-img">
+                  <%= cl_image_tag proposal.project.photos.first.key, class: "imgs-show" %>
+                  <div class="img-content">
+                    <h4 class="text-white"><%= proposal.project.title %></h4>
+                    <p class="text-white"><%= proposal.project.user.firstname %></p>
+                    <p class="text-white"><%= proposal.project.address %></p>
                   </div>
-                </li>
-              </div>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
-        <% if current_user != @user %>
-          <div id="review-form">
-            <h2 class='mt-4'>Add a new review</h2>
-            <%= simple_form_for [@user, Review.new] do |f| %>
-              <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
-              <%= f.input :content %>
-              <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
+      </div>
+      <div class="right-content text-center">
+        <div class="project-h">
+          <h2>My proposals</h2>
+        </div>
+        <div class="messages">
+          <% if @proposals.empty? %>
+           <strong><p class="mt-4">You haven't made any proposals yet</p></strong> 
+          <% else %>
+            <% @proposals.each do |proposal| %>
+              <div class="h-proposal">
+                <div class="helper-project-proposal text-left">
+                  <div class="h-card-proposal-avatar text-left">
+                    <div class="text-center">
+                      <% if proposal.project.user.photo.attached? == false %>
+                        <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
+                      <% else %>
+                        <%= cl_image_tag proposal.project.user.photo.key, class: "h-imgs" %>
+                      <% end %>
+                      <% if proposal.accepted == 'pending' %>
+                        <i class="fas fa-circle" id="yellow-circle"></i>
+                      <% end %>
+                      <% if proposal.accepted == 'denied' %>
+                        <i class="fas fa-circle" id="red-circle"></i>
+                      <% end %>
+                      <% if proposal.accepted == 'accepted' %>
+                        <i class="fas fa-circle" id="green-circle"></i>
+                      <% end %>
+                      <p><strong><%= proposal.project.user.firstname %></strong></p>
+                    </div>
+                  </div>
+                  <div class="card-proposal-product mt-2">
+                    <h5><%= proposal.project.title %></h5>
+                    <p><%= proposal.project.address %></p>
+                    <%= link_to proposal_path(proposal) ,class: "user-message" do %>
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
-          </div>
-          <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-2">Add a review</button>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-
+  <% else %>
+    <div class="layout">
+      <div class="container">
+        <div class="editing-title-2">
+          <h1><%= @user.firstname  %> <%= @user.lastname  %> </h1>
+        </div>
+        <div class="helper-card">
+          <div class="helper-img">
+            <% if @user.photo.attached? == false %>
+              <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
+            <% else %>
+              <%= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
+            <% end %>
+          </div>
+          <div class="help-description mt-4">
+            <h5><strong>Profession:</strong> <%= @user.profession %></h5>
+            <br>
+            <h5><strong>Certification:</strong> <%= @user.certification %></h5>
+            <br>
+            <h5><strong>Experience:</strong> <%= @user.experience %> years</h5>
+            <br>
+          </div>
+        </div>
+      <% end %>
+      <div class="reviews">
+        <h2>Reviews</h2>
+        <% if @user.helper_reviews.empty? %>
+          <li class="list-group-item" id="reviews-box">
+            <p>There is no review at the moment</p>
+          </li>
+        <% else %>
+          <% @user.helper_reviews.each do |review| %>
+            <div class="review-container mb-4">
+              <li class="list-group-item" id="reviews-box">
+                <small>
+                  <% count = 0 %>
+                  <% 5.times do %>
+                    <% if review.rating > count %>
+                      <i class="fas fa-star"></i>
+                    <% else %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                    <% count += 1 %>
+                  <% end %>
+                </small>
+                <p><%= review.content %></p>
+                <div class="review-links d-flex">
+                  <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
+                  <% if policy(review).update? %>
+                    <%= link_to edit_review_path(review) do %>
+                      <span class="far fa-edit mx-2"></span>
+                    <% end %>
+                  <% end %>
+                  <% if policy(review).destroy? %>
+                    <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <span class="far fa-trash-alt"></span>
+                    <% end %>
+                  <% end %>
+                </div>
+              </li>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <% if current_user != @user %>
+        <div id="review-form">
+          <h2 class='mt-4'>Add a new review</h2>
+          <%= simple_form_for [@user, Review.new] do |f| %>
+            <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>
+            <%= f.input :content %>
+            <%= f.submit "Submit", class: "btn btn-primary", id: "show-btn" %>
+          <% end %>
+        </div>
+        <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-2">Add a review</button>
+      <% end %>
+    </div>
+  </div>
+</div>
