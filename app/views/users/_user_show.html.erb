@@ -33,13 +33,13 @@
     <div class="right-content text-center">
       <h2 class="user-border-title text-left">Helper offers</h2>
       <div class="messages">
-        <% if @proposals.empty? || @projects.empty? %>
+        <% if @uproposals.empty? || @projects.empty? %>
           <strong>
             <p class="mt-4"> You don't have any projects yet</p>
           </strong>
         <% end %>
         <% @user.projects.each do |project| %>
-          <% if @proposals.empty? %>
+          <% if @uproposals.empty? %>
             <strong>
               <p class="mt-4"> You haven't received any proposals yet</p>
             </strong>
