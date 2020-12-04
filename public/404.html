@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Under Construction</title>
+  <title>Sorry but you are lost. The page you were looking for doesn't exist. (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -10,31 +10,20 @@
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
   <style>
     
-  .rails-default-error-page {
+  .content {
     background-color: #EFEFEF;    
     text-align: center;    
-    font-size: 30px;    
-    
+    font-size: 30px;     
   }
 
-  .rails-default-error-page div.dialog {
+  .dialog {
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
-    padding-left: 100px;  
-    padding-right: 100px;
-    padding-bottom: 30px;
-    padding-top: 20px;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-    border-radius: 15px;
-    
+    border-radius: 15px;   
+    background-color: #07689f; 
   }
-
-  .rails-default-error-page h1 {   
-    line-height: 1.5em;
-  }
-
-  
 
   .logo {
     font-size: 50px;
@@ -56,10 +45,11 @@
     text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3)
   }
 
-  .dialog {
-    
-    background-image: url(/assets/helperbackg.png); 
-    background-repeat: no-repeat;
+  .imgback img{    
+     
+    width: 100%;
+    height: 550px;
+    z-index: -1;
   }
   
 
@@ -78,29 +68,29 @@
     background: rgba(59, 40, 204, .15);
     opacity: 90%;
     border-radius: 5px;
-  }
-
- 
+    position: absolute;
+    top: 200px;
+    left: center;
+    padding-left: 50px;
+  } 
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  
+<body class="content">    
   <div class="dialog">
+    <div class="imgback">
+      <img src="/image/helperbackg.png" alt="">   
+    </div> 
     <div class="transback">
       <div class="logo">
         <h1>Helper<i class="fas fa-wrench"></i></p>
-      </div>
-      
+      </div>      
       <div class="mainmessage">
         <h1>The page you were looking for doesn't exist.</h1>
       </div>  
-
       <div class='optmessage'>
         <p>You may have mistyped the address or the page may have moved.</p>
       </div>
-
     </div>
   </div>
 </body>
