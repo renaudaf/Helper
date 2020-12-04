@@ -45,7 +45,7 @@
         </div>
         <div class="messages">
           <% if @proposals.empty? %>
-           <strong><p class="mt-4">You haven't made any proposals yet</p></strong> 
+           <strong><p class="mt-4">You haven't made any proposals yet</p></strong>
           <% else %>
             <% @proposals.each do |proposal| %>
               <div class="h-proposal">
@@ -84,17 +84,21 @@
       </div>
     </div>
   <% else %>
+
+
+
     <div class="layout">
       <div class="container">
         <div class="editing-title-2">
           <h1><%= @user.firstname  %> <%= @user.lastname  %> </h1>
         </div>
         <div class="helper-card">
-          <div class="helper-img">
             <% if @user.photo.attached? == false %>
-              <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
+              <div class="helper-img" style="background-image: url('https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg');">
+              <%#= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", width: 300, height: 300, class:"card-img" %>
             <% else %>
-              <%= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
+            <div class="helper-img" style="background-image: url('https://res.cloudinary.com/renaudaf/image/upload/<%= @user.photo.key %>');">
+              <%#= cl_image_tag @user.photo.key, width: 300, height: 300, class: "card-img" %>
             <% end %>
           </div>
           <div class="help-description mt-4">
@@ -107,6 +111,10 @@
           </div>
         </div>
       <% end %>
+
+
+
+
       <div class="reviews">
         <h2>Reviews</h2>
         <% if @user.helper_reviews.empty? %>
