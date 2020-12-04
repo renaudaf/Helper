@@ -6,7 +6,7 @@
 </div>
 <div class="container">
   <div class="welcome-user d-flex justify-content-center align-items-center">
-    <h1>Welcome <%= @user.firstname %>!</h1>
+    <h1>Welcome <%= @user.firstname %></h1>
   </div>
   <div class="dash">
     <div class="project-content">
@@ -33,7 +33,7 @@
     <div class="right-content text-center">
       <h2 class="user-border-title text-left">Helper offers</h2>
       <div class="messages">
-        <% if @projects.empty? %>
+        <% if @proposals.empty? %>
           <strong>
             <p class="mt-4"> You haven't received any proposals yet</p>
           </strong>
@@ -42,7 +42,7 @@
             <% project.proposals.each do |proposal| %>
               <div class="user-project-proposal text-left">
                 <div class="card-proposal-avatar text-left">
-                  <div class="text-center">
+                  <div class="text-center" style="position: relative;">
                     <% if proposal.user.photo.attached? == false %>
                       <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "imgs-show" %>
                       <p><%= proposal.user.firstname %></p>
@@ -50,6 +50,30 @@
                       <%= cl_image_tag proposal.user.photo.key, class: "imgs-show" %>
                       <p><%= proposal.user.firstname %></p>
                     <% end %>
+
+                    <div class="review-star-on-user-show">
+                      <% arr = [] %>
+                      <% @reviews.each do |review| %>
+                        <% if review.helper == proposal.user %>
+                          <% arr << review.rating %>
+                        <% end %>
+                      <% end %>
+                      <% if arr.count == 0 %>
+                        <% rate = 0 %>
+                      <% else %>
+                        <% rate = arr.sum / arr.count %>
+                        <% count = 0 %>
+                        <% 5.times do %>
+                          <% if rate > count %>
+                            <i class="review-star fas fa-star"></i>
+                          <% else %>
+                            <i class="review-star fas-empty fas fa-star"></i>
+                          <% end %>
+                          <% count += 1 %>
+                        <% end %>
+                      <% end %>
+
+                    </div>
                   </div>
                 </div>
                 <div class="card-proposal-product">
