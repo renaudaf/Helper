@@ -7,13 +7,10 @@ class UsersController < ApplicationController
     @reviews = Review.all
   end
 
-def show
+  def show
     @user = User.find(params[:id])
     @projects = @user.projects
     @proposals = @user.proposals
-    @offers = @user.projects.map do |project|
-      project.proposals
-    end
     authorize @user
     @reviews = Review.all
   end
