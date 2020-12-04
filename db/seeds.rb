@@ -51,7 +51,7 @@ helper2.save!
 project1 = Project.new(title: "Living room renewal",
                           user_id: user.id,
                           description: "I want my living room to be brand new!",
-                          measurements: [{name: "couch", dimension: "13 by 15"}, {name: "Tv stand", dimension: "10 by 12"}, {name: "table", dimension: "15 by 15"}],
+                          measurements: [{name: "Couch", dimension: "13ft by 15ft"}, {name: "TV stand", dimension: "10ft by 12ft"}, {name: "Table", dimension: "15ft by 15ft"}],
                           address: "5330 rue Chambord, Montreal, Qc, Canada")
 file = URI.open('https://photos.duproprio.com/photos/public/for_sale/202011/939647/condo-rosemont-petite-patrie-1600-11827532.jpg')
 file1 = URI.open('https://photos.duproprio.com/photos/public/for_sale/202011/939647/condo-rosemont-petite-patrie-1600-11827528.jpg')
@@ -62,7 +62,7 @@ project1.save!
 project2 = Project.new(title: "New kitchen, new life!",
                           user_id: user.id,
                           description: "I want to remove those ugly green faience and change the cupboards",
-                          measurements: [{name: "counter", dimension: "25ft by 2ft"}, {name: "table", dimension: "5 by 2"}, {name: "Black shelf", dimension: "4ft"}],
+                          measurements: [{name: "Counter", dimension: "25ft by 2ft"}, {name: "Table", dimension: "5ft by 2ft"}, {name: "Black shelf", dimension: "4ft"}],
                           address: "5320 rue Lanaudiere, Montreal, Qc, Canada")
 file = URI.open('https://photos.duproprio.com/photos/public/for_sale/202011/939599/condo-plateau-mont-royal-1600-11820645.jpg')
 file1 = URI.open('https://photos.duproprio.com/photos/public/for_sale/202011/939599/condo-plateau-mont-royal-1600-11820644.jpg')
