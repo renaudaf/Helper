@@ -128,7 +128,7 @@
   justify-content: center;
   align-items: center;
   width: 90px;
-  padding: 8px;
+  padding: 10px;
   flex-shrink: 0;
   p {
     margin-bottom: 0;
@@ -162,5 +162,21 @@
 
 .h-proposal {
   box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.1);
+}
+
+.review-star {
+  font-size: 6px;
+}
+
+.review-star-on-user-show {
+  position: absolute;
+  bottom: -9px;
+  width: 52px;
+  .fas {
+    color: #FBBC04;
+  }
+  .fas-empty {
+    color: #EAEAEA;
+  }
 }
 

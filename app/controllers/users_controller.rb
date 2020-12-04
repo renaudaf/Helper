@@ -12,5 +12,6 @@ class UsersController < ApplicationController
     @projects = @user.projects
     @proposals = @user.proposals
     authorize @user
+    @reviews = Review.all
   end
 end
