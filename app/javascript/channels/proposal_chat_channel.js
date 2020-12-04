@@ -4,14 +4,12 @@ const addClassToMsgs = () => {
   const currentUser = Number.parseInt(document.cookie.split('=')[1], 10);
   const msgs = document.querySelectorAll('.message');
   const msg = msgs[msgs.length - 1];
-  // msgs.forEach((msg) => {
-    const senderId = Number.parseInt(msg.dataset.senderid, 10);
-   if (currentUser === senderId) {
+  const senderId = Number.parseInt(msg.dataset.senderid, 10);
+  if (currentUser === senderId) {
     msg.classList.add('msg-sent');
-   } else {
+  } else {
     msg.classList.add('msg-received');
-   }
-  // });
+  }
 };
 
 
