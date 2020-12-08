@@ -6,7 +6,7 @@
     <% @users.each do |user| %>
       <% if user.typehelper == true %>
         <div class="col-sm-12 col-lg-6">
-          <div class="cardinfo mb-3" link_to user_path(user) id="helper-a">
+          <div class="cardinfo" link_to user_path(user)>
             <%= link_to user_path(user) do %>
               <div class="cardborder">
                 <div class="name">

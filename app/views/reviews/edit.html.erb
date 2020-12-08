@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container">
   <h1>Edit your review</h1>
   <%= simple_form_for(@review)  do |f| %>
     <%= f.input :rating, type: 'select', collection: [0, 1, 2, 3, 4, 5] %>

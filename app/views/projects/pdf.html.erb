@@ -2,45 +2,39 @@
   <div class="title d-flex justify-content-between">
     <h1> <%= project.title %></h1>
   </div>
-<div>
-  <h5><%= 'Project description:' %> </h5>
-</div>
+  <div>
+    <h5><%= 'Project description:' %> </h5>
+  </div>
   <div class="descontent">
     <p><%= project.description %>  </p>
   </div>
 </div>
 <div class="dimensection">
   <% if project.measurements.empty? == false  %>
-  <div class="row">
-    <div class="col-sm-12 col-lg-3">
-      <div class="dimensions">
-        <h5><%='Dimensions:' %></h5>
+    <div class="row">
+      <div class="col-sm-12 col-lg-3">
+        <div class="dimensions">
+          <h5><%='Dimensions:' %></h5>
+        </div>
       </div>
-    </div>
-    <div class="col-sm-12 col-lg-9">
-      <div class="listdim">
-        <ul><% project.measurements.each do |measurement| %>
-          <li> <%= measurement["name"] %>: <%= measurement["dimension"] %> </li>
-          <% end %>
-        </ul>
+      <div class="col-sm-12 col-lg-9">
+        <div class="listdim">
+          <ul><% project.measurements.each do |measurement| %>
+              <li> <%= measurement["name"] %>: <%= measurement["dimension"] %> </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 <% end %>
 <div class="tags d-flex">
   <% project.tags.each do |tag| %>
-  <li class="li-tags"><%= tag.name.capitalize %></li>
+    <li class="li-tags"><%= tag.name.capitalize %></li>
   <% end %>
 </div>
-
-<% if project.photos.attached? %>
 <div>
   <div>
     <%= cl_image_tag project.photos.first.key, class: "imgs" %>
   </div>
-  <% else %>
-  <p>No pictures for this project</p>
-  <% end %>
 </div>

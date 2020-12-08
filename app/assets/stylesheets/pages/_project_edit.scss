@@ -1,5 +1,9 @@
-.edit-title .form-group {
-  width: 100%;
+.edit-title {
+  display: flex;
+  margin: 16px;
+  .form-group {
+    width: 100%;
+  }
 }
 
 .edit-title h4 {
@@ -7,10 +11,22 @@
   text-align: right;
 }
 
-.edit-page {
-  width: 75%;
-  margin: 0 auto;
-  .edit-measurement {
-    width: 45%;
-  }
+.submit-edit {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.add-measurements {
+  width: 100%;
+  text-align: center;
+}
+
+.add-measurements {
+  width: 100%;
+  text-align: center;
+}
+
+.add-measurements-c {
+  text-align: center;
+  margin-top: 8px;
 }

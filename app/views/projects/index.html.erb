@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="index-header d-flex justify-content-between">
+  <div class="index-header">
     <h1 class="my-4">All projects</h1>
-    <%= form_tag projects_path, method: :get, class: "search-bar d-flex align-items-center" do %>
+    <%= form_tag projects_path, method: :get, class: "search-bar" do %>
       <%= text_field_tag :query,
       params[:query],
       class: "form-control",

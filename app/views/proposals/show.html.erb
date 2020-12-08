@@ -2,21 +2,20 @@
   <div id="chat-title">
     <h2 class="text-center"> <%= current_user.typehelper == false ? "Chat with #{@proposal.user.firstname} for your #{@project.title}": "Your proposal for #{@project.user.firstname}'s #{@project.title}" %> project </h2>
   </div>
-  <div class="d-flex justify-content-around" id="chat-room-full">
+  <div id="chat-room-full">
     <div id="chat-box">
       <div class="chat-console message-container" data-proposal-id="<%= @proposal.id %>">
         <div class="message-proposal" data-proposal-id="<%= @proposal.id %>" >
           <p class="helper-name"><%= @proposal.user.firstname %> proposal:</p>
           <p class="helper-pitch"> <%= @proposal.pitch %></p>
         </div>
-        <div class="all-msg-chat overflow-auto mt-4">
+        <div class="all-msg-chat">
           <% @proposal.messages.each do |message| %>
             <div class="message <%= message.user == current_user ? "msg-sent" : "msg-received"%>" id="message-<%=message.id%>" >
               <small><%= message.user.firstname %></small>
               <div class="msg-content">
                 <h6> <%= message.content %> </h6>
               </div>
-              <!-- <small><%= time_ago_in_words(message.created_at) %> ago</small> -->
             </div>
           <% end %>
         </div>
@@ -29,7 +28,7 @@
       </div>
     </div>
     <% if current_user.typehelper == false %>
-      <div class="right-content text-center w-25">
+      <div class="status-offer">
         <%= simple_form_for @proposal do |f| %>
           <%= f.input :accepted, label: "Change the status of this offer", collection: ["accepted", "denied", "pending"]%>
           <%= f.submit "Confirm", class: "btn btn-primary" %>
@@ -37,4 +36,3 @@
       <% end %>
     </div>
   </div>
-  <!-- text-align:left; color: #07689f; font-weight:bold" : "text-align:right;" " id="messagemessage.id" -->
