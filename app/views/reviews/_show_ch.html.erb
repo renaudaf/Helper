@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="reviews">
+    <h2>Reviews</h2>
+    <% if @user.helper_reviews.empty? %>
+      <li class="list-group-item" id="reviews-box">
+        <p>There is no review at the moment</p>
+      </li>
+    <% else %>
+      <% @user.helper_reviews.each do |review| %>
+        <div class="review-container">
+          <li class="list-group-item" id="reviews-box">
+            <small>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+            </small>
+            <p><%= review.content %></p>
+            <div class="review-links d-flex">
+              <p> <small> <em>Reviewed by: <%= review.reviewer.firstname %> </em> </small> </p>
+              <% if policy(review).update? %>
+                <%= link_to edit_review_path(review) do %>
+                  <span class="far fa-edit mx-2"></span>
+                <% end %>
+              <% end %>
+              <% if policy(review).destroy? %>
+                <%= link_to review_path(review), method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <span class="far fa-trash-alt"></span>
+                <% end %>
+              <% end %>
+            </div>
+          </li>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
