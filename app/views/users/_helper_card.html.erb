@@ -1,0 +1,25 @@
+ 
+<div class="layout">
+  <div class="container">
+    <div class="editing-title-2">
+      <h1><%= @user.firstname  %> <%= @user.lastname  %> </h1>
+    </div>
+    <div class="helper-card">
+      <% if @user.photo.attached? == false %>
+        <div class="helper-img" style="background-image: url('https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg');">
+        <% else %>
+          <div class="helper-img" style="background-image: url('https://res.cloudinary.com/renaudaf/image/upload/<%= @user.photo.key %>');">
+          <% end %>
+        </div>
+        <div class="help-description">
+          <h5><strong>Profession:</strong> <%= @user.profession %></h5>
+          <br>
+          <h5><strong>Certification:</strong> <%= @user.certification %></h5>
+          <br>
+          <h5><strong>Experience:</strong> <%= @user.experience %> years</h5>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

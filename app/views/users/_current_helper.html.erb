@@ -1,0 +1,80 @@
+<div class="helper-show-banner">
+  <div class="user-h1">
+    <% if @user.proposals.empty? %>
+      <h1>Find your first project</h1>
+    <% else %>
+      <h1>Find a project</h1>
+    <% end  %>
+  </div>
+  <%= link_to "Start browsing", projects_path, class: "user-show-btn home-btn btn btn-primary" %>
+</div>
+<div class="container">
+  <div class="welcome-title">
+    <h1>Welcome <%= @user.firstname %></h1>
+  </div>
+  <div class="dash">
+    <div class="project-content">
+      <div class="project-h">
+        <h2>Current clients</h2>
+      </div>
+      <div class="all-user-projects">
+        <% if @user.proposals.empty? %>
+          <strong>
+            <p class="mt-4"> You don't have any project yet</p>
+          </strong>
+        <% else %>
+          <% @user.proposals.each do |proposal| %>
+            <%= link_to project_path(proposal.project) do %>
+              <div class="project-img">
+                <%= cl_image_tag proposal.project.photos.first.key, class: "imgs-show" %>
+                <div class="img-content">
+                  <h4 class="text-white"><%= proposal.project.title %></h4>
+                  <p class="text-white"><%= proposal.project.user.firstname %></p>
+                  <p class="text-white"><%= proposal.project.address %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="right-content">
+      <div class="project-h">
+        <h2>My proposals</h2>
+      </div>
+      <div class="messages">
+        <% if @proposals.empty? %>
+          <strong>
+            <p class="mt-4">You haven't made any proposals yet</p>
+          </strong>
+        <% else %>
+          <% @proposals.each do |proposal| %>
+            <div class="h-proposal">
+              <div class="user-project-proposal">
+                <div class="card-proposal-avatar">
+                  <div class="card-proposal-text">
+                    <% if proposal.project.user.photo.attached? == false %>
+                      <%= cl_image_tag "https://res.cloudinary.com/renaudaf/image/upload/v1605724952/logo_ijlnmg.jpg", class: "user-img" %>
+                    <% else %>
+                      <%= cl_image_tag proposal.project.user.photo.key, class: "user-img" %>
+                      <%= render  "/shared/notifications", proposal: proposal %>
+                    <% end %>
+                    <p class="pr-2"><strong><%= proposal.project.user.firstname %></strong></p>
+                  </div>
+                </div>
+                <div class="card-proposal-product mt-2">
+                  <h5><%= proposal.project.title %></h5>
+                  <p><%= proposal.project.address %></p>
+                  <%= link_to proposal_path(proposal) ,class: "user-message" do %>
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "reviews/show" %>
