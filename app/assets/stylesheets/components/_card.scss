@@ -48,12 +48,13 @@
 }
 
 .infocard {
- box-shadow: 0px 0px 14px rgba(149, 149, 149, 0.05);
  border-radius: 8px;
  height: 100%;
  width: 100%;
- padding: 50px;
- margin-top: 20px;
+ padding: 30px;
+ h4 {
+  margin-right: 8px;
+ }
 }
 
 .card-category {
@@ -85,6 +86,10 @@
  color: black;
  transition: transform 0.6s ease;
  min-height: 316px;
+ margin-bottom: 16px;
+ a {
+  text-decoration: none;
+ }
  h3 {
   text-decoration-line: underline;
   color: black;

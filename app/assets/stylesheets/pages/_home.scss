@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.content {
+.home-content {
   color: white;
   width: 700px;
   height: 500px;
@@ -25,6 +25,8 @@
   align-items: center;
   flex-direction: column;
   text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
+  text-align: center;
+  padding: 0 8px;
 }
 
 .content-btn {
@@ -44,6 +46,7 @@
 }
 .btn-project {
   margin: 60px;
+  text-align: center;
 }
 
 .home-btn:after {
