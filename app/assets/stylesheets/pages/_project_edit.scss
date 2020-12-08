@@ -1,5 +1,8 @@
-.edit-title .form-group {
-  width: 100%;
+.edit-title {
+  display: flex;
+  .form-group {
+    width: 100%;
+  }
 }
 
 .edit-title h4 {

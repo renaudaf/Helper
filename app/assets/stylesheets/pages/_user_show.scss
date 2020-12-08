@@ -1,3 +1,30 @@
+.user-show-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://images.traditionalhome.mdpcdn.com/sites/traditionalhome.com/files/slide/101982719.jpg");
+  background-size: cover;
+  height: 600px;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%;
+  background-attachment: fixed;
+  background-position: 50% -240px;
+  .user-h1 {
+    position: absolute;
+    top: 30%;  // to be approved
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 400px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
+  }
+}
+
 .dash {
   display: flex;
   justify-content: space-between;
@@ -26,25 +53,12 @@
   margin-top: 24px;
 }
 
-.img-content {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  max-width: 282px;
-  color: black;
-  transition: 0.3s ease;
-  text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
-  p {
-    font-size: smaller;
-    margin: 0;
-  }
-}
-
 .right-content {
   width: 45%;
   margin-left: 22px;
   min-width: 280px;
   height: 482px;
+  text-align: center;
 }
 
 .messages {
@@ -63,63 +77,13 @@
   }
 }
 
-.user-show-banner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("https://freshome.com/wp-content/uploads/2018/02/renovation-intro.jpg");
-  background-size: cover;
-  height: 344px;
-  justify-content: flex-end;
-  position: relative;
-  width: 100%;
-  background-attachment: fixed;
-  background-position: 50% -240px;
-  .user-h1 {
-    position: absolute;
-    top: 30%;  // to be approved
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 400px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-shadow: 0px 5px 3px rgba(50, 50, 50, 0.3), 0px -4px 10px rgba(255, 255, 255, 0.3);
-  }
-}
-
-.user-show-btn {
-  margin-bottom: 120px;
-  border-radius: 4px;
-  background-color: #07689f;
-  border: none;
-  &:hover {
-    background-color: #07689f;
-  }
-}
-
-.welcome-user {
-  height: 150px;
-}
-
-.user-border-title {
-  border-bottom: 1px solid black;
-}
-
-.imgs-show {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-
 .user-project-proposal {
   // big one
   display: flex;
   margin-bottom: 18px;
   border-radius: 4px;
   background-color: rgba(187, 187, 187, .1);
+  text-align: left;
 }
 
 .card-proposal-avatar {
@@ -127,6 +91,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: left;
   width: 90px;
   padding: 10px;
   flex-shrink: 0;
@@ -141,6 +106,13 @@
   position: relative;
   padding-left: 10px;
   width: 100%;
+}
+
+.card-proposal-text {
+  text-align: center;
+  position:relative; 
+  height:70px; 
+  width:70px;
 }
 
 .pitch {

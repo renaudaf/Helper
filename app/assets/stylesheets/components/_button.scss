@@ -3,3 +3,13 @@
   border-radius: 8px;
   color: white;
 }
+
+.user-show-btn {
+  margin-bottom: 120px;
+  border-radius: 4px;
+  background-color: #07689f;
+  border: none;
+  &:hover {
+    background-color: #07689f;
+  }
+}
