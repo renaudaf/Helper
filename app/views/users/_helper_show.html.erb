@@ -2,9 +2,5 @@
   <%= render "users/current_helper" %>
 <% else %>
   <%= render "users/helper_card" %>
-  <%= render "reviews/show" %>
-  <div class="container">
-    <%= render "reviews/new" %>
-    <button type="button" onclick="document.getElementById('review-form').style.display='block'; this.style.visibility='hidden';", class="btn btn-primary my-2">Add a review</button>
-  </div>
+  <%= render "reviews/new" %>
 <% end %>
