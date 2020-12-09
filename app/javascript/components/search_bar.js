@@ -1,17 +1,3 @@
-// const searchResult = () => {
-//   const searchInput = document.querySelector('#search-input');
-//   searchInput.addEventListener('keyup', () => {
-//      console.log(searchInput.value);
-//      fetch('/projects')
-//       .then(response => response.json())
-//       .then((data) => {
-//         console.log(data);
-//       });
-
-//   });
-// };
-// export { searchResult };
-
 import algoliasearch from "algoliasearch";
 
 
