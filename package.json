@@ -1,5 +1,5 @@
 {
-  "name": "_helper",
+  "name": "helper",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -11,6 +11,7 @@
     "jquery": "^3.5.1",
     "places.js": "^1.19.0",
     "popper.js": "^1.16.1",
+    "ruby": "^0.6.1",
     "select2": "^4.0.13",
     "turbolinks": "^5.2.0"
   },
